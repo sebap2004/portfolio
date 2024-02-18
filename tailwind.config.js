@@ -6,7 +6,17 @@ export default {
         "./resources/**/*.vue",
     ],
   theme: {
-    extend: {},
+    extend: {
+        fontFamily:{
+            sans:['Poppins', 'sans-serif'],
+        },
+        colors:{
+            'dark': '#181A1B',
+            'offwhite': '#DAD4E0',
+            'hover' : '#7917de',
+            'click' : '#281541'
+        }
+    },
   },
   plugins: [],
 }
