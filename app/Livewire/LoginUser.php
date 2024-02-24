@@ -24,14 +24,10 @@ class LoginUser extends Component
     public function login()
     {
 
-        $this->validate()->except('form');
-
         $credentials = [
             'username' => $this->username,
             'password' => $this->password,
         ];
-
-        dd('die');
 
         $this->form->login($credentials);
     }

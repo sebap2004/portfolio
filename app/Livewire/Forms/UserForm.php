@@ -3,6 +3,7 @@
 namespace App\Livewire\Forms;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
@@ -57,14 +58,11 @@ class UserForm extends Form
 
     public function login($credentials)
     {
-        dd($credentials);
 
         if (auth()->attempt($credentials)) {
-            dd('logged in');
             return redirect()->intended('/')->with('success', 'Logged in!');
         }
 
-        dd("unfortunate");
         return back()
             ->withInput()
             ->withErrors(['username' => 'wrong lol']);
