@@ -1,3 +1,3 @@
 <x-layouts.home>
-   <livewire:login-user/>
+    <livewire:register-user/>
 </x-layouts.home>
