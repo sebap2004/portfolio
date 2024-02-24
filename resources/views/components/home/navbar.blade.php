@@ -9,12 +9,26 @@
         <a wire:navigate href="/app" class="btn btn-primary btn-outline rounded-full mx-3" data-theme="light">
             Open Player
         </a>
-        <a wire:navigate href="/login" class="btn btn-primary btn-outline rounded-full mx-3" data-theme="light">
-            Log In
-        </a>
-        <a wire:navigate href="/register" class="btn btn-primary mx-3">
-            Register
-        </a>
+        @guest
+            <a wire:navigate href="/login" class="btn btn-primary btn-outline rounded-full mx-3" data-theme="light">
+                Log In
+            </a>
+            <a wire:navigate href="/register" class="btn btn-primary mx-3">
+                Register
+            </a>
+        @else
+            <div class="dropdown dropdown-end">
+                <div tabindex="0" role="button" class="btn btn-ghost rounded-btn">Welcome back, {{auth()->user()->name}}</div>
+                <ul tabindex="0" class="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4">
+                    @admin
+                    <li><a>Admin Panel</a></li>
+                    @endadmin
+                    <li><a href="/logout">Log Out</a></li>
+                </ul>
+            </div>
+        @endguest
+
+
     </div>
 
 </nav>

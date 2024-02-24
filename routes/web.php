@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,13 @@ Route::get('/login', function () {
     return view('login');
 });
 
+Route::get('logout' ,[SessionsController::class, 'destroy'])->middleware('auth');
+Route::post('login' ,[SessionsController::class, 'create'])->middleware('guest');
+Route::post('sessions' ,[SessionsController::class, 'store'])->middleware('guest');
+
+
 Route::get('/register', function () {
-    return view('register');
+    return view('register', [
+        'title' => 'Register'
+    ]);
 });
