@@ -15,6 +15,9 @@ keyboard_arrow_down
                 @admin
                 <li><a>Admin Panel</a></li>
                 @endadmin
+                <li><a href="">Settings</a></li>
+                <li><a href="">View Profile</a></li>
+                <li><a href="">Upload Song</a></li>
                 <li><a href="/logout">Log Out</a></li>
             </ul>
         </div>

@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('songs', function (Blueprint $table) {
             $table->id('song_ID');
-            $table->string('song_name', 30)->nullable(false);
-            $table->string('artist_name', 30)->nullable(false);
-            $table->string('database_link', 30)->nullable(false);
+            $table->string('song_name', 255)->nullable(false);
+            $table->string('artist_name', 255)->nullable(false);
+            $table->string('song_directory', 255)->nullable(false);
+            $table->string('cover_directory', 255)->nullable(false);
             $table->unsignedBigInteger('album_ID')->nullable();
             $table->unsignedBigInteger('genre_ID')->nullable();
             $table->foreign('album_ID')->references('album_ID')->on('albums');

@@ -9,29 +9,17 @@
 </head>
 <body>
 <x-app.navbar/>
-<section class="px-6 flex justify-center">
-    <main class="max-w-screen-2xl mx-2">
-        <div class="drawer lg:drawer-open absolute left-0">
-            <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-            <div class="drawer-content flex flex-col items-center justify-center">
-                <!-- Page content here -->
-                <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">Open drawer</label>
-
-            </div>
-            <div class="drawer-side">
-                <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
-                <ul class="menu p-4 w-80 min-h-full bg-base-300/20 text-base-content border-base-100 border-2 border-l-base-300">
-                    <!-- Sidebar content here -->
-                    <h1>Playlists</h1>
-                    <li><a>Sidebar Item 1</a></li>
-                    <li><a>Sidebar Item 2</a></li>
-                </ul>
-
-            </div>
+<section class="flex flex-col justify-center">
+    <main class="w-full h-90 flex">
+        <x-app.sidebar>
+            <h1 class="text-2xl pb-3">Playlists</h1>
+            <a class="btn btn-block bg-base-300">Playlist 1</a>
+        </x-app.sidebar>
+        <div class="m-7 overflow-y-auto w-screen">
+            {{ $slot }}
         </div>
-        {{ $slot }}
     </main>
-    <div class="fixed min-w-full bg-base-300 p-5 flex justify-center items-center mx-2 bottom-0">
+    <div class="fixed min-w-full bg-base-300 p-5 flex justify-center items-center bottom-0 align-middle">
         <button class="btn btn-sm btn-circle btn-primary rounded-full mx-2"><span class="material-symbols-outlined">
 skip_previous
 </span></button>

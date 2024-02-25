@@ -1,9 +1,4 @@
 <x-layout.app>
-    <div class="m-10">
-
-    </div>
-    <div class="m-10">
-
-    </div>
+    <h1 class="text-4xl">Welcome back, {{auth()->user()->name}}</h1>
 
 </x-layout.app>

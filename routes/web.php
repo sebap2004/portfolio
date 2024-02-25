@@ -15,11 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/login', function () {
-    return view('login');
+    return view('welcome')->layout('components.layout.home');
 });
 
 Route::get('logout' ,[SessionsController::class, 'destroy'])->middleware('auth');
