@@ -1,7 +1,7 @@
 <nav class="navbar md:flex md:justify-between md:items-center p-3 m-0 bg-dark">
     <div>
         <a href="/">
-            <img src="/images/newonetheme.png" alt="Laracasts Logo" width="165" height="16">
+            <img src="/images/logowithtext.png" alt="Laracasts Logo" width="165" height="16">
         </a>
     </div>
 
@@ -18,7 +18,9 @@
             </a>
         @else
             <div class="dropdown dropdown-end">
-                <div tabindex="0" role="button" class="btn btn-ghost rounded-btn">Welcome back, {{auth()->user()->name}}</div>
+                <div tabindex="0" role="button" class="btn btn-ghost rounded-btn">Welcome back, {{auth()->user()->name}}<span class="material-symbols-outlined">
+keyboard_arrow_down
+</span></div>
                 <ul tabindex="0" class="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4">
                     @admin
                     <li><a>Admin Panel</a></li>

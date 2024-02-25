@@ -68,10 +68,9 @@ class UserForm extends Form
             ->withErrors(['username' => 'wrong lol']);
     }
 
-    public function store()
+    public function store($credentials)
     {
-        $this->validate();
-        $user = User::create($this->all());
+        $user = User::create($credentials);
         auth()->login($user);
     }
 }

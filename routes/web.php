@@ -23,9 +23,12 @@ Route::get('/login', function () {
 });
 
 Route::get('logout' ,[SessionsController::class, 'destroy'])->middleware('auth');
-Route::post('login' ,[SessionsController::class, 'create'])->middleware('guest');
+Route::get('login' ,[SessionsController::class, 'create'])->middleware('guest')->name('login');
 Route::post('sessions' ,[SessionsController::class, 'store'])->middleware('guest');
 
+Route::get('/app', function () {
+    return view('app');
+})->middleware('auth');
 
 Route::get('/register', function () {
     return view('register', [
