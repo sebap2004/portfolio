@@ -4,7 +4,7 @@
             <img src="/images/logoonly.png" alt="Laracasts Logo" width="80" height="16">
         </a>
     </div>
-    <input type="text" placeholder="Search for anything..." class="input input-bordered input-primary w-108 " />
+    <input type="text" placeholder="Search for anything..." class="input input-bordered rounded-fullphp input-primary w-108 " />
     <div class="ml-20"></div>
     <div class="mt-8 md:mt-0 flex items-center">
         <div class="dropdown dropdown-end">

@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\SessionsController;
+use App\Livewire\LoginUser;
+use App\Livewire\RegisterUser;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,19 +17,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome')->layout('components.layout.home');
+    return view('welcome');
 });
 
 Route::get('logout' ,[SessionsController::class, 'destroy'])->middleware('auth');
-Route::get('login' ,[SessionsController::class, 'create'])->middleware('guest')->name('login');
 Route::post('sessions' ,[SessionsController::class, 'store'])->middleware('guest');
 
 Route::get('/app', function () {
     return view('app');
 })->middleware('auth');
 
-Route::get('/register', function () {
-    return view('register', [
-        'title' => 'Register'
-    ]);
-});
+
+Route::get('login' ,LoginUser::class)->middleware('guest')->name('login');
+Route::get('/register', RegisterUser::class);

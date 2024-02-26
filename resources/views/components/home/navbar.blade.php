@@ -1,4 +1,4 @@
-<nav class="navbar md:flex md:justify-between md:items-center p-3 m-0 bg-dark">
+<nav class="navbar md:flex md:justify-between md:items-center p-3 m-0 bg-dark bg-dark border-2 border-base-100 border-b-base-300">
     <div>
         <a href="/">
             <img src="/images/logowithtext.png" alt="Laracasts Logo" width="165" height="16">
