@@ -3,6 +3,8 @@
 use App\Http\Controllers\SessionsController;
 use App\Livewire\LoginUser;
 use App\Livewire\RegisterUser;
+use App\Livewire\UploadSong;
+use App\Livewire\ViewAllSongs;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,10 +25,9 @@ Route::get('/', function () {
 Route::get('logout' ,[SessionsController::class, 'destroy'])->middleware('auth');
 Route::post('sessions' ,[SessionsController::class, 'store'])->middleware('guest');
 
-Route::get('/app', function () {
-    return view('app');
-})->middleware('auth');
-
+// App Routes
+Route::get('/app', ViewAllSongs::class)->middleware('auth');
+Route::get('/app/upload', UploadSong::class)->middleware('auth');
 
 Route::get('login' ,LoginUser::class)->middleware('guest')->name('login');
 Route::get('/register', RegisterUser::class);

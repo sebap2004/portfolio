@@ -14,7 +14,7 @@ class Song extends Model
      * @var array
      */
     protected $fillable = [
-        'song_name', 'artist_name', 'database_link', 'album_ID', 'genre_ID',
+        'song_name', 'artist_name', 'song_directory', 'album_ID', 'genre_ID','cover_directory'
     ];
 
     /**

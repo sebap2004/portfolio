@@ -3,10 +3,10 @@
 <x-form.field>
     <x-form.label name="{{$name}}"/>
 
-    <input type="{{$type}}"
+    <input type="file"
            name="{{$name}}"
            id="{{$name}}"
-           {{ $attributes->merge(['class' => 'input input-bordered']) }}
+           {{ $attributes->merge(['class' => 'file-input']) }}
     />
     <x-form.error name="{{$error}}"/>
 </x-form.field>
