@@ -2,6 +2,7 @@
     <h1 class="text-3xl">Upload a new song</h1>
 
     <form class="p-2" wire:submit="create" enctype="multipart/form-data">
+        @csrf
         <x-form.input wire:model="form.song_name" class="w-96" name="song name" error="form.song_name"/>
         <x-form.input wire:model="form.albumName" class="w-96" name="album name" error="form.albumName"/>
         <x-form.fileinput wire:model="form.song_directory" class="file-input-primary w-96" name="music file" error="form.song_directory" type="file"/>

@@ -31,3 +31,7 @@ Route::get('app/upload', UploadSong::class)->middleware('auth');
 
 Route::get('login' ,LoginUser::class)->middleware('guest')->name('login');
 Route::get('register', RegisterUser::class);
+
+Route::get('test', function(){
+    echo php_info();
+});
