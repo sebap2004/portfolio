@@ -1,3 +1,5 @@
+# .github/workflows/tests.yml
+
 name: Laravel Tests
 
 on:
@@ -7,6 +9,7 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch: # Enable manual triggering from GitHub UI
 
 jobs:
   build:
