@@ -25,7 +25,7 @@ class SongForm extends Form
             'song_name' => 'required|string|min:1|max:255',
             'artist_name' => 'required|string|max:255',
             'albumName' => 'nullable|string|max:255',
-            'song_directory' => 'required|file|mimes:mp3,wav,ogg,flac', // Adjust allowed file types as needed
+            'song_directory' => 'required|file|mimes:mp3,wav,ogg,flac|max:8192', // Adjust allowed file types as needed
             'cover_directory' => 'required|image|mimes:jpeg,png,jpg,gif|max:4096', // Adjust max size and allowed types as needed
         ];
     }
