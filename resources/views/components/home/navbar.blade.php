@@ -6,7 +6,7 @@
     </div>
 
     <div class="mt-8 md:mt-0 flex items-center">
-        <a wire:navigate href="/app" class="btn btn-primary btn-outline rounded-full mx-3" data-theme="light">
+        <a wire:navigate href="/player" class="btn btn-primary btn-outline rounded-full mx-3" data-theme="light">
             Open Player
         </a>
         @guest

@@ -1,6 +1,6 @@
 <nav class="navbar md:flex md:justify-between md:items-center p-3 m-0 bg-dark border-2 border-base-100 border-b-base-300">
     <div>
-        <a href="/app">
+        <a href="/player">
             <img src="/images/logoonly.png" alt="Laracasts Logo" width="80" height="16">
         </a>
     </div>
@@ -15,7 +15,7 @@ keyboard_arrow_down
                 @admin
                 <li><a>Admin Panel</a></li>
                 @endadmin
-                <li><a href="/app/upload" wire:navigate>Upload Song</a></li>
+                <li><a href="/player/upload" wire:navigate>Upload Song</a></li>
                 <li><a href="" wire:navigate>Settings</a></li>
                 <li><a href="" wire:navigate>View Profile</a></li>
                 <li><a href="/logout">Log Out</a></li>

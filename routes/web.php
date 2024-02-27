@@ -26,8 +26,8 @@ Route::get('logout' ,[SessionsController::class, 'destroy'])->middleware('auth')
 Route::post('sessions' ,[SessionsController::class, 'store'])->middleware('guest');
 
 // App Routes
-Route::get('/app', ViewAllSongs::class)->middleware('auth');
-Route::get('/app/upload', UploadSong::class)->middleware('auth');
+Route::get('player', ViewAllSongs::class)->middleware('auth');
+Route::get('player/upload', UploadSong::class)->middleware('auth');
 
 Route::get('login' ,LoginUser::class)->middleware('guest')->name('login');
-Route::get('/register', RegisterUser::class);
+Route::get('register', RegisterUser::class);
