@@ -15,7 +15,6 @@ keyboard_arrow_down
                 @admin
                 <li><a>Admin Panel</a></li>
                 @endadmin
-                <li><a href="/app/upload" wire:navigate>Upload Song</a></li>
                 <li><a href="" wire:navigate>Settings</a></li>
                 <li><a href="" wire:navigate>View Profile</a></li>
                 <li><a href="/logout">Log Out</a></li>

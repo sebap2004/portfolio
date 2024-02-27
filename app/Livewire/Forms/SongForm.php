@@ -22,11 +22,27 @@ class SongForm extends Form
     public function rules()
     {
         return [
-            'song_name' => 'required|string|min:1|max:255',
+            'song_name' => 'required|string|max:255',
             'artist_name' => 'required|string|max:255',
             'albumName' => 'nullable|string|max:255',
-            'song_directory' => 'required|file|mimes:mp3,wav,ogg,flac|max:8192', // Adjust allowed file types as needed
-            'cover_directory' => 'required|image|mimes:jpeg,png,jpg,gif|max:4096', // Adjust max size and allowed types as needed
+            'song_directory' => 'required|file|mimes:mp3,wav,ogg,flac|max:2048', // Adjust allowed file types as needed
+            'cover_directory' => 'required|image|mimes:jpeg,png,jpg|max:2048', // Adjust max size and allowed types as needed
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'song_name.required' => 'The song name is required.',
+            'artist_name.required' => 'The artist name is required.',
+            'song_directory.required' => 'Please upload a song file.',
+            'song_directory.file' => 'The song file must be a file.',
+            'song_directory.mimes' => 'Must be a valid audio type.',
+            'song_directory.max' => 'Song file size too large. (Max 2MB)',
+            'cover_directory.required' => 'Please upload a cover image.',
+            'cover_directory.image' => 'The cover image must be an image file.',
+            'cover_directory.mimes' => 'Must be valid image type.',
+            'cover_directory.max' => 'Image file size too large. (Max 2MB)',
         ];
     }
 
