@@ -1,0 +1,23 @@
+@props(['songName', 'coverDirectory', 'albumName', 'artistName'])
+
+<div class="shadow-lg col-span-2 p-2 rounded-2xl bg-base-200">
+    <img class="aspect-square p-8" src="{{ Storage::url($coverDirectory) }}" alt="{{$songName}}">
+    <div class="px-6 py-4">
+        <div class="font-bold text-xl mb-2">{{$songName}}</div>
+        <p class="text-gray-700 text-base">
+            {{$artistName}}
+        </p>
+        <p class="text-gray-700 text-base">
+            {{$albumName}}
+        </p>
+    </div>
+    <div class="px-6 py-4">
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Tag1</span>
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Tag2</span>
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#Tag3</span>
+    </div>
+    <div class="px-6 pt-4 pb-2">
+        <button class="btn btn-primary mr-2">Play</button>
+        <button class="btn btn-secondary">Add to Playlist</button>
+    </div>
+</div>
