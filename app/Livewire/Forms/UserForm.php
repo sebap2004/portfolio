@@ -10,30 +10,17 @@ use Livewire\Form;
 
 class UserForm extends Form
 {
-    public User $user;
-
-    #[Validate]
     public $name;
-    #[Validate]
     public $username;
-
-    #[Validate]
     public $email;
-
-    #[Validate]
     public $password;
-
-    public function mount()
-    {
-        $this->user = new User();
-    }
 
     public function rules()
     {
         return[
             'username' => [
                 'required',
-                Rule::unique('users')->ignore($this->user),
+                Rule::unique('users'),
                 'max:255',
                 'min:3',
             ],
@@ -46,7 +33,7 @@ class UserForm extends Form
                 'required',
                 'email',
                 'max:255',
-                Rule::unique('users')->ignore($this->user)
+                Rule::unique('users')
             ],
             'password'=> [
                 'required',
@@ -68,9 +55,10 @@ class UserForm extends Form
             ->withErrors(['username' => 'wrong lol']);
     }
 
-    public function store($credentials)
+    public function store()
     {
-        $user = User::create($credentials);
+        $this->validate();
+        $user = User::create($this->all());
         auth()->login($user);
     }
 }

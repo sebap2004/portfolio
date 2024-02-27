@@ -25,11 +25,6 @@ class LoginUser extends Component
         'password' => 'required',
     ];
 
-    public function mount()
-    {
-        $this->form->mount();
-    }
-
     public function login()
     {
 

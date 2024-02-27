@@ -22,11 +22,11 @@ class SongForm extends Form
     public function rules()
     {
         return [
-            'song_name' => 'required|string|max:255',
+            'song_name' => 'required|string|min:1|max:255',
             'artist_name' => 'required|string|max:255',
             'albumName' => 'nullable|string|max:255',
-            'song_directory' => 'required|file|mimes:mp3,wav', // Adjust allowed file types as needed
-            'cover_directory' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust max size and allowed types as needed
+            'song_directory' => 'required|file|mimes:mp3,wav,ogg,flac', // Adjust allowed file types as needed
+            'cover_directory' => 'required|image|mimes:jpeg,png,jpg,gif|max:4096', // Adjust max size and allowed types as needed
         ];
     }
 
@@ -43,10 +43,12 @@ class SongForm extends Form
         $attributes['song_directory'] = $this->song_directory->storeAs('public/songs', $songName);
 
         // Store cover image with the correct extension
-        $coverExtension = $this->cover_directory->getClientOriginalExtension();
-        $coverName = $attributes['song_name'] . '.' . $coverExtension; // Assuming song_name is the name of the song
-        $attributes['cover_directory'] = $this->cover_directory->storeAs('public/images', $coverName);
-
+        if($this->cover_directory)
+        {
+            $coverExtension = $this->cover_directory->getClientOriginalExtension();
+            $coverName = $attributes['song_name'] . '.' . $coverExtension; // Assuming song_name is the name of the song
+            $attributes['cover_directory'] = $this->cover_directory->storeAs('public/images', $coverName);
+        }
         Song::create($attributes);
         return redirect('/app')->with('success', 'Song uploaded');
     }

@@ -52,36 +52,12 @@ class RegisterUser extends Component
     }
     public function mount()
     {
-        $user = new User();
-        $this->form->mount();
+
     }
 
     public function register()
     {
-        $validator = Validator::make(
-            [
-                'name' => $this->name,
-                'username' => $this->username,
-                'email' => $this->email,
-                'password' => $this->password,
-            ],
-            $this->rules()
-        );
-
-        if ($validator->fails()) {
-            $this->reset('password'); // Reset password field if validation fails
-            $this->formErrors = $validator->errors()->all();
-            return;
-        }
-
-        $credentials = [
-            'name' => $this->name,
-            'username' => $this->username,
-            'email' => $this->email,
-            'password' => $this->password,
-        ];
-
-        $this->form->store($credentials);
+        $this->form->store();
         return redirect('/')->with('success', 'Successfully created user!');
     }
 
