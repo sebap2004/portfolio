@@ -18,14 +18,14 @@
             </a>
         @else
             <div class="dropdown dropdown-end">
-                <div tabindex="0" role="button" class="btn btn-ghost rounded-btn">Welcome back, {{auth()->user()->name}}<span class="material-symbols-outlined">
+                <div tabindex="0" role="button" class="btn btn-ghost rounded-btn"><span><img src="{{Storage::url(auth()->user()->pfp_directory)}} " class="w-10 rounded-full aspect-square"/></span>Welcome back, {{auth()->user()->name}}<span class="material-symbols-outlined">
 keyboard_arrow_down
 </span></div>
-                <ul tabindex="0" class="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4">
+                <ul tabindex="0" class="menu dropdown-content z-[1] p-2 shadow bg-base-300 rounded-box w-52 mt-4">
                     @admin
                     <li><a>Admin Panel</a></li>
                     @endadmin
-                    <li><a href="/logout">Log Out</a></li>
+                    <li><a href="/logout" class="text-red-500">Log Out</a></li>
                 </ul>
             </div>
         @endguest

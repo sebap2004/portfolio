@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('album_song', function (Blueprint $table) {
             $table->unsignedBigInteger('album_ID');
             $table->unsignedBigInteger('song_ID');
+            $table->unsignedBigInteger('user_ID')->nullable();
             $table->foreign('album_ID')->references('album_ID')->on('albums');
             $table->foreign('song_ID')->references('song_ID')->on('songs');
         });

@@ -20,7 +20,10 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'username', 'email', 'password'
+        'username',
+        'email',
+        'password',
+        'pfp_directory',
     ];
 
     /**
@@ -51,5 +54,10 @@ class User extends Authenticatable
     public function admin()
     {
         return DB::table('admin')->where('user_id', $this->id)->exists();
+    }
+
+    public function songs()
+    {
+        return $this->hasMany(Song::class);
     }
 }

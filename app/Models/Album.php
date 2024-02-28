@@ -23,6 +23,6 @@ class Album extends Model
      */
     public function songs()
     {
-        return $this->hasMany('App\Song', 'album_ID');
+        return $this->hasMany(Song::class);
     }
 }

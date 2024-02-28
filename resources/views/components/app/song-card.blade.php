@@ -1,12 +1,11 @@
-@props(['songName', 'coverDirectory', 'albumName', 'artistName'])
-
+@props(['songName', 'coverDirectory', 'albumName', 'artistName', 'user'])
 <div class="shadow-lg col-span-2 p-2 rounded-2xl bg-base-200">
     <img class="aspect-square p-8" src="{{ Storage::url($coverDirectory) }}" alt="{{$songName}}">
     <div class="px-6 py-4">
         <div class="font-bold text-xl mb-2">{{$songName}}</div>
-        <p class="text-gray-700 text-base">
+        <a class="text-gray-700 text-base {{is_null($user) ? '' : 'link link-hover'}}" href="/profile/{{$user}}" wire:navigate>
             {{$artistName}}
-        </p>
+        </a>
         <p class="text-gray-700 text-base">
             {{$albumName}}
         </p>

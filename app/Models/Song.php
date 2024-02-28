@@ -8,13 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Song extends Model
 {
     use HasFactory;
+
+    protected $primaryKey = 'song_id';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'song_name', 'artist_name', 'song_directory', 'album_ID', 'genre_ID','cover_directory'
+        'song_name', 'artist_name', 'song_directory', 'album_ID', 'genre_ID','cover_directory', 'user_ID'
     ];
 
     /**
@@ -31,5 +33,10 @@ class Song extends Model
     public function genre()
     {
         return $this->belongsTo('App\Genre', 'genre_ID');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_ID');
     }
 }

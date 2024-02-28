@@ -19,6 +19,8 @@ class SongForm extends Form
 
     public $cover_directory;
 
+    public $user_ID;
+
     public function rules()
     {
         return [
@@ -52,6 +54,8 @@ class SongForm extends Form
         $this->validate();
 
         $attributes = $this->all();
+
+        $attributes['user_ID'] = auth()->user()->id;
 
         // Store song file with the correct extension
         $songExtension = $this->song_directory->getClientOriginalExtension();

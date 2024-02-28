@@ -5,6 +5,8 @@ use App\Livewire\LoginUser;
 use App\Livewire\RegisterUser;
 use App\Livewire\UploadSong;
 use App\Livewire\ViewAllSongs;
+use App\Livewire\ViewProfile;
+use App\Models\Song;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +34,6 @@ Route::get('app/upload', UploadSong::class)->middleware('auth');
 Route::get('login' ,LoginUser::class)->middleware('guest')->name('login');
 Route::get('register', RegisterUser::class);
 
-Route::get('test', function(){
-    echo php_info();
-});
+Route::get('profile/{user:username}', ViewProfile::class)->middleware('auth');
+
+

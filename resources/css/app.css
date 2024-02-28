@@ -169,3 +169,40 @@
 .h-90{
     height: 80vh;
 }
+
+.pfp{
+    aspect-ratio: 1 / 1;
+}
+
+.progress-container
+{
+    height:0.4rem;
+    width: 100%;
+    background: white;
+    border-radius: 10px;
+}
+
+.player-progress{
+    height: 100%;
+    width: 50%;
+    transition: width 0.1s linear;
+    border-radius: 10px;
+}
+
+
+ .material-symbols-outlined {
+     font-variation-settings:
+         'FILL' 0,
+         'wght' 400,
+         'GRAD' 0,
+         'opsz' 24
+ }
+
+ .m-0\.25{
+     margin: 0.05rem;
+}
+
+ .player-div
+ {
+     width: 40rem;
+ }

@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
+    @vite('resources/js/player.js')
     <title>{{ $title ?? 'Stylus Streaming' }}</title>
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
 <x-app.navbar/>
@@ -30,17 +30,9 @@ add
             {{ $slot }}
         </div>
     </main>
-    <div class="fixed min-w-full bg-base-300 p-5 flex justify-center items-center bottom-0 align-middle">
-        <button class="btn btn-sm btn-circle btn-primary rounded-full mx-2"><span class="material-symbols-outlined">
-skip_previous
-</span></button>
-        <button class="btn btn-lg btn-primary btn-circle  rounded-full mx-2"><span class="material-symbols-outlined">
-play_arrow
-</span></button>
-        <button class="btn btn-sm btn-circle btn-primary rounded-full mx-2"><span class="material-symbols-outlined">
-skip_next
-</span></button>
-    </div>
+    @persist('player')
+    <x-music-player/>
+    @endpersist
 </section>
 @if(session()->has('success'))
     <x-flash/>

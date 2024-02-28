@@ -17,10 +17,12 @@ return new class extends Migration
             $table->string('artist_name', 255)->nullable(false);
             $table->string('song_directory', 255)->nullable(false);
             $table->string('cover_directory', 255)->nullable(false);
+            $table->unsignedBigInteger('user_ID')->nullable();
             $table->unsignedBigInteger('album_ID')->nullable();
             $table->unsignedBigInteger('genre_ID')->nullable();
             $table->foreign('album_ID')->references('album_ID')->on('albums');
             $table->foreign('genre_ID')->references('genre_ID')->on('genres');
+            $table->foreign('user_ID')->references('id')->on('users');
             $table->timestamps();
         });
     }
