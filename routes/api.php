@@ -20,5 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/song/{songs:song_ID}', function ($songID) {
-    return Song::findOrFail($songID);
+    $song = Song::findOrFail($songID);
+    $song['cover_directory'] = Storage::url($song['cover_directory']);
+    $song['song_directory'] = Storage::url($song['song_directory']);
+    return $song;
 });
