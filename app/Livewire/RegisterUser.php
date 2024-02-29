@@ -17,7 +17,6 @@ class RegisterUser extends Component
 
     public UserForm $form;
 
-    public $formErrors = [];
 
     public User $user;
 

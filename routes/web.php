@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SessionsController;
+use App\Livewire\EditProfile;
 use App\Livewire\LoginUser;
 use App\Livewire\RegisterUser;
 use App\Livewire\UploadSong;
@@ -35,5 +36,9 @@ Route::get('login' ,LoginUser::class)->middleware('guest')->name('login');
 Route::get('register', RegisterUser::class);
 
 Route::get('profile/{user:username}', ViewProfile::class)->middleware('auth');
+
+Route::get('profile/{user:username}/edit', EditProfile::class)->middleware('auth');
+
+
 
 

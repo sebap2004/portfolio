@@ -1,13 +1,12 @@
 @props(['name'])
 
 <x-form.field>
-    <x-form.label/>
+    <x-form.label name="{{$name}}"/>
 
-    <x-form.textarea
-            name="{{$name}}"
+    <textarea
+           name="{{$name}}"
            id="{{$name}}"
-           class="input input-bordered"
-        {{$attributes}}
-    />
+        {{ $attributes->merge(['class' => 'input input-bordered']) }}
+    ></textarea>
     <x-form.error name="{{$name}}"/>
 </x-form.field>
