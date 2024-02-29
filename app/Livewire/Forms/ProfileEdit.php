@@ -81,14 +81,11 @@ class ProfileEdit extends Form
 
         if($this->password) {
             $attributes['password'] = $this->password;
-            dd('new password');
         }
         else
         {
             unset($attributes['password']);
         }
-
-        dd($attributes);
 
         $user->update($attributes);
 
