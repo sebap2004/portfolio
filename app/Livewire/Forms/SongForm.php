@@ -3,6 +3,7 @@
 namespace App\Livewire\Forms;
 
 use App\Models\Song;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 use Livewire\WithFileUploads;
@@ -60,14 +61,14 @@ class SongForm extends Form
         // Store song file with the correct extension
         $songExtension = $this->song_directory->getClientOriginalExtension();
         $songName = $attributes['song_name'] . '.' . $songExtension;
-        $attributes['song_directory'] = $this->song_directory->storeAs('public/songs', $songName);
+        $attributes['song_directory'] = $this->song_directory->storeAs(Storage::url('public/songs'), $songName);
 
         // Store cover image with the correct extension
         if($this->cover_directory)
         {
             $coverExtension = $this->cover_directory->getClientOriginalExtension();
             $coverName = $attributes['song_name'] . '.' . $coverExtension; // Assuming song_name is the name of the song
-            $attributes['cover_directory'] = $this->cover_directory->storeAs('public/images', $coverName);
+            $attributes['cover_directory'] = $this->cover_directory->storeAs(Storage::url('public/images'), $coverName);
         }
         Song::create($attributes);
         return redirect('/app')->with('success', 'Song uploaded');

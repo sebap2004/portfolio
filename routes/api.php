@@ -20,12 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/song/{songs:song_ID}', function ($songID) {
-    $song = Song::findOrFail($songID);
-    $songDirectory = $song->song_directory;
-    if (Storage::exists($songDirectory)) {
-        $filePath = Storage::path($songDirectory);
-        return response()->file($filePath);
-    } else {
-        return response()->json(['error' => 'Song file not found'], 404);
-    }
+    return Song::findOrFail($songID);
 });

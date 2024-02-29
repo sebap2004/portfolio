@@ -13,7 +13,8 @@
                     song-name="{{$song->song_name}}"
                     artist-name="{{$song->artist_name}}"
                     album-name="{{$song->albumName}}"
-                    user="{{$user->username}}"
+                    user="{{$song->user->username}}"
+                    song-i-d="{{$song->song_ID}}"
                 />
             @endforeach
         </div>
