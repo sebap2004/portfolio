@@ -152,12 +152,11 @@
     width: 28rem/* 384px */;
 }
 
+
 .sidenav {
     padding: 2rem;
-    height: 100%; /* Full-height: remove this if you want "auto" height */
-    width: 18rem; /* Set the width of the sidebar */
-    position: sticky; /* Fixed Sidebar (stay in place on scroll) */
-    z-index: 0; /* Stay on top */
+    /* Set the width of the sidebar */ /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 0;
     left: 0;
     overflow-x: hidden; /* Disable horizontal scroll */
 }
@@ -206,3 +205,18 @@
  {
      width: 40rem;
  }
+
+.h-20
+{
+    height: 20%;
+}
+
+.h-60
+{
+    height: 60%;
+}
+
+.music-container
+{
+    grid-row-start: last-line;
+}

@@ -1,4 +1,4 @@
-<nav class="navbar md:flex md:justify-between md:items-center p-3 m-0 bg-dark border-2 border-base-100 border-b-base-300">
+<nav class="navbar  col-span-7 justify-between md:items-center p-3 m-0 bg-dark border-2 border-base-100 border-b-base-300">
     <div>
         <a href="/app" wire:navigate>
             <img src="/images/logoonly.png" alt="Laracasts Logo" width="80" height="16">

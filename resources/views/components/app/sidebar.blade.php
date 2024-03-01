@@ -1,3 +1,3 @@
-<div class="sidenav bg-base-200 flex-shrink-0">
+<div class="sidenav bg-base-200 row-span-7">
     {{$slot}}
 </div>

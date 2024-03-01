@@ -1,4 +1,4 @@
-<div class="sticky min-w-full bg-base-300 p-5 flex justify-between items-center z-50 bottom-0 align-middle music-container">
+<div class="min-w-full col-span-7 bg-base-300 p-5 flex justify-between items-center z-50 bottom-0 align-middle music-container">
     <div class="flex items-center">
         <img id="cover" src="/images/logoonly.png" alt="Song Cover" class="mr-3 pfp" width="80" height="16">
         <div class="music-info w-36">

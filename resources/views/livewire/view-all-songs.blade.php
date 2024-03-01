@@ -1,4 +1,4 @@
-<div>
+<div class="m-3 mt-5">
 <h1 class="text-3xl">Welcome back, {{auth()->user()->name}}!</h1>
     <h2 class="text-3xl mb-3"><strong>Featured</strong></h2>
     <div class="lg:grid lg:grid-cols-8 lg:grid-flow-row sm:grid-cols-1 md:grid-cols-2 sm:grid-flow-col gap-4">
