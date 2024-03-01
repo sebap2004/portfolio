@@ -38,6 +38,6 @@ class RegisterUser extends Component
 
     public function render()
     {
-        return view('livewire.register-user');
+        return view('livewire.register-user')->layout('components.layout.home');
     }
 }

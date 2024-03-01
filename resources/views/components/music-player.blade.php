@@ -1,10 +1,9 @@
-<div class="fixed min-w-full bg-base-300 p-5 flex justify-between items-center z-50 bottom-0 align-middle music-container">
+<div class="sticky min-w-full bg-base-300 p-5 flex justify-between items-center z-50 bottom-0 align-middle music-container">
     <div class="flex items-center">
         <img id="cover" src="/images/logoonly.png" alt="Song Cover" class="mr-3 pfp" width="80" height="16">
         <div class="music-info w-36">
             <p id="title" class="song-name">Song name</p>
             <p id="artist" class="song-artist">Artist</p>
-            <span id="currTime"></span>/<span id="durTime"></span>
         </div>
     </div>
 
@@ -24,9 +23,11 @@ skip_next
 </span></button>
         </div>
         <div class="player-div mt-1 flex flex-row align-middle">
-            <div id="progress-container" class="progress-container self-center mt-3">
-                <div id="progress" class="flex flex-wrap content-center player-progress z-10 justify-end bg-primary"><button class="btn m-0.25 btn-xs btn-circle btn-primary"></button></div>
+            <span id="currTime" class="w-16 text-center">00:00</span>
+            <div id="progress-container" class="progress-container self-center">
+                <div id="progress" class="flex flex-wrap content-center player-progress z-10 justify-end bg-primary"></div>
             </div>
+            <span id="durTime" class="w-16 text-center">00:00</span>
         </div>
     </div>
 

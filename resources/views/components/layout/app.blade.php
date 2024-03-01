@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html data-theme="light" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,7 +26,7 @@ add
             <h1 class="text-2xl pb-3">Playlists</h1>
             <a class="btn btn-block bg-base-300">Playlist 1</a>
         </x-app.sidebar>
-        <div class="m-7 overflow-y-auto w-screen">
+        <div class="m-7 mb-0 mt-0 overflow-y-auto w-screen">
             {{ $slot }}
         </div>
     </main>

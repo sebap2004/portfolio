@@ -61,6 +61,6 @@ class LoginUser extends Component
 
     public function render()
     {
-        return view('livewire.login-user');
+        return view('livewire.login-user')->layout('components.layout.home');
     }
 }
