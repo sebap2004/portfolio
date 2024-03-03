@@ -6,37 +6,39 @@
     @vite('resources/css/app.css')
     @vite('resources/js/player.js')
     <title>{{ $title ?? 'Stylus Streaming' }}</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
 </head>
 <body>
-<div class="h-screen grid grid-cols-7 grid-rows-8">
+<main class="h-screen grid grid-cols-7 grid-rows-8">
     <x-app.navbar/>
-    <section class="grid grid-rows-7 grid-cols-7 col-span-7 row-span-7">
-        <main class="grid grid-rows-7 grid-cols-7 col-span-7 row-span-7">
-            <x-app.sidebar>
-                <div class="dropdown">
-                    <div tabindex="0" role="button" class="btn btn-sm btn-circle btn-primary"><span class="material-symbols-outlined">
+    <x-app.sidebar>
+        <div class="dropdown">
+            <div tabindex="0" role="button" class="btn btn-sm btn-circle btn-primary"><span
+                    class="material-symbols-outlined">
 add
 </span></div>
-                    <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-300 rounded-box w-52">
-                        <li><a href="/app/upload" wire:navigate>New Song</a></li>
-                        <li><a>New Playlist</a></li>
-                        <li><a>New Album</a></li>
-                    </ul>
-                </div>
-                <h1 class="text-2xl pb-3">Playlists</h1>
-                <a class="btn btn-block bg-base-300">Playlist 1</a>
-            </x-app.sidebar>
-            <div class="m-7 mb-0 mt-0 col-span-6 row-span-7 overflow-auto">
-                {{ $slot }}
-            </div>
-        </main>
-    </section>
-    <x-music-player x-persist="player"/>
+            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-300 rounded-box w-52">
+                <li><a href="/app/upload" wire:navigate>New Song</a></li>
+                <li><a>New Playlist</a></li>
+                <li><a>New Album</a></li>
+            </ul>
+        </div>
+        <h1 class="text-2xl pb-3">Playlists</h1>
+        <a class="btn btn-block bg-base-300">Playlist 1</a>
+    </x-app.sidebar>
+    <div class="m-7 mb-0 mt-0 col-span-6 row-span-7 overflow-auto">
+        {{ $slot }}
+    </div>
+    <div class="col-span-7">
+        @persist('player')
+            <x-music-player/>
+        @endpersist
+    </div>
     @if(session()->has('success'))
         <x-flash/>
     @endif
-</div>
+</main>
 <script>
     const musicContainer = document.getElementById('music-container');
     const playBtn = document.getElementById('play');
@@ -125,7 +127,7 @@ add
 
     // Update progress bar
     function updateProgress(e) {
-        const { duration, currentTime } = e.srcElement;
+        const {duration, currentTime} = e.srcElement;
         const progressPercent = (currentTime / duration) * 100;
         progress.style.width = `${progressPercent}%`;
     }
@@ -136,7 +138,7 @@ add
         const width = this.clientWidth;
         const clickX = e.offsetX;
 
-        if(audio && !isNaN(audio.duration)) {
+        if (audio && !isNaN(audio.duration)) {
             console.log(clickX, width);
             const duration = audio.duration;
             const switchTime = (clickX / width) * duration;
@@ -148,65 +150,65 @@ add
     }
 
     //get duration & currentTime for Time of song
-    function DurTime (e) {
-        const {duration,currentTime} = e.srcElement;
+    function DurTime(e) {
+        const {duration, currentTime} = e.srcElement;
         let sec;
         let sec_d;
 
         // define minutes currentTime
-        let min = (currentTime==null)? 0:
-            Math.floor(currentTime/60);
-        min = min <10 ? '0'+min:min;
+        let min = (currentTime == null) ? 0 :
+            Math.floor(currentTime / 60);
+        min = min < 10 ? '0' + min : min;
 
         // define seconds currentTime
-        function get_sec (x) {
-            if(Math.floor(x) >= 60){
+        function get_sec(x) {
+            if (Math.floor(x) >= 60) {
 
-                for (var i = 1; i<=60; i++){
-                    if(Math.floor(x)>=(60*i) && Math.floor(x)<(60*(i+1))) {
-                        sec = Math.floor(x) - (60*i);
-                        sec = sec <10 ? '0'+sec:sec;
+                for (var i = 1; i <= 60; i++) {
+                    if (Math.floor(x) >= (60 * i) && Math.floor(x) < (60 * (i + 1))) {
+                        sec = Math.floor(x) - (60 * i);
+                        sec = sec < 10 ? '0' + sec : sec;
                     }
                 }
-            }else{
+            } else {
                 sec = Math.floor(x);
-                sec = sec <10 ? '0'+sec:sec;
+                sec = sec < 10 ? '0' + sec : sec;
             }
         }
 
-        get_sec (currentTime,sec);
+        get_sec(currentTime, sec);
 
         // change currentTime DOM
-        currTime.innerHTML = min +':'+ sec;
+        currTime.innerHTML = min + ':' + sec;
 
         // define minutes duration
-        let min_d = (isNaN(duration) === true)? '0':
-            Math.floor(duration/60);
-        min_d = min_d <10 ? '0'+min_d:min_d;
+        let min_d = (isNaN(duration) === true) ? '0' :
+            Math.floor(duration / 60);
+        min_d = min_d < 10 ? '0' + min_d : min_d;
 
 
-        function get_sec_d (x) {
-            if(Math.floor(x) >= 60){
+        function get_sec_d(x) {
+            if (Math.floor(x) >= 60) {
 
-                for (var i = 1; i<=60; i++){
-                    if(Math.floor(x)>=(60*i) && Math.floor(x)<(60*(i+1))) {
-                        sec_d = Math.floor(x) - (60*i);
-                        sec_d = sec_d <10 ? '0'+sec_d:sec_d;
+                for (var i = 1; i <= 60; i++) {
+                    if (Math.floor(x) >= (60 * i) && Math.floor(x) < (60 * (i + 1))) {
+                        sec_d = Math.floor(x) - (60 * i);
+                        sec_d = sec_d < 10 ? '0' + sec_d : sec_d;
                     }
                 }
-            }else{
-                sec_d = (isNaN(duration) === true)? '0':
+            } else {
+                sec_d = (isNaN(duration) === true) ? '0' :
                     Math.floor(x);
-                sec_d = sec_d <10 ? '0'+sec_d:sec_d;
+                sec_d = sec_d < 10 ? '0' + sec_d : sec_d;
             }
         }
 
         // define seconds duration
 
-        get_sec_d (duration);
+        get_sec_d(duration);
 
         // change duration DOM
-        durTime.innerHTML = min_d +':'+ sec_d;
+        durTime.innerHTML = min_d + ':' + sec_d;
 
     };
 
@@ -233,7 +235,7 @@ add
     audio.addEventListener('ended', nextSong);
 
     // Time of song
-    audio.addEventListener('timeupdate',DurTime);
+    audio.addEventListener('timeupdate', DurTime);
 
 </script>
 </body>

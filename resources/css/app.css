@@ -155,10 +155,7 @@
 
 .sidenav {
     padding: 2rem;
-    /* Set the width of the sidebar */ /* Fixed Sidebar (stay in place on scroll) */
-    z-index: 0;
-    left: 0;
-    overflow-x: hidden; /* Disable horizontal scroll */
+    z-index: -1;
 }
 
 .w-18{
