@@ -1,5 +1,5 @@
 <div class="min-w-full col-span-7 bg-base-300 p-5 flex justify-between items-center z-50 bottom-0 align-middle music-container">
-    <div class="flex items-center">
+    <div class="flex items-center w-20">
         <img id="cover" src="/images/logoonly.png" alt="Song Cover" class="mr-3 pfp" width="80" height="16">
         <div class="music-info w-36">
             <p id="title" class="song-name">Song name</p>
@@ -7,7 +7,7 @@
         </div>
     </div>
 
-    <div class="player-navigation flex flex-col items-center">
+    <div class="player-navigation flex flex-col w-60 items-center">
         <div>
             <button id="prev" class="btn btn-sm btn-circle btn-primary rounded-full mx-2"><span
                     class="material-symbols-outlined">
@@ -31,7 +31,7 @@ skip_next
         </div>
     </div>
 
-    <div>
+    <div class="w-20 flex justify-end">
         <img src="/images/logoonly.png" alt="Song Cover" class="mr-3" width="80" height="16">
     </div>
     <audio id="player" src="/testsong/testsong.mp3"></audio>

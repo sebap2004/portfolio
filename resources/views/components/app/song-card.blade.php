@@ -6,7 +6,7 @@
      @mouseleave="isHovered = false">
 
     <div class="relative">
-        <img class="aspect-square p-8 z-0" src="{{ Storage::url($coverDirectory) }}" alt="{{$songName}}">
+        <img class="aspect-square w-full p-8 z-0" src="{{ Storage::url($coverDirectory) }}" alt="{{$songName}}">
 
         <div class="absolute bottom-0 left-0 p-4 z-10" x-show="isHovered" x-transition>
             <div class="flex items-center">

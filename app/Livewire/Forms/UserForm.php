@@ -49,18 +49,6 @@ class UserForm extends Form
         ];
     }
 
-    public function login($credentials)
-    {
-
-        if (auth()->attempt($credentials)) {
-            return redirect()->intended('/')->with('success', 'Logged in!');
-        }
-
-        return back()
-            ->withInput()
-            ->withErrors(['username' => 'wrong lol']);
-    }
-
     public function store()
     {
         $this->validate();

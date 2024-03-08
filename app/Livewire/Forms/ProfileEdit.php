@@ -43,7 +43,7 @@ class ProfileEdit extends Form
                 Rule::unique('users')->ignore($this->user),
             ],
             'password'=> [
-                'required',
+                'nullable',
                 'max:255',
                 'min:7'
             ],
@@ -59,17 +59,17 @@ class ProfileEdit extends Form
         $this->username = $this->user->username;
         $this->bio = $this->user->bio;
         $this->email = $this->user->email;
-        $this->password = $this->user->password;
     }
 
     public function edit()
     {
-
         $this->validate();
 
         $attributes = $this->all();
 
         $user = User::findOrFail($this->user->id);
+
+        $oldUser = $user;
 
         if($this->pfp_directory) {
             $attributes['pfp_directory'] = $this->pfp_directory->store('profiles', 'public');
@@ -81,13 +81,20 @@ class ProfileEdit extends Form
 
         if($this->password) {
             $attributes['password'] = $this->password;
+            $this->user->password = $attributes['password'];
         }
         else
         {
             unset($attributes['password']);
         }
 
-        $user->update($attributes);
+        $this->user->name = $attributes['name'] ?? $this->user->name;
+        $this->user->username = $attributes['username'] ?? $this->user->username;
+        $this->user->pfp_directory = $attributes['pfp_directory'] ?? $this->user->pfp_directory;
+        $this->user->bio = $attributes['bio'] ?? $this->user->bio;
+        $this->user->email = $attributes['email'] ?? $this->user->email;
+
+        $this->user->save();
 
         return redirect('/profile/' . $user->username)->with('success', 'Successfully updated!');
     }

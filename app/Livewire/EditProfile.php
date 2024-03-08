@@ -17,6 +17,7 @@ class EditProfile extends Component
 
     public $name;
     public $username;
+    public $pfp_directory;
     public $bio;
     public $email;
     public $password;
