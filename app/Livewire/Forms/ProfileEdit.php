@@ -69,7 +69,6 @@ class ProfileEdit extends Form
 
         $user = User::findOrFail($this->user->id);
 
-        $oldUser = $user;
 
         if($this->pfp_directory) {
             $attributes['pfp_directory'] = $this->pfp_directory->store('profiles', 'public');
@@ -96,6 +95,6 @@ class ProfileEdit extends Form
 
         $this->user->save();
 
-        return redirect('/profile/' . $user->username)->with('success', 'Successfully updated!');
+        return redirect('/profile/' . $attributes['username'])->with('success', 'Successfully updated!');
     }
 }

@@ -177,20 +177,12 @@
 
 .progress-container
 {
-    height:0.4rem;
+
     width: 100%;
     z-index: 49;
-    background: white;
-    border-radius: 10px;
+
 }
 
-.player-progress{
-    z-index: 50;
-    height: 100%;
-    width: 0;
-    transition: width 0.1s linear;
-    border-radius: 10px;
-}
 
 
  .material-symbols-outlined {

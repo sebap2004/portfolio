@@ -27,7 +27,7 @@ add
         <h1 class="text-2xl pb-3">Playlists</h1>
         <a class="btn btn-block bg-base-300">Playlist 1</a>
     </x-app.sidebar>
-    <div class="m-7 mb-0 mt-0 col-span-6 row-span-7 overflow-auto">
+    <div class="m-7 mb-0 mt-0 py-8 col-span-6 row-span-7 overflow-auto">
         {{ $slot }}
     </div>
     <div class="col-span-7">
@@ -40,52 +40,20 @@ add
     @endif
 </main>
 <script>
-    const musicContainer = document.getElementById('music-container');
     const playBtn = document.getElementById('play');
     const prevBtn = document.getElementById('prev');
     const nextBtn = document.getElementById('next');
-
     const audio = document.getElementById('player');
     const progress = document.getElementById('progress');
-    const progressContainer = document.getElementById('progress-container');
-    const title = document.getElementById('title');
-    const artist = document.getElementById('artist');
-    const cover = document.getElementById('cover');
     const currTime = document.querySelector('#currTime');
     const durTime = document.querySelector('#durTime');
-
-
     let isPlaying = false;
 
     // Keep track of song
     let songIndex = 0;
 
-    // Update song details
-    function loadSong(songID) {
-        fetch('/api/song/' + songID)
-            .then(response => {
-                if (!response.ok) {
-                    title.innerText = '';
-                    artist.innerText = '';
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log(data);
-                title.innerText = data.song_name;
-                artist.innerText = data.artist_name;
-                audio.src = data.song_directory;
-                cover.src = data.cover_directory;
-                audio.currentTime = 0;
-                playSong();
-            })
-            .catch(error => {
-                console.error('Error fetching song:', error);
-            });
-    }
+    let isDragging = false; // Variable to track dragging state
 
-    // Play song
     function playSong() {
         playBtn.innerHTML = '<span class="material-symbols-outlined">pause</span>'
         audio.play();
@@ -99,7 +67,6 @@ add
         isPlaying = false;
     }
 
-    // Previous song
     function prevSong() {
         songIndex--;
 
@@ -125,94 +92,39 @@ add
         playSong();
     }
 
-    // Update progress bar
-    function updateProgress(e) {
-        const {duration, currentTime} = e.srcElement;
+    // Function to load a song
+    function loadSong(songID) {
+        fetch('/api/song/' + songID)
+            .then(response => {
+                if (!response.ok) {
+                    title.innerText = '';
+                    artist.innerText = '';
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+                title.innerText = data.song_name;
+                artist.innerText = data.artist_name;
+                audio.src = data.song_directory;
+                cover.src = data.cover_directory;
+                audio.currentTime = 0;
+                playSong();
+            })
+            .catch(error => {
+                console.error('Error fetching song:', error);
+            });
+    }
+
+    function updateTime()
+    {
+        const { currentTime, duration } = audio;
         const progressPercent = (currentTime / duration) * 100;
-        progress.style.width = `${progressPercent}%`;
+        progress.value = progressPercent;
     }
 
-    // Set progress bar
-    function setProgress(e) {
 
-        const width = this.clientWidth;
-        const clickX = e.offsetX;
-
-        if (audio && !isNaN(audio.duration)) {
-            console.log(clickX, width);
-            const duration = audio.duration;
-            const switchTime = (clickX / width) * duration;
-            audio.currentTime = switchTime;
-            console.log(audio.currentTime, switchTime);
-        } else {
-            console.error("Audio element or duration is not available.");
-        }
-    }
-
-    //get duration & currentTime for Time of song
-    function DurTime(e) {
-        const {duration, currentTime} = e.srcElement;
-        let sec;
-        let sec_d;
-
-        // define minutes currentTime
-        let min = (currentTime == null) ? 0 :
-            Math.floor(currentTime / 60);
-        min = min < 10 ? '0' + min : min;
-
-        // define seconds currentTime
-        function get_sec(x) {
-            if (Math.floor(x) >= 60) {
-
-                for (var i = 1; i <= 60; i++) {
-                    if (Math.floor(x) >= (60 * i) && Math.floor(x) < (60 * (i + 1))) {
-                        sec = Math.floor(x) - (60 * i);
-                        sec = sec < 10 ? '0' + sec : sec;
-                    }
-                }
-            } else {
-                sec = Math.floor(x);
-                sec = sec < 10 ? '0' + sec : sec;
-            }
-        }
-
-        get_sec(currentTime, sec);
-
-        // change currentTime DOM
-        currTime.innerHTML = min + ':' + sec;
-
-        // define minutes duration
-        let min_d = (isNaN(duration) === true) ? '0' :
-            Math.floor(duration / 60);
-        min_d = min_d < 10 ? '0' + min_d : min_d;
-
-
-        function get_sec_d(x) {
-            if (Math.floor(x) >= 60) {
-
-                for (var i = 1; i <= 60; i++) {
-                    if (Math.floor(x) >= (60 * i) && Math.floor(x) < (60 * (i + 1))) {
-                        sec_d = Math.floor(x) - (60 * i);
-                        sec_d = sec_d < 10 ? '0' + sec_d : sec_d;
-                    }
-                }
-            } else {
-                sec_d = (isNaN(duration) === true) ? '0' :
-                    Math.floor(x);
-                sec_d = sec_d < 10 ? '0' + sec_d : sec_d;
-            }
-        }
-
-        // define seconds duration
-
-        get_sec_d(duration);
-
-        // change duration DOM
-        durTime.innerHTML = min_d + ':' + sec_d;
-
-    };
-
-    // Event listeners
     playBtn.addEventListener('click', () => {
         if (isPlaying) {
             pauseSong();
@@ -221,22 +133,41 @@ add
         }
     });
 
-    // Change song
+    // Add an event listener for mouseup event on the progress input
+    progress.addEventListener('mouseup', function() {
+        // Set the current time of the audio to the value of the progress input
+        audio.currentTime = progress.value;
+        isDragging = false; // Update dragging state
+    });
+
+    // Add event listeners for mousedown and mousemove events on the progress input
+    progress.addEventListener('mousedown', function() {
+        isDragging = true; // Update dragging state
+    });
+
+    // Update the current time and duration of the audio
+    audio.addEventListener('loadedmetadata', function() {
+        const minutes = Math.floor(audio.duration / 60);
+        const seconds = Math.floor(audio.duration % 60);
+        durTime.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    });
+
+    audio.addEventListener('timeupdate', function() {
+        // Update current time regardless of dragging
+        if (!isDragging)
+        {
+            updateTime();
+        }
+        const minutes = Math.floor(audio.currentTime / 60);
+        const seconds = Math.floor(audio.currentTime % 60);
+        currTime.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    });
+
     prevBtn.addEventListener('click', prevSong);
     nextBtn.addEventListener('click', nextSong);
-
-    // Time/song update
-    audio.addEventListener('timeupdate', updateProgress);
-
-    // Click on progress bar
-    progressContainer.addEventListener('click', setProgress);
-
-    // Song ends
     audio.addEventListener('ended', nextSong);
-
-    // Time of song
-    audio.addEventListener('timeupdate', DurTime);
-
 </script>
+
+
 </body>
 </html>

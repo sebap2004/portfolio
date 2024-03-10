@@ -24,8 +24,8 @@ skip_next
         </div>
         <div class="player-div mt-1 flex flex-row align-middle">
             <span id="currTime" class="w-16 text-center">00:00</span>
-            <div id="progress-container" class="progress-container self-center">
-                <div id="progress" class="flex flex-wrap content-center player-progress z-10 justify-end bg-primary"></div>
+            <div id="progress-container" class="progress-container">
+                <input id="progress" type="range" class="range range-accent">
             </div>
             <span id="durTime" class="w-16 text-center">00:00</span>
         </div>
