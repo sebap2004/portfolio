@@ -64,5 +64,7 @@ class UserForm extends Form
 
         $user = User::create($attributes);
         auth()->login($user);
+
+        return redirect('/app')->with('success', 'Successfully created account!');
     }
 }

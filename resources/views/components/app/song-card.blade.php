@@ -20,9 +20,10 @@
 
     <div class="px-6 py-4 relative z-10">
         <div class="font-bold text-xl mb-2">{{$songName}}</div>
-        <a class="text-gray-700 text-base {{is_null($user) ? '' : 'link link-hover'}}" href="/profile/{{$user}}" wire:navigate>
-            {{$artistName}}
+        <a class="text-gray-700 text-base {{ is_null($user) ? '' : 'link link-hover' }}" href="{{ is_null($user) ? '' : '/profile/' . $user }}" wire:navigate>
+            {{ $artistName }}
         </a>
+
         <p class="text-gray-700 text-base">
             {{$albumName}}
         </p>

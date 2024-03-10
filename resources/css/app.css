@@ -158,6 +158,11 @@
     z-index: 100;
 }
 
+.sidenavAdmin {
+    padding: 1rem;
+    z-index: 100;
+}
+
 .w-18{
     width: 18rem;
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SessionsController;
+use App\Livewire\AdminHomePage;
 use App\Livewire\EditProfile;
 use App\Livewire\LoginUser;
 use App\Livewire\RegisterUser;
@@ -39,6 +40,8 @@ Route::get('profile/{user:username}', ViewProfile::class)->middleware('auth');
 
 Route::get('profile/{user:username}/edit', EditProfile::class)->middleware('auth');
 
-
+Route::group(['middleware' => 'admin'], function () {
+    Route::get('/admin', AdminHomePage::class);
+});
 
 
