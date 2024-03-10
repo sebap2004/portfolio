@@ -22,17 +22,20 @@ play_arrow
 skip_next
 </span></button>
         </div>
-        <div class="player-div mt-1 flex flex-row align-middle">
-            <span id="currTime" class="w-16 text-center">00:00</span>
+        <div class="player-div mt-2 flex flex-row align-middle">
+            <span id="currTime" class="w-16 mx-2 text-center">00:00</span>
             <div id="progress-container" class="progress-container">
                 <input id="progress" type="range" class="range range-accent">
             </div>
-            <span id="durTime" class="w-16 text-center">00:00</span>
+            <span id="durTime" class="w-16 mx-2 text-center">00:00</span>
         </div>
     </div>
 
-    <div class="w-20 flex justify-end">
-        <img src="/images/logoonly.png" alt="Song Cover" class="mr-3" width="80" height="16">
+    <div class="w-20 flex justify-end items-center">
+        <button id="volumeClick" class="btn btn-ghost btn-circle material-symbols-outlined mr-3">
+volume_up
+</button>
+        <input id="volume" type="range" class="range w-36 range-xs range">
     </div>
     <audio id="player" src="/testsong/testsong.mp3"></audio>
 </div>

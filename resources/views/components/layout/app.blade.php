@@ -41,6 +41,8 @@ add
 </main>
 <script>
     const playBtn = document.getElementById('play');
+    const volumeSlider = document.getElementById('volume');
+    const volumeIcon = document.getElementById('volumeClick');
     const prevBtn = document.getElementById('prev');
     const nextBtn = document.getElementById('next');
     const audio = document.getElementById('player');
@@ -48,6 +50,10 @@ add
     const currTime = document.querySelector('#currTime');
     const durTime = document.querySelector('#durTime');
     let isPlaying = false;
+
+    let currentVolume = 50;
+    let isMuted = false;
+    let queue = [];
 
     // Keep track of song
     let songIndex = 0;
@@ -120,8 +126,7 @@ add
     function updateTime()
     {
         const { currentTime, duration } = audio;
-        const progressPercent = (currentTime / duration) * 100;
-        progress.value = progressPercent;
+        progress.value = (currentTime / duration) * 100;
     }
 
 
@@ -133,19 +138,17 @@ add
         }
     });
 
-    // Add an event listener for mouseup event on the progress input
     progress.addEventListener('mouseup', function() {
-        // Set the current time of the audio to the value of the progress input
         audio.currentTime = progress.value;
-        isDragging = false; // Update dragging state
+        isDragging = false;
     });
 
-    // Add event listeners for mousedown and mousemove events on the progress input
+
     progress.addEventListener('mousedown', function() {
-        isDragging = true; // Update dragging state
+        isDragging = true;
     });
 
-    // Update the current time and duration of the audio
+
     audio.addEventListener('loadedmetadata', function() {
         const minutes = Math.floor(audio.duration / 60);
         const seconds = Math.floor(audio.duration % 60);
@@ -153,7 +156,6 @@ add
     });
 
     audio.addEventListener('timeupdate', function() {
-        // Update current time regardless of dragging
         if (!isDragging)
         {
             updateTime();
@@ -166,8 +168,45 @@ add
     prevBtn.addEventListener('click', prevSong);
     nextBtn.addEventListener('click', nextSong);
     audio.addEventListener('ended', nextSong);
-</script>
 
+    volumeSlider.addEventListener('input', function() {
+        audio.volume = volumeSlider.value / 100;
+        checkMuted();
+    });
+    function updateVolumeSlider() {
+        volumeSlider.value = audio.volume * 100;
+        if (volumeSlider.value > 1)
+        {
+            currentVolume = volumeSlider.value;
+        }
+    }
+
+    volumeIcon.addEventListener("click", function () {
+        if (isMuted)
+        {
+            audio.volume = currentVolume / 100;
+            isMuted = false;
+        }
+        else {
+            audio.volume = 0;
+            isMuted = true;
+        }
+        checkMuted();
+    })
+
+    function checkMuted(){
+        if (audio.volume === 0)
+        {
+            volumeIcon.innerText = "no_sound";
+            isMuted = true;
+        }
+        else{
+            isMuted = false;
+            volumeIcon.innerText = "volume_up";
+        }
+    }
+    audio.addEventListener('volumechange', updateVolumeSlider);
+</script>
 
 </body>
 </html>
