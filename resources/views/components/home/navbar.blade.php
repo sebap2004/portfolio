@@ -6,9 +6,6 @@
     </div>
 
     <div class="mt-8 md:mt-0 flex items-center">
-        <a wire:navigate href="/app" class="btn btn-primary btn-outline rounded-full mx-3" data-theme="light">
-            Open Player
-        </a>
         @guest
             <a wire:navigate href="/login" class="btn btn-primary btn-outline rounded-full mx-3" data-theme="light">
                 Log In
@@ -17,6 +14,9 @@
                 Register
             </a>
         @else
+            <a wire:navigate href="/app" class="btn btn-primary btn-outline rounded-full mx-3" data-theme="light">
+                Open Player
+            </a>
             <div class="dropdown dropdown-end">
                 <div tabindex="0" role="button" class="btn btn-ghost rounded-btn"><span><img src="{{Storage::url(auth()->user()->pfp_directory)}} " class="w-10 rounded-full aspect-square"/></span>Welcome back, {{auth()->user()->name}}<span class="material-symbols-outlined">
 keyboard_arrow_down
