@@ -18,6 +18,7 @@ class UserForm extends Form
     public $pfp_directory;
     public $email;
     public $password;
+    public $agreesToTOS;
 
     public function rules()
     {
@@ -45,7 +46,15 @@ class UserForm extends Form
                 'max:255',
                 'min:7'
             ],
-            'pfp_directory' => 'image|mimes:jpeg,png,jpg|max:2048'
+            'pfp_directory' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'agreesToTOS' => 'required|accepted',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'agreesToTOS.required' => 'You must agree to the Terms of Service.',
         ];
     }
 

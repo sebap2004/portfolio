@@ -2,19 +2,18 @@
 
 namespace Tests\Feature\Livewire;
 
-use App\Livewire\ViewSongs;
-use App\Models\User;
+use App\Livewire\AdminManageSongs;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
 use Tests\TestCase;
 
-class ViewAllSongsTest extends TestCase
+class AdminManageSongsTest extends TestCase
 {
     /** @test */
     public function renders_successfully()
     {
-        Livewire::test(ViewSongs::class)
+        Livewire::test(AdminManageSongs::class)
             ->assertStatus(200);
     }
 }

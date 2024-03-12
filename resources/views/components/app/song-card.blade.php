@@ -13,7 +13,9 @@
                 <button class="btn btn-lg btn-primary btn-circle self-center rounded-full mx-2" onclick="loadSong({{$songID}})">
                     <span class="material-symbols-outlined">play_arrow</span>
                 </button>
-                <button class="btn btn-secondary">Add to Playlist</button>
+                <button class="btn btn-secondary"><span class="material-symbols-outlined">
+playlist_add
+</span> Add to playlist</button>
             </div>
         </div>
     </div>

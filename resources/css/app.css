@@ -217,5 +217,10 @@
     grid-row-start: last-line;
 }
 
+.adminSongTable
+{
+    width: 90rem;
+}
+
 
 

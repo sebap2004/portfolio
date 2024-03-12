@@ -5,8 +5,14 @@
             <img src="/images/logoonly.png" alt="Laracasts Logo" width="80" height="16">
         </a>
     </div>
-    <input type="text" placeholder="Search for anything..."
-           class="input input-bordered rounded-fullphp input-primary w-108 "/>
+    <form action="/app" method="get">
+        <input type="text" placeholder="Search for anything..." name="search"
+               class="input input-bordered rounded-full input-primary w-108" />
+        <button class="btn btn-ghost btn-circle ml-3" type="submit">
+            <span class="material-symbols-outlined">search</span>
+        </button>
+    </form>
+
     <div class="ml-20"></div>
     <div class="mt-8 md:mt-0 flex items-center">
         <div class="dropdown dropdown-end">

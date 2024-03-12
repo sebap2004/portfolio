@@ -17,11 +17,11 @@
         <div class="space-y-2">
             <a class="btn btn-block bg-base-300">Upload song</a>
             <a class="btn btn-block bg-base-300">Create new album</a>
-            <a class="btn btn-block bg-base-300">Manage songs</a>
-            <a class="btn btn-block bg-base-300">Manage users</a>
+            <a class="btn btn-block bg-base-300" href="/admin/managesongs">Manage songs</a>
+            <a class="btn btn-block bg-base-300" href="/admin/manageusers">Manage users</a>
         </div>
     </x-admin.sidebar>
-    <div class="m-7 mb-0 mt-0 col-span-6 row-span-7 overflow-auto">
+    <div class="m-7 mb-0 mt-4 col-span-6 row-span-7 flex justify-center overflow-auto">
         {{ $slot }}
     </div>
     @if(session()->has('success'))

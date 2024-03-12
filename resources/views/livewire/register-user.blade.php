@@ -13,6 +13,11 @@
             @endif
             <x-form.input wire:model="form.email" error="form.email" name="email" type="email" placeholder="email" needed/>
             <x-form.input wire:model="form.password" error="form.password" name="password" type="password" placeholder="password" needed/>
+            <div class="flex items-center">
+                I agree to the <a class="link link-primary ml-1">terms of service.</a>
+                <input class="checkbox checkbox-accent bg-base-100 m-3" wire:model="form.agreesToTOS"  type="checkbox">
+            </div>
+            <x-form.error name="form.agreesToTOS"/>
             <div class="form-control mt-6">
                 <button class="btn btn-primary" type="submit">Register</button>
             </div>

@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\SessionsController;
 use App\Livewire\AdminHomePage;
+use App\Livewire\AdminManageSongs;
+use App\Livewire\AdminManageUsers;
 use App\Livewire\EditProfile;
 use App\Livewire\LoginUser;
 use App\Livewire\RegisterUser;
 use App\Livewire\UploadSong;
-use App\Livewire\ViewAllSongs;
+use App\Livewire\ViewSongs;
 use App\Livewire\ViewProfile;
 use App\Models\Song;
 use Illuminate\Support\Facades\Route;
@@ -30,7 +32,7 @@ Route::get('logout' ,[SessionsController::class, 'destroy'])->middleware('auth')
 Route::post('sessions' ,[SessionsController::class, 'store'])->middleware('guest');
 
 // App Routes
-Route::get('app', ViewAllSongs::class)->middleware('auth');
+Route::get('app', ViewSongs::class)->middleware('auth');
 Route::get('app/upload', UploadSong::class)->middleware('auth');
 
 Route::get('login' ,LoginUser::class)->middleware('guest')->name('login');
@@ -42,6 +44,8 @@ Route::get('profile/{user:username}/edit', EditProfile::class)->middleware('auth
 
 Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin', AdminHomePage::class);
+    Route::get('/admin/managesongs', AdminManageSongs::class);
+    Route::get('/admin/manageusers', AdminManageUsers::class);
 });
 
 

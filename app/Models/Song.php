@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Album;
+use App\Models\Genre;
 
 class Song extends Model
 {
@@ -24,7 +27,7 @@ class Song extends Model
      */
     public function album()
     {
-        return $this->belongsTo('App\Album', 'album_ID');
+        return $this->belongsTo(Album::class, 'album_ID');
     }
 
     /**
@@ -32,7 +35,7 @@ class Song extends Model
      */
     public function genre()
     {
-        return $this->belongsTo('App\Genre', 'genre_ID');
+        return $this->belongsTo('Genre', 'genre_ID');
     }
 
     public function user()
