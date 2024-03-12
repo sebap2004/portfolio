@@ -42,6 +42,8 @@ add
 <script>
     const playBtn = document.getElementById('play');
     const volumeSlider = document.getElementById('volume');
+    const shuffle = document.getElementById('shuffle');
+    const repeat = document.getElementById('repeat');
     const volumeIcon = document.getElementById('volumeClick');
     const prevBtn = document.getElementById('prev');
     const nextBtn = document.getElementById('next');
@@ -53,6 +55,8 @@ add
 
     let currentVolume = 50;
     let isMuted = false;
+    let isShuffled = false;
+    let isRepeating = false;
     let queue = [];
 
     // Keep track of song
@@ -206,6 +210,28 @@ add
         }
     }
     audio.addEventListener('volumechange', updateVolumeSlider);
+
+    shuffle.addEventListener('click', () => {
+        if (isShuffled) {
+            shuffle.innerHTML = '<span class="material-symbols-outlined">shuffle</span>';
+            isShuffled = false;
+        } else {
+            shuffle.innerHTML = '<span class="material-symbols-outlined">shuffle_on</span>';
+            isShuffled = true;
+        }
+    });
+
+    repeat.addEventListener('click', () => {
+        if (isRepeating) {
+            repeat.innerHTML = '<span class="material-symbols-outlined">repeat</span>';
+            isRepeating = false;
+            audio.loop = false;
+        } else {
+            repeat.innerHTML = '<span class="material-symbols-outlined">repeat_on</span>';
+            isRepeating = true;
+            audio.loop = true;
+        }
+    });
 </script>
 
 </body>

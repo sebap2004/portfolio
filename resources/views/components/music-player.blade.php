@@ -9,6 +9,10 @@
 
     <div class="player-navigation flex flex-col w-60 items-center">
         <div>
+            <button id="shuffle" class="btn btn-sm btn-circle btn-ghost rounded-full mx-2"><span
+                    class="material-symbols-outlined">
+shuffle
+</span></button>
             <button id="prev" class="btn btn-sm btn-circle btn-primary rounded-full mx-2"><span
                     class="material-symbols-outlined">
 skip_previous
@@ -20,6 +24,10 @@ play_arrow
             <button id="next" class="btn btn-sm btn-circle btn-primary rounded-full mx-2"><span
                     class="material-symbols-outlined">
 skip_next
+</span></button>
+            <button id="repeat" class="btn btn-sm btn-ghost btn-circle rounded-full mx-2"><span
+                    class="material-symbols-outlined">
+repeat
 </span></button>
         </div>
         <div class="player-div mt-2 flex flex-row align-middle">
@@ -35,9 +43,9 @@ skip_next
         <button id="volumeClick" class="btn btn-ghost btn-circle material-symbols-outlined mr-3">
 volume_up
 </button>
-        <input id="volume" type="range" class="range w-36 range-xs range">
+        <input id="volume" type="range" class="range w-36 range-xs">
     </div>
-    <audio id="player" src="/testsong/testsong.mp3"></audio>
+    <audio id="player"></audio>
 </div>
 
 
