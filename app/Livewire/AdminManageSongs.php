@@ -2,17 +2,22 @@
 
 namespace App\Livewire;
 
+use App\Livewire\Forms\AdminEditSong;
 use App\Models\Song;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 
 class AdminManageSongs extends Component
 {
     use WithPagination;
+    use WithFileUploads;
     public $search = "";
+
+    public AdminEditSong $form;
 
     public function deleteSong(Song $song): void
     {
@@ -25,6 +30,18 @@ class AdminManageSongs extends Component
     public function updatedSearch()
     {
         $this->resetPage();
+    }
+
+    public function editSong(Song $song)
+    {
+        $this->form->setSong($song);
+        $this->dispatch('start-edit');
+    }
+
+    public function finishEdit()
+    {
+        $this->form->edit();
+        $this->dispatch('edit-completed');
     }
 
     protected function applySearch($query)
