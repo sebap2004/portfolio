@@ -1,20 +1,20 @@
 <nav
     class="navbar row-span-1 col-span-7 justify-between md:items-center p-3 m-0 bg-dark border-2 border-base-100 border-b-base-300">
-    <div>
+    <div class="w-20p">
         <a href="/app" wire:navigate>
             <img src="/images/logoonly.png" alt="Laracasts Logo" width="80" height="16">
         </a>
     </div>
-    <form action="/app" method="get">
-        <input type="text" placeholder="Search for anything..." name="search"
-               class="input input-bordered rounded-full input-primary w-108" />
-        <button class="btn btn-ghost btn-circle ml-3" type="submit">
-            <span class="material-symbols-outlined">search</span>
-        </button>
-    </form>
-
-    <div class="ml-20"></div>
-    <div class="mt-8 md:mt-0 flex items-center">
+    <div class="w-60p flex justify-center items-center">
+        <form class="flex justify-center items-center" action="/app" method="get">
+            <input type="text" placeholder="Search for songs, artists, albums..." name="search"
+                   class="input input-bordered rounded-full input-primary w-searchbar" />
+            <button class="btn btn-ghost btn-circle ml-3" type="submit">
+                <span class="material-symbols-outlined">search</span>
+            </button>
+        </form>
+    </div>
+    <div class="w-20p flex justify-end">
         <div class="dropdown dropdown-end">
             <div tabindex="0" role="button" class="btn btn-ghost rounded-btn"><span><img
                         src="{{Storage::url(auth()->user()->pfp_directory)}} " class="w-10 rounded-full aspect-square"/></span> {{auth()->user()->name}}

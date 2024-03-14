@@ -202,12 +202,12 @@
      width: 50rem;
  }
 
-.w-20
+.w-20p
 {
     width: 20%;
 }
 
-.w-60
+.w-60p
 {
     width: 60%;
 }
@@ -221,6 +221,12 @@
 {
     width: 90rem;
 }
+
+.w-searchbar
+{
+    width: 40rem;
+}
+
 
 
 

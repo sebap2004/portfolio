@@ -17,8 +17,8 @@
         <div class="space-y-2">
             <a class="btn btn-block bg-base-300">Upload song</a>
             <a class="btn btn-block bg-base-300">Create new album</a>
-            <a class="btn btn-block bg-base-300" href="/admin/managesongs">Manage songs</a>
-            <a class="btn btn-block bg-base-300" href="/admin/manageusers">Manage users</a>
+            <a class="btn btn-block bg-base-300" href="/admin/managesongs" wire:navigate>Manage songs</a>
+            <a class="btn btn-block bg-base-300" href="/admin/manageusers" wire:navigate>Manage users</a>
         </div>
     </x-admin.sidebar>
     <div class="m-7 mb-0 mt-4 col-span-6 row-span-7 flex justify-center overflow-auto">

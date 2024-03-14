@@ -1,4 +1,4 @@
-<div class="adminSongTable" @user-deleted="$refs.deletedUser.showModal()" @user-edited="$refs.editedUser.showModal()">
+<div class="adminSongTable" @user-deleted="$refs.deletedUser.showModal()" @user-edited="$refs.editModal.close(); $refs.editedUser.showModal()">
     <div class="overflow-x-auto">
         <div class="m-3 w-96">
             <label>
@@ -130,7 +130,7 @@ edit
         </div>
     </dialog>
 
-    <dialog wire:ignore.self id="editUser" class="modal">
+    <dialog wire:ignore.self x-ref="editModal" id="editUser" class="modal">
         <div class="modal-box">
             <h1 class="text-3xl">Edit user:</h1>
             <form wire:submit="editUser">
@@ -146,10 +146,10 @@ edit
                 <x-form.input wire:model="form.password" error="form.password" name="password" type="password" placeholder="password"/>
                 <div class="modal-action">
                     <form method="dialog">
-                        <button onclick="editUser.close()" class="btn btn-primary" wire:click="editUser"><span class="material-symbols-outlined">
+                        <button type="submit"  class="btn btn-primary" wire:click="editUser"><span class="material-symbols-outlined">
 edit
 </span> Edit User</button>
-                        <button onclick="editUser.close()" class="btn">Cancel</button>
+                        <button type="button" @click="$refs.editModal.close()" class="btn">Cancel</button>
                     </form>
                 </div>
             </form>

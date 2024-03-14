@@ -1,12 +1,14 @@
 <nav
     class="navbar row-span-1 col-span-7 justify-between md:items-center p-3 m-0 bg-dark border-2 border-base-100 border-b-base-300">
-    <div>
+    <div class="w-20p">
         <a href="/app" wire:navigate>
             <img src="/images/logoonly.png" alt="Laracasts Logo" width="80" height="16">
         </a>
     </div>
-    <div class="ml-20"></div>
-    <div class="mt-8 md:mt-0 flex items-center">
+    <div class="w-80p">
+        <h1 class="text-3xl font-bold"><a href="/admin" wire:navigate>Admin panel</a></h1>
+    </div>
+    <div class="w-20p mt-8 md:mt-0 flex items-center justify-end">
         <div class="dropdown dropdown-end">
             <div tabindex="0" role="button" class="btn btn-ghost rounded-btn"><span><img
                         src="{{Storage::url(auth()->user()->pfp_directory)}} " class="w-10 rounded-full aspect-square"/></span> {{auth()->user()->name}}
