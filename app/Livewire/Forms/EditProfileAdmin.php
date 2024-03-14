@@ -94,5 +94,14 @@ class EditProfileAdmin extends Form
         $this->user->email = $attributes['email'] ?? $this->user->email;
 
         $this->user->save();
+
+        if ($this->user->songs)
+        {
+            foreach ($this->user->songs as $song)
+            {
+                $song->artist_name = $this->user->name;
+                $song->update();
+            }
+        }
     }
 }

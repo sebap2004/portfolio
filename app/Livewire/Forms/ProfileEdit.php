@@ -67,9 +67,6 @@ class ProfileEdit extends Form
 
         $attributes = $this->all();
 
-        $user = User::findOrFail($this->user->id);
-
-
         if($this->pfp_directory) {
             $attributes['pfp_directory'] = $this->pfp_directory->store('profiles', 'public');
         }
@@ -94,6 +91,15 @@ class ProfileEdit extends Form
         $this->user->email = $attributes['email'] ?? $this->user->email;
 
         $this->user->save();
+
+        if ($this->user->songs)
+        {
+            foreach ($this->user->songs as $song)
+            {
+                $song->artist_name = $this->user->name;
+                $song->update();
+            }
+        }
 
         return redirect('/profile/' . $attributes['username'])->with('success', 'Successfully updated!');
     }
