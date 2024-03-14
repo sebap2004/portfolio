@@ -12,7 +12,7 @@ class Song extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'song_id';
+    protected $primaryKey = 'song_ID';
     /**
      * The attributes that are mass assignable.
      *

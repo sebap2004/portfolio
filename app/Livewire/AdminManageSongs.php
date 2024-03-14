@@ -14,22 +14,12 @@ class AdminManageSongs extends Component
     use WithPagination;
     public $search = "";
 
-    public $songToDeleteID;
-
-    #[Computed]
-    public function songToDelete()
+    public function deleteSong(Song $song): void
     {
-        return Song::find($this->songToDeleteID);
-    }
-
-    public function setSongToDeleteID($song)
-    {
-        $this->songToDeleteID = $song;
-    }
-
-    public function deleteSong()
-    {
-        $this->songToDelete->delete();
+        if ($song->exists) {
+            $song->delete();
+        }
+        $this->dispatch('song-deleted');
     }
 
     public function updatedSearch()

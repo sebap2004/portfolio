@@ -1,8 +1,20 @@
-<div class="adminSongTable">
+<div class="adminSongTable" x-data="{
+    songToDelete: null,
+    showDelete(id) {
+      this.songToDelete = id;
+      $refs.modal.showModal();
+    }
+  }"
+     @song-deleted="
+     $refs.modal.close();
+     $refs.successModal.showModal();
+     "
+>
     <div class="overflow-x-auto">
         <div class="m-3 w-96">
             <label>
-                <input wire:model.live.debounce.100="search" type="text" class="input w-full input-primary" placeholder="Search for users...">
+                <input wire:model.live.debounce.100="search" type="text" class="input w-full input-primary"
+                       placeholder="Search for users...">
             </label>
         </div>
         <table class="table">
@@ -20,48 +32,48 @@
             </thead>
             <tbody>
             @foreach($songs as $song)
-            <!-- row 1 -->
-            <tr wire:key="{{$song->song_ID}}">
-                <th>
-                    {{$song->song_ID}}
-                </th>
-                <td>
-                    <div class="flex items-center gap-3">
-                        <div class="avatar">
-                            <div class="mask mask-square w-12 h-12">
-                                <img src="{{Storage::url($song->cover_directory)}}" alt="Cover" />
+                <!-- row 1 -->
+                <tr wire:key="{{$song->song_ID}}">
+                    <th>
+                        {{$song->song_ID}}
+                    </th>
+                    <td>
+                        <div class="flex items-center gap-3">
+                            <div class="avatar">
+                                <div class="mask mask-square w-12 h-12">
+                                    <img src="{{Storage::url($song->cover_directory)}}" alt="Cover"/>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                </td>
-                <td>
-                    <div class="flex items-center gap-3">
-                        <div>
-                            <div class="font-bold">{{$song->song_name}}</div>
+                    </td>
+                    <td>
+                        <div class="flex items-center gap-3">
+                            <div>
+                                <div class="font-bold">{{$song->song_name}}</div>
+                            </div>
                         </div>
-                    </div>
-                </td>
-                <td>
-                    {{$song->user->name}}
-                </td>
-                <td>
-                    No album yet
-                </td>
-                <td>
-                    {{$song->created_at->toDayDateTimeString()}}
-                </td>
-                <th>
-                    <button class="btn btn-primary btn-sm mr-3"><span class="material-symbols-outlined">
+                    </td>
+                    <td>
+                        {{$song->user->name}}
+                    </td>
+                    <td>
+                        No album yet
+                    </td>
+                    <td>
+                        {{$song->created_at->toDayDateTimeString()}}
+                    </td>
+                    <th>
+                        <button class="btn btn-primary btn-sm mr-3"><span class="material-symbols-outlined">
 edit
 </span></button>
-                    <button wire:click="setSongToDeleteID({{ $song->song_ID }})" onclick="deleteSongModal.showModal()" class="btn btn-error btn-sm mr-3">
+                        <button @click="showDelete({{ $song->song_ID }})" class="btn btn-error btn-sm mr-3">
     <span class="material-symbols-outlined">
         Delete
     </span>
-                    </button>
-                </th>
-            </tr>
+                        </button>
+                    </th>
+                </tr>
             @endforeach
             </tbody>
             <!-- foot -->
@@ -79,14 +91,26 @@ edit
         </table>
         {{$songs->links()}}
     </div>
-    <dialog wire:ignore id="deleteSongModal" class="modal">
+    <dialog wire:ignore x-ref="modal"
+            @close="songToDelete = null" class="modal">
         <div class="modal-box">
-            <h3 class="font-bold text-lg">Are you sure you want to delete this user?</h3>
+            <h3 class="font-bold text-lg">Are you sure you want to delete this song?</h3>
             <p class="py-4">This cannot be undone</p>
             <div class="modal-action">
                 <form method="dialog">
-                    <button onclick="deleteSongModal.close()" class="btn">Cancel</button>
-                    <button onclick="deleteSongModal.close()" wire:click.prevent="deleteSong" class="btn btn-error">YES!!!!</button>
+                    <button @click="$refs.modal.close()" class="btn">Cancel</button>
+                    <button @click="$wire.deleteSong(songToDelete)" class="btn btn-error">Yes</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog wire:ignore x-ref="successModal" class="modal">
+        <div class="modal-box">
+            <h3 class="font-bold text-lg">Song deleted successfully.</h3>
+            <div class="modal-action">
+                <form method="dialog">
+                    <button @click="$refs.successModal.close()" class="btn">Ok</button>
                 </form>
             </div>
         </div>

@@ -1,4 +1,4 @@
-<div class="adminSongTable">
+<div class="adminSongTable" @user-deleted="$refs.deletedUser.showModal()" @user-edited="$refs.editedUser.showModal()">
     <div class="overflow-x-auto">
         <div class="m-3 w-96">
             <label>
@@ -102,6 +102,29 @@ edit
                     <button onclick="deleteUser.close()" wire:click.prevent="deleteUser" class="btn btn-error"><span class="material-symbols-outlined">
         Delete
     </span>YES!!!!</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog wire:ignore.self x-ref="deletedUser" class="modal">
+        <div class="modal-box">
+            <h3 class="font-bold text-lg">User deleted successfully.</h3>
+            <p class="py-4">You monster.</p>
+            <div class="modal-action">
+                <form method="dialog">
+                    <button @click="$refs.deletedUser.close()" class="btn">Ok</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog wire:ignore.self x-ref="editedUser" class="modal">
+        <div class="modal-box">
+            <h3 class="font-bold text-lg">User edited successfully.</h3>
+            <div class="modal-action">
+                <form method="dialog">
+                    <button @click="$refs.editedUser.close()" class="btn">Ok</button>
                 </form>
             </div>
         </div>

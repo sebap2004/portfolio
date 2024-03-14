@@ -15,6 +15,7 @@ class UserLogin extends Form
         'password' => 'required',
     ];
 
+
     public function login()
     {
         $this->validate();
@@ -23,8 +24,6 @@ class UserLogin extends Form
             return redirect()->intended('/app')->with('success', 'Logged in!');
         }
 
-        return back()
-            ->withInput()
-            ->withErrors(['username' => 'wrong lol']);
+        return $this->addError('username', 'Incorrect username and password');
     }
 }

@@ -31,6 +31,7 @@ class AdminManageUsers extends Component
     public function editUser()
     {
         $this->form->edit();
+        $this->dispatch('user-edited');
     }
 
     public function deleteUser()
@@ -44,6 +45,7 @@ class AdminManageUsers extends Component
             $this->currentSetUser->songs()->delete();
         }
         $this->currentSetUser->delete();
+        $this->dispatch('user-deleted');
     }
 
     public function updatedSearch()
