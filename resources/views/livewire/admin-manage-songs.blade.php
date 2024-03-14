@@ -156,5 +156,15 @@ edit
         </div>
     </dialog>
 
+    <dialog wire:ignore.self x-ref="editedUser" class="modal">
+        <div class="modal-box">
+            <h3 class="font-bold text-lg">User edited successfully.</h3>
+            <div class="modal-action">
+                <form method="dialog">
+                    <button @click="$refs.editedUser.close()" class="btn">Ok</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
 
 </div>

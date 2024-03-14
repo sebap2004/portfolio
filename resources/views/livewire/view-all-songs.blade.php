@@ -1,4 +1,4 @@
-<div class="m-3 mt-5">
+<div class="m-3">
     @if($hasSearchQuery)
         <h1 class="text-3xl">Search results for <strong>{{$search}}</strong>:</h1>
     @else

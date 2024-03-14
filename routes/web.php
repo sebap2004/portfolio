@@ -32,7 +32,7 @@ Route::get('logout' ,[SessionsController::class, 'destroy'])->middleware('auth')
 Route::post('sessions' ,[SessionsController::class, 'store'])->middleware('guest');
 
 // App Routes
-Route::get('app', ViewSongs::class)->middleware('auth');
+Route::get('app', ViewSongs::class)->middleware('auth')->name('app');
 Route::get('app/upload', UploadSong::class)->middleware('auth');
 
 Route::get('login' ,LoginUser::class)->middleware('guest')->name('login');

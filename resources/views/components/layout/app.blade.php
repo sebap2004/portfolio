@@ -143,7 +143,7 @@ add
     });
 
     progress.addEventListener('mouseup', function() {
-        audio.currentTime = progress.value;
+        audio.currentTime = (progress.value / 100) * audio.duration;
         isDragging = false;
     });
 
@@ -233,6 +233,5 @@ add
         }
     });
 </script>
-
 </body>
 </html>
