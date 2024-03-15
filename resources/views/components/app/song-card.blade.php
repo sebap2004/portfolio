@@ -1,23 +1,43 @@
 @props(['songName', 'coverDirectory', 'albumName', 'artistName', 'user', 'songID'])
 
-<div x-data="{ isHovered: false }"
+<div x-data="{ showContextMenu: false, isHovered: false }"
      class="shadow-lg col-span-2 p-2 rounded-2xl bg-base-200 relative"
+     @mousedown.right.prevent="showContextMenu = true"
+     @contextmenu.prevent
+     @click.away="showContextMenu = false"
      @mouseenter="isHovered = true"
-     @mouseleave="isHovered = false">
+     @mouseleave="isHovered = false"
+     :class="{ 'hover:shadow-xl': !showContextMenu }">
 
     <div class="relative">
-        <img class="aspect-square w-full p-8 z-0" src="{{ Storage::url($coverDirectory) }}" alt="{{$songName}}">
+        <img class="aspect-square w-full p-8 z-0" :src="`{{ Storage::url($coverDirectory) }}`" alt="{{$songName}}">
 
-        <div class="absolute bottom-0 left-0 p-4 z-10" x-show="isHovered" x-transition>
+        <!-- Context Menu -->
+        <div class="absolute dropdown top-0 right-0 p-2 bg-base-300 rounded-lg shadow-md z-10"
+             x-show="showContextMenu"
+             x-transition
+             @click.away="showContextMenu = false">
+            <button class="flex items-center w-full rounded text-left px-4 py-2 hover:bg-gray-200 hover:text-base-100">
+                <span class="material-symbols-outlined mr-2">playlist_add</span> Add to playlist
+            </button>
+            <button @click="addToQueue({{$songID}}); showContextMenu = false;" class="flex items-center w-full rounded text-left px-4 py-2  hover:bg-gray-200 hover:text-base-100">
+                <span class="material-symbols-outlined mr-2">playlist_add</span> Add to queue
+            </button>
+        </div>
+        <!-- End Context Menu -->
+
+        <!-- Play and Add to Playlist Buttons -->
+        <div x-transition class="absolute bottom-0 left-0 p-4 z-10" x-show="isHovered">
             <div class="flex items-center">
-                <button class="btn btn-lg btn-primary btn-circle self-center rounded-full mx-2" onclick="loadSong({{$songID}})">
+                <button class="btn btn-lg btn-primary btn-circle self-center rounded-full mx-2" @click="playNewSong({{$songID}})">
                     <span class="material-symbols-outlined">play_arrow</span>
                 </button>
-                <button class="btn btn-secondary"><span class="material-symbols-outlined">
-playlist_add
-</span> Add to playlist</button>
+                <button class="btn btn-secondary">
+                    <span class="material-symbols-outlined">playlist_add</span> Add to playlist
+                </button>
             </div>
         </div>
+        <!-- End Play and Add to Playlist Buttons -->
     </div>
 
     <div class="px-6 py-4 relative z-10">
@@ -31,6 +51,3 @@ playlist_add
         </p>
     </div>
 </div>
-
-
-

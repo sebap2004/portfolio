@@ -83,23 +83,37 @@ add
         if (songIndex < 0) {
             songIndex = queue.length - 1;
         }
-
         loadSong(queue[songIndex]);
-
         playSong();
     }
 
     // Next song
     function nextSong() {
-        songIndex++;
-
-        if (songIndex > queue.length - 1) {
+        if (isShuffled)
+        {
+            songIndex = getRandomInt(0, queue.length - 1);
+            console.log('playing ' + songIndex);
+        }
+        else {
+            songIndex++;
+        }
+        if (songIndex > queue.length - 1 && isRepeating) {
             songIndex = 0;
         }
-
+        else {
+            title.innerText = "No song";
+            artist.innerText = "";
+            audio.src = "";
+            cover.src = "";
+        }
         loadSong(queue[songIndex]);
-
         playSong();
+    }
+
+    function playNewSong(songID)
+    {
+        queue = [songID];
+        loadSong(queue[0]);
     }
 
     // Function to load a song
@@ -114,7 +128,6 @@ add
                 return response.json();
             })
             .then(data => {
-                console.log(data);
                 title.innerText = data.song_name;
                 artist.innerText = data.artist_name;
                 audio.src = data.song_directory;
@@ -125,6 +138,20 @@ add
             .catch(error => {
                 console.error('Error fetching song:', error);
             });
+    }
+
+
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+    function getRandomInt(min, max) {
+        const minCeiled = Math.ceil(min);
+        const maxFloored = Math.floor(max);
+        return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
+    }
+
+    function addToQueue(songID) {
+        queue.push(songID);
+        console.log("added " + songID + " to queue")
+        console.log(queue);
     }
 
     function updateTime()
