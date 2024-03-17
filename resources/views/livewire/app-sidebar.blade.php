@@ -21,6 +21,7 @@ add
             @foreach($playlists as $playlist)
                 <a class="btn btn-block mt-1 bg-base-300 text-left"
                    href="/playlist/{{$playlist->playlist_slug}}"
+                   wire:navigate
                 >{{$playlist->playlist_name}}</a>
             @endforeach
         </div>

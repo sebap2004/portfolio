@@ -47,6 +47,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('profile/{user:username}/edit', EditProfile::class);
     Route::get('album/{album:album_ID}', \App\Livewire\ViewAlbum::class);
     Route::get('playlist/{playlist:playlist_slug}', \App\Livewire\ViewPlaylist::class);
+    Route::get('manage', \App\Livewire\ManageHomePage::class);
 });
 
 

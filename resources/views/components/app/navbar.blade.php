@@ -29,7 +29,7 @@ admin_panel_settings
                         <span class="material-symbols-outlined">
 account_circle
 </span>View Profile</a></li>
-                <li><a href="" wire:navigate><span class="material-symbols-outlined">
+                <li><a href="/manage" wire:navigate><span class="material-symbols-outlined">
 settings
 </span>Manage</a></li>
                 <li><a href="/logout" class="text-red-500"><span class="material-symbols-outlined">
