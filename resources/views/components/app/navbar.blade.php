@@ -11,7 +11,7 @@
     <div class="w-20p flex justify-end p-0">
         <div class="dropdown dropdown-end p-0">
             <div tabindex="0" role="button" class="btn btn-ghost rounded-btn"><span><img
-                        src="{{Storage::url(auth()->user()->pfp_directory)}} " class="w-10 rounded-full aspect-square"/></span> {{auth()->user()->name}}
+                        src="{{Storage::url(auth()->user()->pfp_directory)}}" class="w-10 rounded-full aspect-square"/></span> {{auth()->user()->name}}
                 @admin
                 <span class="badge badge-accent">Admin</span>
                 @endadmin

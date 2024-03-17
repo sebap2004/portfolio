@@ -128,7 +128,7 @@ edit
                 <x-form.input wire:model="form.album_name" class="w-96" name="album name" error="form.song_name"/>
                 <x-form.fileinput wire:model="form.cover_directory" class="file-input-primary w-96"
                                   name="cover image file" error="form.cover_directory" type="file"><span
-                        class="text-gray-400 text-xs ml-1"><i>2MB File Limit, Square image preferred</i></span>
+                        class="text-gray-400 text-xs ml-1"><i>15MB File Limit, Square image preferred</i></span>
                 </x-form.fileinput>
                 @if ($form->cover_directory)
                     <!-- Display existing cover image -->

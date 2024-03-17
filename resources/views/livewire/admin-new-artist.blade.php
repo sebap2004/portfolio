@@ -4,7 +4,7 @@
         <x-form.input wire:model="form.username" error="form.username" name="username" placeholder="username"
                       needed/>
         <x-form.fileinput wire:model="form.pfp_directory" class="file-input-primary w-full" name="Profile Picture"
-                          error="form.pfp_directory" type="file"><span class="text-gray-400 text-xs ml-1"><i>2MB File Limit, Square image preferred</i></span>
+                          error="form.pfp_directory" type="file"><span class="text-gray-400 text-xs ml-1"><i>15MB File Limit, Square image preferred</i></span>
         </x-form.fileinput>
         <x-form.textarea class="h-36" wire:model="form.bio" name="bio" error="form.bio" placeholder="bio"/>
         @if ($form->pfp_directory)
