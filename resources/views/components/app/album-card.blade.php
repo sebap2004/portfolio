@@ -28,9 +28,6 @@
                 <button class="btn btn-lg btn-primary btn-circle self-center rounded-full mx-2" @click="loadAlbum({{$albumID}})">
                     <span class="material-symbols-outlined">play_arrow</span>
                 </button>
-                <button class="btn btn-secondary">
-                    <span class="material-symbols-outlined">playlist_add</span> Add to playlist
-                </button>
             </div>
         </div>
         <!-- End Play and Add to Playlist Buttons -->

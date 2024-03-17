@@ -4,7 +4,7 @@
      x-data="{ isHovered: false }"
      @mouseenter="isHovered = true"
      @mouseleave="isHovered = false"
-     x-transition/>
+     x-transition>
     <div class="flex flex-wrap items-center">
         <img class="pfp mr-3 rounded" src="{{Storage::url($coverDirectory)}}" alt="Laracasts Logo" width="60">
         <div>

@@ -48,6 +48,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('album/{album:album_ID}', \App\Livewire\ViewAlbum::class);
     Route::get('playlist/{playlist:playlist_slug}', \App\Livewire\ViewPlaylist::class);
     Route::get('manage', \App\Livewire\ManageHomePage::class);
+    Route::get('manage/songs', \App\Livewire\ManageSongs::class);
+    Route::get('manage/albums',\App\Livewire\ManageAlbums::class);
+    Route::get('manage/playlists',\App\Livewire\ManagePlaylists::class);
 });
 
 
@@ -55,6 +58,11 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin', AdminHomePage::class);
     Route::get('/admin/managesongs', AdminManageSongs::class);
     Route::get('/admin/manageusers', AdminManageUsers::class);
+    Route::get('/admin/managealbums', \App\Livewire\AdminManageAlbums::class);
+    Route::get('/admin/newartist', \App\Livewire\AdminNewArtist::class);
+    Route::get('/admin/uploadsong', \App\Livewire\AdminUploadSong::class);
+    Route::get('/admin/newalbum', \App\Livewire\AdminNewAlbum::class);
+    Route::get('admin/manageartists', \App\Livewire\AdminManageArtists::class);
 });
 
 

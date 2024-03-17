@@ -15,7 +15,7 @@
     <x-settings.sidebar>
         <h1 class="text-2xl pb-3">Actions</h1>
         <div class="space-y-2">
-            <a class="btn btn-block bg-base-300">Edit Profile</a>
+            <a class="btn btn-block bg-base-300" href="/profile/{{auth()->user()->username}}/edit">Edit Profile</a>
             <a class="btn btn-block bg-base-300" href="/manage/playlists" wire:navigate>Manage Playlists</a>
             <a class="btn btn-block bg-base-300" href="/manage/songs" wire:navigate>Manage Songs</a>
             <a class="btn btn-block bg-base-300" href="/manage/albums" wire:navigate>Manage Albums</a>

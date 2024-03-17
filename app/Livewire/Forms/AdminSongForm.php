@@ -2,14 +2,13 @@
 
 namespace App\Livewire\Forms;
 
-use App\Models\AlbumSong;
+use App\Models\Artist;
 use App\Models\Song;
-use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 use Livewire\WithFileUploads;
 
-class SongForm extends Form
+class AdminSongForm extends Form
 {
     use WithFileUploads;
 
@@ -47,10 +46,9 @@ class SongForm extends Form
 
     public function create()
     {
-        $this->artist_name = auth()->user()->artist->name;
+        $this->artist_name = Artist::find($this->artist_ID)->name;
         $this->validate();
         $attributes = $this->all();
-        $attributes['artist_ID'] = auth()->user()->artist->artist_ID;
 
         if ($attributes['album_ID'] == 0 || $attributes['album_ID'] == null) {
             unset($attributes['album_ID']);
@@ -62,10 +60,8 @@ class SongForm extends Form
             $attributes['cover_directory'] = $this->cover_directory->store('covers', 'public');
         }
 
-
         Song::create($attributes);
 
         return redirect('/app')->with('success', 'Song uploaded');
     }
-
 }

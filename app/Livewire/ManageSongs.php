@@ -4,22 +4,19 @@ namespace App\Livewire;
 
 use App\Livewire\Forms\AdminEditSong;
 use App\Models\Song;
-use App\Models\User;
-use Illuminate\Support\Facades\DB;
-use Livewire\Attributes\Computed;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 
-class AdminManageSongs extends Component
+class ManageSongs extends Component
 {
     use WithPagination;
     use WithFileUploads;
     public $search = "";
 
+    public $query;
+
     public AdminEditSong $form;
-
-
 
     public function deleteSong(Song $song): void
     {
@@ -48,16 +45,23 @@ class AdminManageSongs extends Component
 
     protected function applySearch($query)
     {
-        return $this->search === '' ? $query : $query->where('song_name', 'like', '%'.$this->search.'%')->
-        orWhere('artist_name', 'like', '%'.$this->search.'%');
+        return $this->search === '' ? $query : $query->where('song_name', 'like', '%'.$this->search.'%');
     }
     public function render()
     {
-        $query = Song::query();
-        $query = $this->applySearch($query);
+        $user = auth()->user();
+        $songs = null;
 
-        return view('livewire.admin-manage-songs', [
-            'songs' => $query-> paginate(10),
-        ])->layout('components.layout.admin');
+        if ($user->artist && $user->artist->songs->count() > 0) {
+            $query = $user->artist->songs->toQuery();
+            $query = $this->applySearch($query);
+            $songs = $query->paginate(10);
+        }
+
+        return view('livewire.manage-songs', [
+            'songs' => $songs,
+        ])->layout('components.layout.settings');
     }
+
+
 }

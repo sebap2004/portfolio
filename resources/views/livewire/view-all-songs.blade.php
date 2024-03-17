@@ -1,8 +1,19 @@
-<div class="">
+<div>
     @if($hasSearchQuery)
         <h1 class="text-3xl">Search results for <strong>{{$search}}</strong>:</h1>
     @else
-        <h1 class="text-3xl">Welcome back, {{auth()->user()->name}}!</h1>
+        @php
+            $hour = date('H');
+            $greeting = '';
+            if ($hour >= 5 && $hour < 12) {
+                $greeting = 'Good morning';
+            } elseif ($hour >= 12 && $hour < 18) {
+                $greeting = 'Good afternoon';
+            } else {
+                $greeting = 'Good evening';
+            }
+        @endphp
+        <h1 class="text-3xl">{{$greeting}}, {{auth()->user()->name}}!</h1>
     @endif
     <div>
         <h2 class="text-3xl mb-3"><strong>Featured Songs</strong></h2>

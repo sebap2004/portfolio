@@ -19,6 +19,7 @@ class AdminEditSong extends Form
 
     public $song_name;
     public $artist_name;
+    public $album_ID;
     public $song_directory;
     public $cover_directory;
 
@@ -54,6 +55,7 @@ class AdminEditSong extends Form
         $this->song = $song;
         $this->song_name = $this->song->song_name;
         $this->artist_name = $this->song->artist_name;
+        $this->album_ID = $this->song->album_ID;
     }
 
     public function edit()
@@ -81,7 +83,11 @@ class AdminEditSong extends Form
             unset($attributes['song_directory']);
         }
 
+        if ($attributes['album_ID'] == 0 || $attributes['album_ID'] == null) {
+            $attributes['album_ID'] = null;
+        }
 
+        $this->song->album_ID = $attributes['album_ID'] ?? null;
         $this->song->song_name = $attributes['song_name'] ?? $this->song->song_name;
         $this->song->artist_name = $attributes['artist_name'] ?? $this->song->artist_name;
         $this->song->cover_directory = $attributes['cover_directory'] ?? $this->song->cover_directory;

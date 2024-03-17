@@ -1,53 +1,57 @@
 <div class="pt-3">
-    <h1 class="text-3xl text-center">What shall you get up to, master?</h1>
+    @php
+        $hour = date('H');
+        $greeting = '';
+        if ($hour >= 5 && $hour < 12) {
+            $greeting = 'Good morning';
+        } elseif ($hour >= 12 && $hour < 18) {
+            $greeting = 'Good afternoon';
+        } else {
+            $greeting = 'Good evening';
+        }
+    @endphp
+    <h1 class="text-3xl text-center">{{$greeting}}, {{auth()->user()->name}}.</h1>
     <div class="flex flex-row w-full">
         <div>
-            <div class="m-2  w-96 h-96 relative">
-                <a class="btn btn-block h-full flex flex-col justify-between">
-                    <div class="absolute bottom-0 right-0 m-3 p-2 rounded-lg shadow-md flex flex-row-reverse">
-                        <div>
-                            <h2 class="text-2xl mb-4 font-semibold">Upload song</h2>
-                            <p class="text-gray-600">Upload song with admin privileges</p>
-                        </div>
-
-                    </div>
-                </a>
-            </div>
-            <div class="m-2  w-96 h-96 relative">
-                <a class="btn btn-block h-full flex flex-col justify-between" href="/admin/managesongs" wire:navigate>
-                    <div class="absolute bottom-0 right-0 m-3 p-2 rounded-lg shadow-md flex flex-row-reverse">
-                        <div>
-                            <h2 class="text-2xl mb-4 font-semibold">Manage Songs</h2>
-                            <p class="text-gray-600">Manage all songs on the platform</p>
-                        </div>
-
-                    </div>
-                </a>
-            </div>
+            <x-settings.bigbutton
+                link="/admin/uploadsong"
+                title="Upload Song"
+                subtitle="Upload a song with admin access"
+            />
+            <x-settings.bigbutton
+                link="/admin/managesongs"
+                title="Manage Songs"
+                subtitle="Manage all songs on the platform"
+            />
         </div>
         <div>
-            <div class="m-2 w-96 h-96 relative">
-                <a class="btn btn-block h-full flex flex-col justify-between">
-                    <div class="absolute bottom-0 right-0 m-3 p-2 rounded-lg shadow-md flex flex-row-reverse">
-                        <div>
-                            <h2 class="text-2xl mb-4 font-semibold">Create new album</h2>
-                            <p class="text-gray-600">Create album with admin privileges</p>
-                        </div>
-
-                    </div>
-                </a>
-            </div>
-            <div class="m-2 w-96 h-96 relative">
-                <a class="btn btn-block h-full flex flex-col justify-between" href="/admin/manageusers" wire:navigate>
-                    <div class="absolute bottom-0 right-0 m-3 p-2 rounded-lg shadow-md flex flex-row-reverse">
-                        <div>
-                            <h2 class="text-2xl mb-4 font-semibold">Manage Users</h2>
-                            <p class="text-gray-600">Manage all users on the platform</p>
-                        </div>
-
-                    </div>
-                </a>
-            </div>
+            <x-settings.bigbutton
+                link="/admin/newalbum"
+                title="Create New Album"
+                subtitle="Upload a song with admin access"
+            />
+            <x-settings.bigbutton
+                link="/admin/manageusers"
+                title="Manage Users"
+                subtitle="Manage all users on the platform"
+            />
+            <x-settings.bigbutton
+                link="/admin/manageartists"
+                title="Manage Artists"
+                subtitle="Manage all artists on the platform"
+            />
+        </div>
+        <div>
+            <x-settings.bigbutton
+                link="/admin/managealbums"
+                title="Manage Albums"
+                subtitle="Manage all albums on the platform"
+            />
+            <x-settings.bigbutton
+                link="/admin/newartist"
+                title="Create new artist"
+                subtitle="Create an artist to upload songs from"
+            />
         </div>
     </div>
 </div>

@@ -15,10 +15,13 @@
     <x-admin.sidebar>
         <h1 class="text-2xl pb-3">Admin actions</h1>
         <div class="space-y-2">
-            <a class="btn btn-block bg-base-300">Upload song</a>
-            <a class="btn btn-block bg-base-300">Create new album</a>
+            <a class="btn btn-block bg-base-300" href="/admin/uploadsong" wire:navigate>Upload song</a>
+            <a class="btn btn-block bg-base-300" href="/admin/newalbum" wire:navigate>Create new album</a>
             <a class="btn btn-block bg-base-300" href="/admin/managesongs" wire:navigate>Manage songs</a>
             <a class="btn btn-block bg-base-300" href="/admin/manageusers" wire:navigate>Manage users</a>
+            <a class="btn btn-block bg-base-300" href="/admin/managealbums" wire:navigate>Manage Albums</a>
+            <a class="btn btn-block bg-base-300" href="/admin/manageusers" wire:navigate>Create new artist</a>
+            <a class="btn btn-block bg-base-300" href="/admin/manageartists" wire:navigate>Manage artists</a>
         </div>
     </x-admin.sidebar>
     <div class="m-7 mb-0 mt-4 col-span-6 row-span-7 flex justify-center overflow-auto">
