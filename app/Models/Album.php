@@ -9,6 +9,8 @@ class Album extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = "album_ID";
+
     /**
      * The attributes that are mass assignable.
      *
@@ -16,6 +18,9 @@ class Album extends Model
      */
     protected $fillable = [
         'album_name',
+        'album_slug',
+        'cover_directory',
+        'artist_ID'
     ];
 
     /**
@@ -23,6 +28,11 @@ class Album extends Model
      */
     public function songs()
     {
-        return $this->hasMany(Song::class);
+        return $this->hasMany(Song::class, "album_ID");
+    }
+
+    public function artist()
+    {
+        return $this->belongsTo(Artist::class, 'artist_ID');
     }
 }

@@ -90,13 +90,19 @@ class ProfileEdit extends Form
         $this->user->bio = $attributes['bio'] ?? $this->user->bio;
         $this->user->email = $attributes['email'] ?? $this->user->email;
 
+        $this->user->artist->name = $attributes['name'] ?? $this->user->name;
+        $this->user->artist->username = $attributes['$this->username'] ?? $this->user->username;
+        $this->user->artist->pfp_directory = $attributes['pfp_directory'] ?? $this->user->pfp_directory;
+        $this->user->artist->bio = $attributes['bio'] ?? $this->user->bio;
+
+        $this->user->artist->save();
         $this->user->save();
 
-        if ($this->user->songs)
+        if ($this->user->artist->songs)
         {
-            foreach ($this->user->songs as $song)
+            foreach ($this->user->artist->songs as $song)
             {
-                $song->artist_name = $this->user->name;
+                $song->artist_name = $this->user->artist->name;
                 $song->update();
             }
         }

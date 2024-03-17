@@ -13,8 +13,10 @@ class Playlist extends Model
      *
      * @var array
      */
+    protected $primaryKey = "playlist_ID";
+
     protected $fillable = [
-        'playlist_name', 'user_ID',
+        'playlist_name', 'user_ID', 'playlist_slug'
     ];
 
     /**
@@ -22,7 +24,7 @@ class Playlist extends Model
      */
     public function user()
     {
-        return $this->belongsTo('App\User', 'user_ID');
+        return $this->belongsTo(User::class, 'user_ID');
     }
 
     /**
@@ -30,6 +32,6 @@ class Playlist extends Model
      */
     public function songs()
     {
-        return $this->belongsToMany('App\Song', 'playlist_songs', 'playlist_ID', 'song_ID');
+        return $this->hasMany(PlaylistSong::class, 'playlist_ID');
     }
 }

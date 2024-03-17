@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
@@ -52,8 +53,13 @@ class User extends Authenticatable
         return DB::table('admin')->where('user_id', $this->id)->exists();
     }
 
-    public function songs()
+    public function artist(): HasOne
     {
-        return $this->hasMany(Song::class);
+        return $this->hasOne(Artist::class, 'user_ID');
+    }
+
+    public function playlists()
+    {
+        return $this->hasMany(Playlist::class, 'user_ID');
     }
 }

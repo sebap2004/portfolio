@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Forms;
 
+use App\Models\Album;
+use App\Models\Artist;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
@@ -66,12 +68,22 @@ class UserForm extends Form
 
         if($this->pfp_directory)
         {
-            $coverExtension = $this->pfp_directory->getClientOriginalExtension();
-            $coverName = $attributes['username'] . '.' . $coverExtension; // Assuming song_name is the name of the song
-            $attributes['pfp_directory'] = $this->pfp_directory->storeAs('public/profiles', $coverName);
+            $attributes['pfp_directory'] = $this->pfp_directory->store('profiles', 'public');
         }
 
         $user = User::create($attributes);
+
+        $attributes['user_ID'] = $user->id;
+
+        $artist = Artist::create($attributes);
+
+        unset($attributes["user_ID"]);
+
+        $attributes['artist_ID'] = $artist->artist_ID;
+
+        $user->update($attributes);
+
+
         auth()->login($user);
 
         return redirect('/app')->with('success', 'Successfully created account!');

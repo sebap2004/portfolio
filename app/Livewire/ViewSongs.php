@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Album;
 use App\Models\Song;
 use Livewire\Component;
 
@@ -9,6 +10,7 @@ use Livewire\Component;
 class ViewSongs extends Component
 {
     public $songs;
+    public $albums;
     public $search;
     public $hasSearchQuery = false;
     protected $queryString = ['search'];
@@ -17,12 +19,25 @@ class ViewSongs extends Component
     {
         $this->search = request()->query('search', '');
         $this->hasSearchQuery = !empty($this->search);
-        $this->fetchSongs();
+        $this->fetchThings();
     }
 
     public function render()
     {
         return view('livewire.view-all-songs')->layout('components.layout.app');
+    }
+
+    public function fetchThings()
+    {
+        $this->fetchSongs();
+        $this->fetchAlbums();
+    }
+
+    private function fetchAlbums()
+    {
+        $this->albums = Album::query()->when($this->search, function ($query) {
+            return $query->where('album_name', 'like', '%' . $this->search . '%');
+        })->get();
     }
 
     private function fetchSongs()

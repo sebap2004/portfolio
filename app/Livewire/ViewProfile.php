@@ -2,19 +2,19 @@
 
 namespace App\Livewire;
 
+use App\Models\Artist;
 use App\Models\User;
 use Livewire\Component;
 
 class ViewProfile extends Component
 {
-    public User $user;
+    public Artist $artist;
 
     public $songs;
 
-    public function mount(User $user = null)
+    public function mount()
     {
-        $this->user = $user ?? auth()->user();
-        $this->songs = $this->user->songs()->get();
+        $this->songs = $this->artist->songs()->get();
     }
 
     public function render()

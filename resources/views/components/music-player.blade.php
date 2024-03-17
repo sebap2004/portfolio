@@ -2,8 +2,8 @@
     <div class="flex items-center w-20p">
         <img id="cover" src="/images/logoonly.png" alt="Song Cover" class="mr-3 pfp" width="80" height="16">
         <div class="music-info w-36">
-            <p id="title" class="song-name">Song name</p>
-            <p id="artist" class="song-artist">Artist</p>
+            <p id="title" class="text-left song-name">Song name</p>
+            <p id="artist" class="song-artist text-sm text-left">Artist</p>
         </div>
     </div>
 

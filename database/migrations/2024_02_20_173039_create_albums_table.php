@@ -14,6 +14,10 @@ return new class extends Migration
         Schema::create('albums', function (Blueprint $table) {
             $table->id('album_ID');
             $table->string('album_name', 30)->nullable(false);
+            $table->string('album_slug', 30)->nullable(false);
+            $table->string('cover_directory', 255)->nullable(false);
+            $table->unsignedBigInteger('artist_ID');
+            $table->foreign('artist_ID')->references('artist_ID')->on('artists');
             $table->timestamps();
         });
     }

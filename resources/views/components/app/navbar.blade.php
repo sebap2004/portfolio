@@ -21,11 +21,20 @@ keyboard_arrow_down
             </div>
             <ul tabindex="0" class="menu dropdown-content z-[100] p-2 bg-base-200 shadow rounded-box w-52 mt-4">
                 @admin
-                <li><a href="/admin">Admin Panel</a></li>
+                <li><a href="/admin"> <span class="material-symbols-outlined">
+admin_panel_settings
+</span>Admin Panel</a></li>
                 @endadmin
-                <li><a href="/profile/{{auth()->user()->username}}" wire:navigate>View Profile</a></li>
-                <li><a href="" wire:navigate>Settings</a></li>
-                <li><a href="/logout" class="text-red-500">Log Out</a></li>
+                <li><a href="/profile/{{auth()->user()->username}}" wire:navigate>
+                        <span class="material-symbols-outlined">
+account_circle
+</span>View Profile</a></li>
+                <li><a href="" wire:navigate><span class="material-symbols-outlined">
+settings
+</span>Manage</a></li>
+                <li><a href="/logout" class="text-red-500"><span class="material-symbols-outlined">
+logout
+</span>Log Out</a></li>
             </ul>
         </div>
     </div>

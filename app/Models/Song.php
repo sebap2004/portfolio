@@ -19,16 +19,12 @@ class Song extends Model
      * @var array
      */
     protected $fillable = [
-        'song_name', 'artist_name', 'song_directory', 'album_ID', 'genre_ID','cover_directory', 'user_ID'
+        'song_name', 'artist_name', 'song_directory', 'album_ID', 'genre_ID','cover_directory', 'artist_ID'
     ];
 
     /**
      * Get the album that owns the song.
      */
-    public function album()
-    {
-        return $this->belongsTo(Album::class, 'album_ID');
-    }
 
     /**
      * Get the genre that owns the song.
@@ -38,8 +34,13 @@ class Song extends Model
         return $this->belongsTo('Genre', 'genre_ID');
     }
 
-    public function user()
+    public function artist()
     {
-        return $this->belongsTo(User::class, 'user_ID');
+        return $this->belongsTo(Artist::class, 'artist_ID');
+    }
+
+    public function album()
+    {
+        return $this->belongsTo(Album::class, 'album_ID');
     }
 }

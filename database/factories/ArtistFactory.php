@@ -2,12 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\Genre;
+use App\Models\Artist;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class GenreFactory extends Factory
+class ArtistFactory extends Factory
 {
-    protected $model = Genre::class;
+    protected $model = Artist::class;
 
     public function definition(): array
     {

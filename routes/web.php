@@ -28,19 +28,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('logout' ,[SessionsController::class, 'destroy'])->middleware('auth');
+
 Route::post('sessions' ,[SessionsController::class, 'store'])->middleware('guest');
 
 // App Routes
-Route::get('app', ViewSongs::class)->middleware('auth')->name('app');
-Route::get('app/upload', UploadSong::class)->middleware('auth');
+
 
 Route::get('login' ,LoginUser::class)->middleware('guest')->name('login');
 Route::get('register', RegisterUser::class);
 
-Route::get('profile/{user:username}', ViewProfile::class)->middleware('auth');
 
-Route::get('profile/{user:username}/edit', EditProfile::class)->middleware('auth');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('app', ViewSongs::class)->name('app');
+    Route::get('app/upload', UploadSong::class);
+    Route::get('app/createalbum', \App\Livewire\CreateAlbum::class);
+    Route::get('logout' ,[SessionsController::class, 'destroy']);
+    Route::get('profile/{artist:username}', ViewProfile::class);
+    Route::get('profile/{user:username}/edit', EditProfile::class);
+    Route::get('album/{album:album_ID}', \App\Livewire\ViewAlbum::class);
+    Route::get('playlist/{playlist:playlist_slug}', \App\Livewire\ViewPlaylist::class);
+});
+
 
 Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin', AdminHomePage::class);

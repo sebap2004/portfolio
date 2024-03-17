@@ -11,22 +11,9 @@
 </head>
 <body>
 <main class="h-screen grid grid-cols-7 grid-rows-8">
+
     <x-app.navbar/>
-    <x-app.sidebar>
-        <div class="dropdown">
-            <div tabindex="0" role="button" class="btn btn-sm btn-circle btn-primary"><span
-                    class="material-symbols-outlined">
-add
-</span></div>
-            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-300 rounded-box w-52">
-                <li><a href="/app/upload" wire:navigate>New Song</a></li>
-                <li><a>New Playlist</a></li>
-                <li><a>New Album</a></li>
-            </ul>
-        </div>
-        <h1 class="text-2xl pb-3">Playlists</h1>
-        <a class="btn btn-block bg-base-300">Playlist 1</a>
-    </x-app.sidebar>
+    <livewire:app-sidebar/>
     <div class="m-7 mb-0 mt-0 py-8 col-span-6 row-span-7 overflow-auto">
         {{ $slot }}
     </div>
@@ -68,6 +55,37 @@ add
         playBtn.innerHTML = '<span class="material-symbols-outlined">pause</span>'
         audio.play();
         isPlaying = true;
+    }
+
+    function loadAlbum(listID)
+    {
+        fetch('/api/album/' + listID)
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                queue = data.song_ids;
+                console.log(data);
+                songIndex = 0;
+                loadSong(queue[songIndex]);
+            })
+            .catch(error => {
+                console.error('Error fetching song:', error);
+            });
+    }
+
+    function addAlbumToQueue(listID)
+    {
+        fetch('/api/album/' + listID)
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                queue.push(data.song_ids);
+            })
+            .catch(error => {
+                console.error('Error fetching song:', error);
+            });
     }
 
     // Pause song
