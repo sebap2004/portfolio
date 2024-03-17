@@ -47,7 +47,7 @@ class EditProfileAdmin extends Form
                 'max:255',
                 'min:7'
             ],
-            'pfp_directory' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
+            'pfp_directory' => 'nullable|image|mimes:jpeg,png,jpg|max:15360'
         ];
     }
 
@@ -68,7 +68,7 @@ class EditProfileAdmin extends Form
         $attributes = $this->all();
 
         if($this->pfp_directory) {
-            $attributes['pfp_directory'] = $this->pfp_directory->store('profiles', 'public');
+            $attributes['pfp_directory'] = $this->pfp_directory->store('profiles', 's3');
         }
         else
         {

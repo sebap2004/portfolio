@@ -34,7 +34,7 @@ class NewArtistForm extends Form
                 'max:255',
                 'min:3',
             ],
-            'pfp_directory' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'pfp_directory' => 'image|mimes:jpeg,png,jpg|max:15360',
         ];
     }
 
@@ -53,7 +53,7 @@ class NewArtistForm extends Form
 
         if($this->pfp_directory)
         {
-            $attributes['pfp_directory'] = $this->pfp_directory->store('profiles', 'public');
+            $attributes['pfp_directory'] = $this->pfp_directory->store('profiles', 's3');
         }
 
         Artist::create($attributes);

@@ -21,7 +21,7 @@ class ManageAlbumsForm extends Form
     {
         return [
             'album_name' => 'required|string|max:255',
-            'cover_directory' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'cover_directory' => 'nullable|image|mimes:jpeg,png,jpg|max:15360',
         ];
     }
 
@@ -31,7 +31,7 @@ class ManageAlbumsForm extends Form
             'album_name.required' => 'The song name is required.',
             'cover_directory.image' => 'The cover image must be an image file.',
             'cover_directory.mimes' => 'Must be valid image type.',
-            'cover_directory.max' => 'Image file size too large. (Max 2MB)',
+            'cover_directory.max' => 'Image file size too large. (Max 15MB)',
         ];
     }
 
@@ -50,7 +50,7 @@ class ManageAlbumsForm extends Form
 
         if($this->cover_directory) {
             \Storage::delete($this->album->cover_directory);
-            $attributes['cover_directory'] = $this->cover_directory->store('covers', 'public');
+            $attributes['cover_directory'] = $this->cover_directory->store('covers', 's3');
         }
         else
         {

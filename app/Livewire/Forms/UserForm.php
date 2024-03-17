@@ -48,7 +48,7 @@ class UserForm extends Form
                 'max:255',
                 'min:7'
             ],
-            'pfp_directory' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'pfp_directory' => 'image|mimes:jpeg,png,jpg|max:15360',
             'agreesToTOS' => 'required|accepted',
         ];
     }
@@ -68,7 +68,7 @@ class UserForm extends Form
 
         if($this->pfp_directory)
         {
-            $attributes['pfp_directory'] = $this->pfp_directory->store('profiles', 'public');
+            $attributes['pfp_directory'] = $this->pfp_directory->store('profiles', 's3');
         }
 
         $user = User::create($attributes);

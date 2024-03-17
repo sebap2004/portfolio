@@ -28,8 +28,8 @@ class AdminEditSong extends Form
         return [
             'song_name' => 'required|string|max:255',
             'artist_name' => 'required|string|max:255',
-            'song_directory' => 'nullable|file|mimes:mp3,wav,ogg,flac|max:2048',
-            'cover_directory' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'song_directory' => 'nullable|file|mimes:mp3,wav,ogg,flac|max:15360',
+            'cover_directory' => 'nullable|image|mimes:jpeg,png,jpg|max:15360',
         ];
     }
 
@@ -41,11 +41,11 @@ class AdminEditSong extends Form
             'song_directory.required' => 'Please upload a song file.',
             'song_directory.file' => 'The song file must be a file.',
             'song_directory.mimes' => 'Must be a valid audio type.',
-            'song_directory.max' => 'Song file size too large. (Max 2MB)',
+            'song_directory.max' => 'Song file size too large. (Max 15MB)',
             'cover_directory.required' => 'Please upload a cover image.',
             'cover_directory.image' => 'The cover image must be an image file.',
             'cover_directory.mimes' => 'Must be valid image type.',
-            'cover_directory.max' => 'Image file size too large. (Max 2MB)',
+            'cover_directory.max' => 'Image file size too large. (Max 15MB)',
         ];
     }
 
@@ -66,7 +66,7 @@ class AdminEditSong extends Form
 
         if($this->cover_directory) {
             \Storage::delete($this->song->cover_directory);
-            $attributes['cover_directory'] = $this->cover_directory->store('covers', 'public');
+            $attributes['cover_directory'] = $this->cover_directory->store('covers', 's3');
         }
         else
         {
@@ -75,7 +75,7 @@ class AdminEditSong extends Form
 
         if($this->song_directory) {
             \Storage::delete($this->song->song_directory);
-            $attributes['song_directory'] = $this->song_directory->store('songs', 'public');
+            $attributes['song_directory'] = $this->song_directory->store('songs', 's3');
             $this->song->song_directory = $attributes['song_directory'];
         }
         else

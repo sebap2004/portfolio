@@ -17,7 +17,7 @@ class CreateAlbumAdminForm extends Form
     {
         return [
             'album_name' => 'required|string|max:255',
-            'cover_directory' => 'required|image|mimes:jpeg,png,jpg|max:2048', // Adjust max size and allowed types as needed
+            'cover_directory' => 'required|image|mimes:jpeg,png,jpg|max:15360', // Adjust max size and allowed types as needed
         ];
     }
 
@@ -28,7 +28,7 @@ class CreateAlbumAdminForm extends Form
             'cover_directory.required' => 'Please upload a cover image.',
             'cover_directory.image' => 'The cover image must be an image file.',
             'cover_directory.mimes' => 'Must be valid image type.',
-            'cover_directory.max' => 'Image file size too large. (Max 2MB)',
+            'cover_directory.max' => 'Image file size too large. (Max 15MB)',
         ];
     }
 
@@ -39,7 +39,7 @@ class CreateAlbumAdminForm extends Form
         $attributes['album_slug'] = Str::slug($this->album_name);
         if($this->cover_directory)
         {
-            $attributes['cover_directory'] = $this->cover_directory->store('covers', 'public');
+            $attributes['cover_directory'] = $this->cover_directory->store('covers', 's3');
         }
 
         Album::create($attributes);
