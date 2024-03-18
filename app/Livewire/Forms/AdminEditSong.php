@@ -66,7 +66,7 @@ class AdminEditSong extends Form
 
         if($this->cover_directory) {
             \Storage::delete($this->song->cover_directory);
-            $attributes['cover_directory'] = $this->cover_directory->store('covers', 's3');
+            $attributes['cover_directory'] = $this->cover_directory->store('covers');
         }
         else
         {
@@ -75,7 +75,7 @@ class AdminEditSong extends Form
 
         if($this->song_directory) {
             \Storage::delete($this->song->song_directory);
-            $attributes['song_directory'] = $this->song_directory->store('songs', 's3');
+            $attributes['song_directory'] = $this->song_directory->store('songs');
             $this->song->song_directory = $attributes['song_directory'];
         }
         else

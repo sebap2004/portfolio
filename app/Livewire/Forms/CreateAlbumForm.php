@@ -38,7 +38,7 @@ class CreateAlbumForm extends Form
         $attributes['album_slug'] = Str::slug($this->album_name);
         if($this->cover_directory)
         {
-            $attributes['cover_directory'] = $this->cover_directory->store('covers', 's3');
+            $attributes['cover_directory'] = $this->cover_directory->store('covers');
         }
 
         $attributes['artist_ID'] = auth()->user()->artist->artist_ID;

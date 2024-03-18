@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('FILESYSTEM_DISK', 'local'),
+    'default' => env('FILESYSTEM_DISK', 's3'),
 
     /*
     |--------------------------------------------------------------------------
@@ -69,6 +69,17 @@ return [
             'metadata' => ['cacheControl'=> 'public,max-age=86400'],
             'throw' => true,
         ],
+
+        'minio' => [
+            'driver' => 's3',
+            'key' => env('MINIO_ACCESS_KEY_ID'),
+            'secret' => env('MINIO_SECRET_ACCESS_KEY'),
+            'region' => env('MINIO_DEFAULT_REGION'),
+            'bucket' => env('MINIO_BUCKET'),
+            'url' => env('MINIO_URL'),
+            'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
+            'endpoint' =>('MINIO_ENDPOINT'),
+        ]
 
     ],
 

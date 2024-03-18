@@ -50,7 +50,7 @@ class ManageAlbumsForm extends Form
 
         if($this->cover_directory) {
             \Storage::delete($this->album->cover_directory);
-            $attributes['cover_directory'] = $this->cover_directory->store('covers', 's3');
+            $attributes['cover_directory'] = $this->cover_directory->store('covers');
         }
         else
         {

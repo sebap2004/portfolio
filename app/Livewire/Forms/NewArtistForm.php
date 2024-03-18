@@ -53,7 +53,7 @@ class NewArtistForm extends Form
 
         if($this->pfp_directory)
         {
-            $attributes['pfp_directory'] = $this->pfp_directory->store('profiles', 's3');
+            $attributes['pfp_directory'] = $this->pfp_directory->store('profiles');
         }
 
         Artist::create($attributes);

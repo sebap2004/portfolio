@@ -1,10 +1,10 @@
 <div class="flex flex-col">
     @if($artist)
-        <img src="{{Storage::url($artist->pfp_directory)}}" class="pfp rounded-full w-36">
+        <img src="{{ $artist->pfp_directory ? Storage::url($artist->pfp_directory) : "/images/defaultpfp.jpg" }}" class="pfp rounded-full w-36">
         <h1 class="text-4xl mb-0">{{ $artist->name }}</h1>
         <h2 class="text-xl">{{ $artist->username }}</h2>
         <p class="text text-sm">Joined {{$artist->created_at->diffForHumans()}}</p>
-        <p class="mt-4 {{$artist->bio ? '' : 'text-gray-700'}}">{{$user->bio ?? 'No bio'}}</p>
+        <p class="mt-4 {{$artist->bio ? '' : 'text-gray-700'}}">{{$artist->bio ?? 'No bio'}}</p>
         @if($artist->artist_ID === auth()->user()->artist->artist_ID)
             <a class="btn btn-primary w-36 my-3" href="{{ url()->current() }}/edit" wire:navigate>Edit profile</a>
         @endif

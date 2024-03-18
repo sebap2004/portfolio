@@ -29,7 +29,7 @@
                         <div class="flex items-center gap-3">
                             <div class="avatar">
                                 <div class="mask mask-square w-12 h-12">
-                                    <img src="{{Storage::url($user->pfp_directory)}}" alt="Cover" />
+                                    <img src="{{ $user->pfp_directory ? Storage::url($user->pfp_directory) : "/images/defaultpfp.jpg" }}" alt="Cover" />
                                 </div>
                             </div>
                         </div>

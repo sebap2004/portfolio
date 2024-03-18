@@ -55,7 +55,7 @@ class EditArtistFormAdmin extends Form
         $attributes = $this->all();
 
         if($this->pfp_directory) {
-            $attributes['pfp_directory'] = $this->pfp_directory->store('profiles', 's3');
+            $attributes['pfp_directory'] = $this->pfp_directory->store('profiles');
         }
         else
         {

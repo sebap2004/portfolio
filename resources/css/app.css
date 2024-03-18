@@ -254,8 +254,10 @@
     background-color: #666; /* Dark grey color for scrollbar thumb */
     border-radius: 10px; /* Rounded corners */
 }
+.half{
+    width:50%
+}
 
-
-
-
-
+.w-home{
+    width: 60rem;
+}

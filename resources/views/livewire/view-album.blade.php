@@ -4,7 +4,7 @@
         <div class="ml-4">
             <h1 class="text-5xl">{{$album->album_name}}</h1>
             <div class="flex flex-wrap items-center">
-                <span><img width="30" class="pfp rounded-full mr-2" src="{{Storage::url(\App\Models\Artist::find($album->artist_ID)->pfp_directory)}}"></span>
+                <span><img width="30" class="pfp rounded-full mr-2" src="{{ \App\Models\Artist::find($album->artist_ID)->pfp_directory ? Storage::url( \App\Models\Artist::find($album->artist_ID)->pfp_directory) : "/images/defaultpfp.jpg" }}"></span>
                 <h2 class="text-xl"><a class="link link-hover" href="/profile/{{\App\Models\Artist::find($album->artist_ID)->username}}" wire:navigate>{{\App\Models\Artist::find($album->artist_ID)->name}}</a></h2>
             </div>
             <p class="mt-3">

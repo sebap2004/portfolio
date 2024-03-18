@@ -10,15 +10,9 @@
             <a wire:navigate href="/login" class="btn btn-primary btn-outline rounded-full mx-3" data-theme="light">
                 Log In
             </a>
-            <a wire:navigate href="/register" class="btn btn-primary mx-3">
-                Register
-            </a>
         @else
-            <a wire:navigate href="/app" class="btn btn-primary btn-outline rounded-full mx-3" data-theme="light">
-                Open Player
-            </a>
             <div class="dropdown dropdown-end">
-                <div tabindex="0" role="button" class="btn btn-ghost rounded-btn"><span><img src="{{Storage::url(auth()->user()->pfp_directory)}} " class="w-10 rounded-full aspect-square"/></span>Welcome back, {{auth()->user()->name}}<span class="material-symbols-outlined">
+                <div tabindex="0" role="button" class="btn btn-ghost rounded-btn"><span><img class="rounded-full" src="{{ auth()->user()->pfp_directory ? Storage::url(auth()->user()->pfp_directory) : "/images/defaultpfp.jpg" }}" alt="Profile Picture" width="35"></span>Welcome back, {{auth()->user()->name}}<span class="material-symbols-outlined">
 keyboard_arrow_down
 </span></div>
                 <ul tabindex="0" class="menu dropdown-content z-[1] p-2 shadow bg-base-300 rounded-box w-52 mt-4">

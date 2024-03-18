@@ -54,10 +54,10 @@ class AdminSongForm extends Form
             unset($attributes['album_ID']);
         }
 
-        $attributes['song_directory'] = $this->song_directory->store('songs', 's3');
+        $attributes['song_directory'] = $this->song_directory->store('songs');
 
         if ($this->cover_directory) {
-            $attributes['cover_directory'] = $this->cover_directory->store('covers', 's3');
+            $attributes['cover_directory'] = $this->cover_directory->store('covers');
         }
 
         Song::create($attributes);

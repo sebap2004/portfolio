@@ -68,7 +68,7 @@ class ProfileEdit extends Form
         $attributes = $this->all();
 
         if($this->pfp_directory) {
-            $attributes['pfp_directory'] = $this->pfp_directory->store('profiles', 's3');
+            $attributes['pfp_directory'] = $this->pfp_directory->store('profiles');
         }
         else
         {
@@ -97,6 +97,8 @@ class ProfileEdit extends Form
 
         $this->user->artist->save();
         $this->user->save();
+
+        dd($this->user->artist->bio);
 
         if ($this->user->artist->songs)
         {
