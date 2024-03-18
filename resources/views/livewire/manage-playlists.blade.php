@@ -79,7 +79,7 @@ edit
             <div class="modal-action">
                 <form method="dialog">
                     <button @click="$refs.modal.close()" class="btn">Cancel</button>
-                    <button @click="$wire.deleteAlbum(songToDelete)" class="btn btn-error">Yes</button>
+                    <button @click="$wire.deletePlaylist(songToDelete)" class="btn btn-error">Yes</button>
                 </form>
             </div>
         </div>
@@ -98,7 +98,7 @@ edit
 
     <dialog wire:ignore x-ref="editSuccessModal" class="modal">
         <div class="modal-box">
-            <h3 class="font-bold text-lg">Song edited successfully.</h3>
+            <h3 class="font-bold text-lg">Album edited successfully.</h3>
             <div class="modal-action">
                 <form method="dialog">
                     <button @click="$refs.editSuccessModal.close()" class="btn">Ok</button>
@@ -109,7 +109,7 @@ edit
 
     <dialog wire:ignore x-ref="editModal" class="modal">
         <div class="modal-box">
-            <h3 class="font-bold text-lg">Edit song</h3>
+            <h3 class="font-bold text-lg">Edit playlist</h3>
             <form class="p-2" wire:submit="finishEdit" enctype="multipart/form-data">
                 @csrf
                 <x-form.input wire:model="form.playlist_name" class="w-96" name="album name" error="form.song_name"/>

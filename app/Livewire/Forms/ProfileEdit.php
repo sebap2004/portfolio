@@ -97,9 +97,6 @@ class ProfileEdit extends Form
 
         $this->user->artist->save();
         $this->user->save();
-
-        dd($this->user->artist->bio);
-
         if ($this->user->artist->songs)
         {
             foreach ($this->user->artist->songs as $song)
