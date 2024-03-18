@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('FILESYSTEM_DISK', 's3'),
+    'default' => env('FILESYSTEM_DISK', 'minio'),
 
     /*
     |--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return [
             'bucket' => env('MINIO_BUCKET'),
             'url' => env('MINIO_URL'),
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
-            'endpoint' =>('MINIO_ENDPOINT'),
+            'endpoint' => env('MINIO_ENDPOINT'),
         ]
 
     ],
