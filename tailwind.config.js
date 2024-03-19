@@ -39,7 +39,7 @@ export default {
                     "primary": "#d793ec",
                     "secondary": "#dec6f1",
                     "accent": "#be87f2",
-                    "neutral": "#242729",
+                    "neutral": "#26343b",
                     "base-100": "#e4e6e7",
                 },
                 dark: {

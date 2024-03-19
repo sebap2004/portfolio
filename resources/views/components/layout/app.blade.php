@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" >
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -175,10 +175,10 @@
             songIndex = 0;
         }
         else {
-            title.innerText = "No song";
+            title.innerText = "";
             artist.innerText = "";
             audio.src = "";
-            cover.src = "";
+            cover.src = "/images/placeholder.png";
         }
         loadSong(queue[songIndex]);
         playSong();

@@ -8,7 +8,11 @@
                 <span><img width="30" class="pfp rounded-full mr-2" src="{{ \App\Models\Artist::find($album->artist_ID)->pfp_directory ? Storage::url( \App\Models\Artist::find($album->artist_ID)->pfp_directory) : "/images/defaultpfp.jpg" }}"></span>
                 <h2 class="text-xl"><a class="link link-hover" href="/profile/{{\App\Models\Artist::find($album->artist_ID)->username}}" wire:navigate>{{\App\Models\Artist::find($album->artist_ID)->name}}</a></h2>
             </div>
-            <p class="mt-3">
+            <p class="mt-3 flex items-center">
+                <button @click="loadAlbum({{$album->album_ID}})" class="btn btn-lg btn-primary btn-circle  rounded-full mr-4"><span
+                        class="material-symbols-outlined">
+play_arrow
+</span></button>
                 @if($album->songs()->count() == 1)
                     1 song
                 @else

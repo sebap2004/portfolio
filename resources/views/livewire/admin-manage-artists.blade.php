@@ -52,7 +52,7 @@
                                 class="btn btn-primary btn-sm mr-3"><span class="material-symbols-outlined">
 edit
 </span></button>
-                        <button wire:click.prevent="setArtistToDelete({{ $artist->artist_ID }})" onclick="deleteUser.showModal()"
+                        <button wire:click.prevent="artistSet({{$artist->artist_ID}})" onclick="deleteUser.showModal()"
                                 class="btn btn-error btn-sm mr-3">
     <span class="material-symbols-outlined">
         Delete
@@ -83,7 +83,7 @@ edit
             <div class="modal-action">
                 <form method="dialog">
                     <button onclick="deleteUser.close()" class="btn">Cancel</button>
-                    <button onclick="deleteUser.close()" wire:click.prevent="deleteUser" class="btn btn-error"><span
+                    <button onclick="deleteUser.close()" wire:click.prevent="deleteArtist" class="btn btn-error"><span
                             class="material-symbols-outlined">
         Delete
     </span>YES!!!!
@@ -95,7 +95,7 @@ edit
 
     <dialog wire:ignore.self x-ref="deletedUser" class="modal">
         <div class="modal-box">
-            <h3 class="font-bold text-lg">User deleted successfully.</h3>
+            <h3 class="font-bold text-lg">Artist deleted successfully.</h3>
             <p class="py-4">You monster.</p>
             <div class="modal-action">
                 <form method="dialog">

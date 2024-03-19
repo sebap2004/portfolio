@@ -25,6 +25,8 @@ class AdminManageArtists extends Component
     public function artistSet($user)
     {
         $this->form->setArtist(Artist::find($user));
+        $this->setArtist = Artist::find($user);
+
     }
 
     public function editArtist()
@@ -38,6 +40,10 @@ class AdminManageArtists extends Component
         if ($this->setArtist->songs())
         {
             $this->setArtist->songs()->delete();
+        }
+        if($this->setArtist->albums())
+        {
+            $this->setArtist->albums()->delete();
         }
         $this->setArtist->delete();
         $this->dispatch('user-deleted');

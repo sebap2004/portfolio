@@ -5,7 +5,7 @@
       $refs.modal.showModal();
     }
   }"
-     @album-deleted="
+     @playlist-deleted="
      $refs.modal.close();
      $refs.successModal.showModal();
      "
@@ -87,7 +87,7 @@ edit
 
     <dialog wire:ignore x-ref="successModal" class="modal">
         <div class="modal-box">
-            <h3 class="font-bold text-lg">Song deleted successfully.</h3>
+            <h3 class="font-bold text-lg">Playlist deleted successfully.</h3>
             <div class="modal-action">
                 <form method="dialog">
                     <button @click="$refs.successModal.close()" class="btn">Ok</button>

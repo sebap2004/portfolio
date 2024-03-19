@@ -40,9 +40,10 @@ class AdminManageUsers extends Component
         {
             DB::table('admin')->where('user_id', $this->currentSetUser->id)->delete();
         }
-        if ($this->currentSetUser->songs())
+        if ($this->currentSetUser->artist->songs())
         {
-            $this->currentSetUser->songs()->delete();
+            $this->currentSetUser->artist->songs()->delete();
+            $this->currentSetUser->artist()->delete();
         }
         $this->currentSetUser->delete();
         $this->dispatch('user-deleted');

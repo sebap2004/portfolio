@@ -2,7 +2,7 @@
     class="navbar row-span-1 col-span-7 justify-between md:items-center p-3 m-0 bg-dark border-2 border-base-100 border-b-base-300">
     <div class="w-20p">
         <a href="/app">
-            <img src="/images/logoonly.png" alt="Stylus Streaming Logo" width="80" height="16">
+            <x-logo class="text-base-100"/>
         </a>
     </div>
     <div class="w-80p">
@@ -11,7 +11,7 @@
     <div class="w-20p mt-8 md:mt-0 flex items-center justify-end">
         <div class="dropdown dropdown-end">
             <div tabindex="0" role="button" class="btn btn-ghost rounded-btn"><span><img
-                        src="{{Storage::url(auth()->user()->pfp_directory)}} " class="w-10 rounded-full aspect-square"/></span> {{auth()->user()->name}}
+                        src="{{ auth()->user()->pfp_directory ? Storage::url(auth()->user()->pfp_directory) : "/images/defaultpfp.jpg" }}" class="w-10 rounded-full aspect-square"/></span> {{auth()->user()->name}}
                 @admin
                 <span class="badge badge-accent">Admin</span>
                 @endadmin
