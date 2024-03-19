@@ -2,7 +2,7 @@
     class="navbar row-span-1 col-span-7 justify-between md:items-center p-3 m-0 bg-dark border-2 border-base-100 border-b-base-300">
     <div class="w-20p">
         <a href="/app" wire:navigate>
-            <img src="/images/logoonly.png" alt="Laracasts Logo" width="80" height="16">
+            <img src="/images/logoonly.png" alt="Stylus Streaming Logo" width="80" height="16">
         </a>
     </div>
     <div class="w-60p flex justify-center items-center">

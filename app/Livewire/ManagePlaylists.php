@@ -15,6 +15,8 @@ class ManagePlaylists extends Component
 {
     use WithPagination;
     use WithFileUploads;
+
+    public $title = "Manage Playlists - Stylus Streaming";
     public $search = "";
 
     public ManagePlaylistsForm $form;

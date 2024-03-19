@@ -9,7 +9,7 @@
                     Register Now
                 </a>
             @else
-                <a wire:navigate href="/app" class="btn btn-primary btn-outline rounded-full mx-3" data-theme="light">
+                <a wire:navigate href="/app" class="btn btn-primary btn-lg drop-shadow-2xl btn-outline rounded-full mx-3" data-theme="light">
                     Open Player
                 </a>
             @endguest

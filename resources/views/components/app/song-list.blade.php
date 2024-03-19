@@ -6,7 +6,7 @@
      @mouseleave="isHovered = false"
      x-transition>
     <div class="flex flex-wrap items-center">
-        <img class="pfp mr-3 rounded" src="{{Storage::url($coverDirectory)}}" alt="Laracasts Logo" width="60">
+        <img class="pfp mr-3 rounded" src="{{Storage::url($coverDirectory)}}" alt="Stylus Streaming Logo" width="60">
         <div>
             <p>{{$songName}}</p>
             <a href="/profile/{{$artistUsername}}" class="text-sm link link-hover">{{$artistName}}</a>

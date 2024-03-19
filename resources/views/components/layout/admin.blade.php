@@ -6,8 +6,7 @@
     @vite('resources/css/app.css')
     @vite('resources/js/player.js')
     <title>{{ $title ?? 'Stylus Streaming' }}</title>
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+
 </head>
 <body>
 <main class="h-screen grid grid-cols-7 grid-rows-8">
@@ -20,7 +19,7 @@
             <a class="btn btn-block bg-base-300" href="/admin/managesongs" wire:navigate>Manage songs</a>
             <a class="btn btn-block bg-base-300" href="/admin/manageusers" wire:navigate>Manage users</a>
             <a class="btn btn-block bg-base-300" href="/admin/managealbums" wire:navigate>Manage Albums</a>
-            <a class="btn btn-block bg-base-300" href="/admin/manageusers" wire:navigate>Create new artist</a>
+            <a class="btn btn-block bg-base-300" href="/admin/newartist" wire:navigate>Create new artist</a>
             <a class="btn btn-block bg-base-300" href="/admin/manageartists" wire:navigate>Manage artists</a>
         </div>
     </x-admin.sidebar>

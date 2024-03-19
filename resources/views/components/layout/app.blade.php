@@ -6,8 +6,7 @@
     @vite('resources/css/app.css')
     @vite('resources/js/player.js')
     <title>{{ $title ?? 'Stylus Streaming' }}</title>
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+
 </head>
 <body>
 <main class="h-screen grid grid-cols-7 grid-rows-8">

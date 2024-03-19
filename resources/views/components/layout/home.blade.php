@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
     <title>{{ $title ?? 'Stylus Streaming' }}</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <body>
 <x-home.navbar/>
-<section class="px-2 py-2 flex justify-center bg-gradient-to-b from-base-100 via-base-100 to-primary">
+<section class="px-2 py-2 flex justify-center bg-gradient-to-b from-base-100 to-primary">
     <main class="max-w-screen-2xl mx-2 mt-10 mb-20 lg:mt-20 space-y-6">
         {{ $slot }}
     </main>
@@ -19,7 +18,7 @@
 @endif
 <footer class="footer p-10 bg-base-100 text-neutral-content">
     <aside>
-        <img src="/images/logowithtext.png" alt="Laracasts Logo" width="165" height="16">
+        <img src="/images/logowithtext.png" alt="Stylus Streaming" width="165" height="16">
         <p>Stylus Streaming<br>University project for the University of Worcester.</p>
         <p>UI components graciously provided by <a class="link link-primary" href="https://daisyui.com/">daisyUI</a></p>
     </aside>
