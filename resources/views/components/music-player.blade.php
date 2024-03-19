@@ -33,7 +33,7 @@ repeat
         <div class="player-div mt-2 flex flex-row align-middle">
             <span id="currTime" class="w-16 mx-2 text-center">00:00</span>
             <div id="progress-container" class="progress-container">
-                <input id="progress" type="range" class="range range-accent">
+                <input id="progress" type="range" value="0" class="range range-accent">
             </div>
             <span id="durTime" class="w-16 mx-2 text-center">00:00</span>
         </div>

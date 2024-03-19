@@ -1,7 +1,5 @@
-<div class="w-full">
-    <a class="btn btn-ghost mb-3" href="/app" wire:navigate><span class="material-symbols-outlined">
-arrow_back
-</span>Back</a>
+<div>
+    <x-backbutton/>
     <div class="flex">
         <div class="ml-4">
             <h1 class="text-5xl">{{$playlist->playlist_name}}</h1>

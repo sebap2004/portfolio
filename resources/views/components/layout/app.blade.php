@@ -15,16 +15,17 @@
     <div class="m-7 mb-0 mt-0 py-8 col-span-6 row-span-7 overflow-auto">
         {{ $slot }}
     </div>
+
     <div class="col-span-7">
         @persist('player')
             <x-music-player/>
         @endpersist
     </div>
-    @if(session()->has('success'))
-        <x-flash/>
-    @endif
-    <livewire:toast/>
 </main>
+@if(session()->has('success'))
+    <x-flash/>
+@endif
+<livewire:toast/>
 <script>
     const playBtn = document.getElementById('play');
     const volumeSlider = document.getElementById('volume');
@@ -45,12 +46,17 @@
     let isRepeating = false;
     let queue = [];
 
+    document.addEventListener("DOMContentLoaded", (event) => {
+        updateButtons();
+    });
+
     // Keep track of song
     let songIndex = 0;
 
     let isDragging = false; // Variable to track dragging state
 
     function playSong() {
+        updateButtons();
         playBtn.innerHTML = '<span class="material-symbols-outlined">pause</span>'
         audio.play();
         isPlaying = true;
@@ -71,6 +77,36 @@
             .catch(error => {
                 console.error('Error fetching album:', error);
             });
+        updateButtons();
+    }
+
+    function updateButtons()
+    {
+        nextBtn.disabled = false;
+        prevBtn.disabled = false;
+        playBtn.disabled = false;
+        playBtn.classList.remove('btn-disabled');
+        prevBtn.classList.remove('btn-disabled');
+        nextBtn.classList.remove('btn-disabled');
+        if (songIndex === queue.length - 1 && !isRepeating)
+        {
+            nextBtn.disabled = true;
+            nextBtn.classList.add('btn-disabled');
+        }
+        if (songIndex === 0 && !isRepeating)
+        {
+            prevBtn.disabled = true;
+            prevBtn.classList.add('btn-disabled');
+        }
+        if (queue.length === 0)
+        {
+            nextBtn.disabled = true;
+            prevBtn.disabled = true;
+            playBtn.disabled = true;
+            playBtn.classList.add('btn-disabled');
+            prevBtn.classList.add('btn-disabled');
+            nextBtn.classList.add('btn-disabled');
+        }
     }
 
     function loadPlaylist(listID)
@@ -88,6 +124,7 @@
             .catch(error => {
                 console.error('Error fetching playlist:', error);
             });
+        updateButtons();
     }
 
     function addAlbumToQueue(listID)
@@ -102,6 +139,7 @@
             .catch(error => {
                 console.error('Error fetching song:', error);
             });
+        updateButtons();
     }
 
     // Pause song
@@ -119,6 +157,7 @@
         }
         loadSong(queue[songIndex]);
         playSong();
+        updateButtons();
     }
 
     // Next song
@@ -131,6 +170,7 @@
         else {
             songIndex++;
         }
+
         if (songIndex > queue.length - 1 && isRepeating) {
             songIndex = 0;
         }
@@ -142,12 +182,14 @@
         }
         loadSong(queue[songIndex]);
         playSong();
+        updateButtons();
     }
 
     function playNewSong(songID)
     {
         queue = [songID];
         loadSong(queue[0]);
+        updateButtons();
     }
 
     // Function to load a song
@@ -186,6 +228,7 @@
         queue.push(songID);
         console.log("added " + songID + " to queue")
         console.log(queue);
+        updateButtons();
     }
 
     function updateTime()
@@ -292,6 +335,7 @@
             isRepeating = true;
             audio.loop = true;
         }
+        updateButtons();
     });
 </script>
 </body>

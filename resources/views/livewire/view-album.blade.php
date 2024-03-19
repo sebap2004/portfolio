@@ -1,7 +1,5 @@
-<div class="w-full">
-    <a class="btn btn-ghost mb-3" href="/app" wire:navigate><span class="material-symbols-outlined">
-arrow_back
-</span>Back</a>
+<div>
+<x-backbutton/>
     <div class="flex">
         <img class="pfp mr-2" src="{{Storage::url($album->cover_directory)}}" width="200" height="200">
         <div class="ml-4">
