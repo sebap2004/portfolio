@@ -1,5 +1,5 @@
 <div>
-<x-backbutton/>
+<x-backbutton wire:navigate/>
     <div class="flex">
         <img class="pfp mr-2" src="{{Storage::url($album->cover_directory)}}" width="200" height="200">
         <div class="ml-4">

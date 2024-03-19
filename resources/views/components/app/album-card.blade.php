@@ -35,7 +35,7 @@
 
     <div class="px-6 py-4 relative z-10">
         <div class="font-bold text-xl">
-            <a href="/album/{{$albumSlug}}">{{$albumName}}</a>
+            <a href="/album/{{$albumSlug}}" class="link link-hover" wire:navigate>{{$albumName}}</a>
         </div>
         <div>
             <a class="text-base text-gray-500 link link-hover" href="/profile/{{$artistUsername}}" wire:navigate>

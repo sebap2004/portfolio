@@ -3,8 +3,10 @@
 namespace App\Livewire\Forms;
 
 
+use App\Models\Album;
 use App\Models\Song;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 use Livewire\WithFileUploads;
@@ -20,12 +22,28 @@ class SongForm extends Form
     public $cover_directory;
     public $artist_ID;
 
+
+
     public function rules()
     {
+        Validator::extend('imageOrString', function ($attribute, $value, $parameters, $validator) {
+            // Check if the value is an image
+            if (is_string($value) && (bool) getimagesize($value)) {
+                return true;
+            }
+
+            // Check if the value is a string
+            if (is_string($value)) {
+                return true;
+            }
+
+            return false;
+        });
+
         return [
             'song_name' => 'required|string|max:255',
             'song_directory' => 'required|file|mimes:mp3,wav,ogg,flac|max:15360', // Adjust allowed file types as needed
-            'cover_directory' => 'required|image|mimes:jpeg,png,jpg|max:15360', // Adjust max size and allowed types as needed
+            'cover_directory' => 'required|imageOrString|max:15360', // Adjust max size and allowed types as needed
         ];
     }
 
@@ -48,6 +66,13 @@ class SongForm extends Form
     public function create()
     {
         $this->artist_name = auth()->user()->artist->name;
+
+        if($this->album_ID)
+        {
+            $this->cover_directory = Album::find($this->album_ID)->cover_directory;
+        }
+
+
         $this->validate();
         $attributes = $this->all();
         $attributes['artist_ID'] = auth()->user()->artist->artist_ID;

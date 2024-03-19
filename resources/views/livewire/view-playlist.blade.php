@@ -1,5 +1,5 @@
 <div>
-    <x-backbutton/>
+    <x-backbutton wire:navigate/>
     <div class="flex">
         <div class="ml-4">
             <h1 class="text-5xl">{{$playlist->playlist_name}}</h1>

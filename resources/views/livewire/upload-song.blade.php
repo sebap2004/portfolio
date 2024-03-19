@@ -12,8 +12,8 @@
             @endforeach
         </x-form.dropdown>
         <x-form.fileinput wire:model="form.song_directory" class="file-input-primary w-96" name="music file" error="form.song_directory" type="file"><span class="text-gray-400 text-xs ml-1"><i>15MB File Limit</i></span></x-form.fileinput>
-        <x-form.fileinput wire:model="form.cover_directory" class="file-input-primary w-96" name="cover image file" error="form.cover_directory" type="file"><span class="text-gray-400 text-xs ml-1"><i>15MB File Limit, Square image preferred</i></span></x-form.fileinput>
-        @if ($form->cover_directory)
+        <x-form.fileinput wire:model="form.cover_directory" class="file-input-primary w-96" name="cover image file" error="form.cover_directory" type="file"><span class="text-gray-400 text-xs ml-1"><i>15MB File Limit, defaults to album cover if set.</i></span></x-form.fileinput>
+        @if ($form->cover_directory && !is_string($form->cover_directory))
             <span class="text-gray-400 text-xs m-1"><i>Image Preview:</i></span>
             <img src="{{ $form->cover_directory->temporaryUrl() }}" class="mt-1 aspect-square rounded-xl shadow-xl shadow-accent" id="cover_image_preview" style="max-width: 125px;" alt="preview">
         @endif

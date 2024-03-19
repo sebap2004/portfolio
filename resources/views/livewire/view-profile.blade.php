@@ -1,5 +1,5 @@
 <div class="flex flex-col">
-    <x-backbutton/>
+    <x-backbutton wire:navigate/>
     <img src="{{ $artist->pfp_directory ? Storage::url($artist->pfp_directory) : "/images/defaultpfp.jpg" }}"
          class="pfp rounded-full w-36" alt="pfp">
     <h1 class="text-4xl mb-0">{{ $artist->name }}</h1>
