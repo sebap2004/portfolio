@@ -47,12 +47,12 @@ add
             <div class="overflow-y-auto max-h-96">
                 @foreach($playlists as $playlist)
                     <a class="btn btn-block mt-1 bg-base-300 text-left"
-                       @click="$wire.addSongToPlaylist({{$playlist->playlist_ID}} , currentSong)">{{$playlist->playlist_name}}</a>
+                       @click="$wire.addSongToPlaylist({{$playlist->playlist_ID}} , currentSong);">{{$playlist->playlist_name}}</a>
                 @endforeach
             </div>
             <div class="modal-action">
                 <form>
-                    <button type="button" @click.prevent="$refs.addToPlaylist.close()" class="btn">Close</button>
+                    <button type="button" @click.prevent="$refs.addToPlaylist.close();" class="btn">Close</button>
                 </form>
             </div>
         </div>

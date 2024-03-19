@@ -27,10 +27,17 @@ Route::get('/song/{songs:song_ID}', function ($songID) {
     return $song;
 });
 
-Route::get('album/{albums:album_ID}', function ($albumID) {
+Route::get('/album/{albums:album_ID}', function ($albumID) {
     $album = Album::findOrFail($albumID);
 
     $songIds = $album->songs()->pluck('song_ID')->toArray();
     return response()->json(['song_ids' => $songIds]);
 });
 
+
+Route::get('/playlist/{playlists:playlist_ID}', function ($playlistID) {
+    $playlist = \App\Models\Playlist::findOrFail($playlistID);
+
+    $songIds = $playlist->songs->pluck('song_ID')->toArray();
+    return response()->json(['song_ids' => $songIds]);
+});

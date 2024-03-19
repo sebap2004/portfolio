@@ -29,6 +29,7 @@
     @if(session()->has('success'))
         <x-flash/>
     @endif
+    <livewire:toast/>
 </main>
 </body>
 </html>

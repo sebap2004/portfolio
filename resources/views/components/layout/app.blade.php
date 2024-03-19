@@ -10,7 +10,6 @@
 </head>
 <body>
 <main class="h-screen grid grid-cols-7 grid-rows-8">
-
     <x-app.navbar/>
     <livewire:app-sidebar/>
     <div class="m-7 mb-0 mt-0 py-8 col-span-6 row-span-7 overflow-auto">
@@ -24,6 +23,7 @@
     @if(session()->has('success'))
         <x-flash/>
     @endif
+    <livewire:toast/>
 </main>
 <script>
     const playBtn = document.getElementById('play');
@@ -69,7 +69,24 @@
                 loadSong(queue[songIndex]);
             })
             .catch(error => {
-                console.error('Error fetching song:', error);
+                console.error('Error fetching album:', error);
+            });
+    }
+
+    function loadPlaylist(listID)
+    {
+        fetch('/api/playlist/' + listID)
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                queue = data.song_ids;
+                console.log(data);
+                songIndex = 0;
+                loadSong(queue[songIndex]);
+            })
+            .catch(error => {
+                console.error('Error fetching playlist:', error);
             });
     }
 

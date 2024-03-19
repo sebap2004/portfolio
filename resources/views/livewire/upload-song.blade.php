@@ -4,7 +4,7 @@
     <form class="p-2" wire:submit="create" enctype="multipart/form-data">
         @csrf
         <x-form.input wire:model="form.song_name" class="w-96" name="song name" error="form.song_name"/>
-        <x-form.dropdown wire:model="form.album_ID" name="Album" error="form.song_directory">
+        <x-form.dropdown wire:model="form.album_ID" name="Album" error="form.album_ID">
             <option selected disabled>Select an album...</option>
             <option value="0"> None </option>
             @foreach(auth()->user()->artist->albums as $album)

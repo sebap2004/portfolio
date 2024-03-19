@@ -6,7 +6,7 @@
         </a>
     </div>
     <div class="w-80p">
-        <h1 class="text-3xl font-bold"><a href="/admin" wire:navigate>Admin panel</a></h1>
+        <h1 class="text-3xl font-bold"><a href="/admin">Admin panel</a></h1>
     </div>
     <div class="w-20p mt-8 md:mt-0 flex items-center justify-end">
         <div class="dropdown dropdown-end">

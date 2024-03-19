@@ -44,11 +44,15 @@ class AppSidebar extends Component
 
     public function addSongToPlaylist($playlistID, $song_ID)
     {
-        PlaylistSong::create([
-            "song_ID" => $song_ID,
-            "playlist_ID" => $playlistID
-        ]);
-
+        if (!PlaylistSong::where('playlist_ID', $playlistID)->where('song_ID', $song_ID)->exists()) {
+            PlaylistSong::create([
+                "song_ID" => $song_ID,
+                "playlist_ID" => $playlistID
+            ]);
+            $this->dispatch('show-toast', type: 'success', message: 'Added song to playlist.');
+        } else {
+            $this->dispatch('show-toast', type: 'error', message: 'Song exists already.');
+        }
         $this->dispatch("added-song");
     }
 

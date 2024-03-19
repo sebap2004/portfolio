@@ -31,6 +31,12 @@ class ViewSongs extends Component
     {
         $this->fetchSongs();
         $this->fetchAlbums();
+
+    }
+
+    public function skibidi()
+    {
+        $this->dispatch('show-toast', message: "hello there", type: "info");
     }
 
     private function fetchAlbums()
