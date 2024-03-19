@@ -6,7 +6,6 @@ namespace App\Livewire\Forms;
 use App\Models\Album;
 use App\Models\Song;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 use Livewire\WithFileUploads;
@@ -26,25 +25,16 @@ class SongForm extends Form
 
     public function rules()
     {
-        Validator::extend('imageOrString', function ($attribute, $value, $parameters, $validator) {
-            // Check if the value is an image
-            if (is_string($value) && (bool) getimagesize($value)) {
-                return true;
-            }
-
-            // Check if the value is a string
-            if (is_string($value)) {
-                return true;
-            }
-
-            return false;
-        });
-
-        return [
+        $rules = [
             'song_name' => 'required|string|max:255',
             'song_directory' => 'required|file|mimes:mp3,wav,ogg,flac|max:15360', // Adjust allowed file types as needed
-            'cover_directory' => 'required|imageOrString|max:15360', // Adjust max size and allowed types as needed
         ];
+
+        if (!$this->album_ID) {
+            $rules['cover_directory'] = 'required|image|mimes:jpeg,png,jpg|max:15360'; // Adjust max size and allowed types as needed
+        }
+
+        return $rules;
     }
 
     public function messages()
@@ -72,7 +62,6 @@ class SongForm extends Form
             $this->cover_directory = Album::find($this->album_ID)->cover_directory;
         }
 
-
         $this->validate();
         $attributes = $this->all();
         $attributes['artist_ID'] = auth()->user()->artist->artist_ID;
@@ -83,7 +72,10 @@ class SongForm extends Form
 
         $attributes['song_directory'] = $this->song_directory->store('songs');
 
-        if ($this->cover_directory) {
+        if (is_string($this->cover_directory)) {
+            $attributes['cover_directory'] = $this->cover_directory;
+        } else {
+            // Otherwise, it's an uploaded file, so store it
             $attributes['cover_directory'] = $this->cover_directory->store('covers');
         }
 
