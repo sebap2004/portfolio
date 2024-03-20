@@ -89,6 +89,11 @@ class AdminEditSong extends Form
             $attributes['album_ID'] = null;
         }
 
+        if ($attributes['genre_ID'] == 0 || $attributes['genre_ID'] == null) {
+            $attributes['genre_ID'] = null;
+        }
+
+        $this->song->genre_ID = $attributes['genre_ID'] ?? null;
         $this->song->album_ID = $attributes['album_ID'] ?? null;
         $this->song->song_name = $attributes['song_name'] ?? $this->song->song_name;
         $this->song->artist_name = $attributes['artist_name'] ?? $this->song->artist_name;

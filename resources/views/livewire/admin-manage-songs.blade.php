@@ -29,6 +29,7 @@
                 <th>Song Name</th>
                 <th>Artist</th>
                 <th>Album</th>
+                <th>Genre</th>
                 <th>Uploaded at</th>
                 <th>Actions</th>
             </tr>
@@ -68,6 +69,13 @@
                         @endif
                     </td>
                     <td>
+                        @if(\App\Models\Genre::find($song->genre_ID))
+                            <p>{{\App\Models\Genre::find($song->genre_ID)->genre_name}}</p>
+                        @else
+                            No genre
+                        @endif
+                    </td>
+                    <td>
                         {{$song->created_at->toDayDateTimeString()}}
                     </td>
                     <th>
@@ -91,6 +99,7 @@ edit
                 <th>Song Name</th>
                 <th>Artist</th>
                 <th>Album</th>
+                <th>Genre</th>
                 <th>Uploaded at</th>
                 <th>Actions</th>
             </tr>
