@@ -20,7 +20,7 @@ class SongForm extends Form
     public $song_directory;
     public $cover_directory;
     public $artist_ID;
-
+    public $genre_ID;
 
 
     public function rules()

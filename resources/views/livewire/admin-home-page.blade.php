@@ -23,6 +23,11 @@
                 title="Manage Songs"
                 subtitle="Manage all songs on the platform"
             />
+            <x-settings.bigbutton
+                link="/admin/newgenre"
+                title="Create New Genre"
+                subtitle="Create new genre for songs to use"
+            />
         </div>
         <div>
             <x-settings.bigbutton
@@ -51,6 +56,11 @@
                 link="/admin/newartist"
                 title="Create new artist"
                 subtitle="Create an artist to upload songs from"
+            />
+            <x-settings.bigbutton
+                link="/admin/managegenres"
+                title="Manage Genres"
+                subtitle="Manage all created genres"
             />
         </div>
     </div>

@@ -1,4 +1,4 @@
-@props(['songName', 'coverDirectory', 'albumName', 'albumSlug', 'artistName', 'user', 'songID'])
+@props(['songName', 'coverDirectory', 'albumName', 'albumSlug', 'artistName', 'user', 'songID', 'genreName'])
 
 <div x-data="{ showContextMenu: false, isHovered: false }"
      class="shadow-lg col-span-2 p-2 rounded-2xl bg-base-200 relative"
@@ -43,15 +43,17 @@
         <!-- End Play and Add to Playlist Buttons -->
     </div>
 
-    <div class="px-6 py-4 relative z-10">
-        <div class="font-bold text-xl">{{$songName}}</div>
+    <div class="px-6 py-4 w-full flex flex-col relative z-10">
+        <div class="font-bold flex w-full items-center justify-between text-xl">{{$songName}} @if(isset($genreName) && $genreName !== "")
+                <div class="self-end">
+                    <p class="badge badge-primary">{{$genreName}}</p>
+                </div>
+            @endif</div>
         <div>
             <a class="text-base text-gray-500 {{ is_null($user) ? '' : 'link link-hover' }}" href="{{ is_null($user) ? '' : '/profile/' . $user }}" wire:navigate>
                 {{ $artistName }}
             </a>
         </div>
-
-
         @if(isset($albumName) && isset($albumSlug))
             <div>
                 <a class="text-base text-gray-700 link link-hover" href="/album/{{ $albumSlug }}" wire:navigate>
@@ -59,5 +61,6 @@
                 </a>
             </div>
         @endif
+
     </div>
 </div>

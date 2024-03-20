@@ -9,8 +9,8 @@ class Genre extends Model
 {
     use HasFactory;
 
-    protected $table = 'genres'; // Specify the table name if it's different from the model's pluralized lowercase name
-    protected $primaryKey = 'genre_ID'; // Specify the primary key if it's different from the default 'id' column
+    protected $table = 'genres';
+    protected $primaryKey = 'genre_ID';
 
     /**
      * The attributes that are mass assignable.

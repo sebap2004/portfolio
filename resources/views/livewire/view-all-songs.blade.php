@@ -27,6 +27,7 @@
                     album-slug="{{$song->album->album_slug ?? null}}"
                     user="{{$song->artist->username}}"
                     song-i-d="{{$song->song_ID}}"
+                    genre-name="{{\App\Models\Genre::find($song->genre_ID)->genre_name ?? null}}"
                 />
             @endforeach
         </div>

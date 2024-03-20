@@ -55,7 +55,6 @@ class AdminManageSongs extends Component
     {
         $query = Song::query();
         $query = $this->applySearch($query);
-
         return view('livewire.admin-manage-songs', [
             'songs' => $query-> paginate(10),
         ])->layout('components.layout.admin');

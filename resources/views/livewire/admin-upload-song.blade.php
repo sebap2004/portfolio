@@ -18,6 +18,13 @@
                 <option value="{{ $artist->artist_ID }}">{{$artist->name}}</option>
             @endforeach
         </x-form.dropdown>
+        <x-form.dropdown wire:model="form.genre_ID" name="Genre" error="form.genre_ID">
+            <option selected disabled>Select a genre...</option>
+            <option value="0"> None </option>
+            @foreach(\App\Models\Genre::all() as $genre)
+                <option value="{{ $genre->genre_ID }}">{{$genre->genre_name}}</option>
+            @endforeach
+        </x-form.dropdown>
         <x-form.fileinput wire:model="form.song_directory" class="file-input-primary w-96" name="music file" error="form.song_directory" type="file"><span class="text-gray-400 text-xs ml-1"><i>15MB File Limit</i></span></x-form.fileinput>
         <x-form.fileinput wire:model="form.cover_directory" class="file-input-primary w-96" name="cover image file" error="form.cover_directory" type="file"><span class="text-gray-400 text-xs ml-1"><i>15MB File Limit, Square image preferred</i></span></x-form.fileinput>
         @if ($form->cover_directory)

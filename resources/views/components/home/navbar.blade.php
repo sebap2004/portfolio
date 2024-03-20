@@ -12,7 +12,7 @@
             </a>
         @else
             <div class="dropdown dropdown-end">
-                <div tabindex="0" role="button" class="btn btn-ghost rounded-btn"><span><img class="rounded-full" src="{{ auth()->user()->pfp_directory ? Storage::url(auth()->user()->pfp_directory) : "/images/defaultpfp.jpg" }}" alt="Profile Picture" width="35"></span>Welcome back, {{auth()->user()->name}}<span class="material-symbols-outlined">
+                <div tabindex="0" role="button" class="btn btn-ghost rounded-btn"><span><img class="rounded-full pfp" src="{{ auth()->user()->pfp_directory ? Storage::url(auth()->user()->pfp_directory) : "/images/defaultpfp.jpg" }}" alt="Profile Picture" width="35"></span>Welcome back, {{auth()->user()->name}}<span class="material-symbols-outlined">
 keyboard_arrow_down
 </span></div>
                 <ul tabindex="0" class="menu dropdown-content z-[1] p-2 shadow bg-base-300 rounded-box w-52 mt-4">

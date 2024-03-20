@@ -10,7 +10,7 @@
     </div>
     <div class="w-20p flex justify-end p-0">
         <div class="dropdown dropdown-end p-0">
-            <div tabindex="0" role="button" class="btn btn-ghost rounded-btn"><span><img class="rounded-full" src="{{ auth()->user()->pfp_directory ? Storage::url(auth()->user()->pfp_directory) : "/images/defaultpfp.jpg" }}" alt="Profile Picture" width="35">
+            <div tabindex="0" role="button" class="btn btn-ghost rounded-btn"><span><img class="rounded-full pfp" src="{{ auth()->user()->pfp_directory ? Storage::url(auth()->user()->pfp_directory) : "/images/defaultpfp.jpg" }}" alt="Profile Picture" width="35">
 </span> {{auth()->user()->name}}
                 @admin
                 <span class="badge badge-accent">Admin</span>

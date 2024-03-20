@@ -63,6 +63,8 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin/uploadsong', \App\Livewire\AdminUploadSong::class);
     Route::get('/admin/newalbum', \App\Livewire\AdminNewAlbum::class);
     Route::get('admin/manageartists', \App\Livewire\AdminManageArtists::class);
+    Route::get('admin/newgenre', \App\Livewire\CreateGenre::class);
+    Route::get('admin/managegenres', \App\Livewire\ManageGenres::class);
 });
 
 

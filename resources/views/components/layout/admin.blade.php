@@ -21,6 +21,8 @@
             <a class="btn btn-block bg-base-300" href="/admin/managealbums" wire:navigate>Manage Albums</a>
             <a class="btn btn-block bg-base-300" href="/admin/newartist" wire:navigate>Create new artist</a>
             <a class="btn btn-block bg-base-300" href="/admin/manageartists" wire:navigate>Manage artists</a>
+            <a class="btn btn-block bg-base-300" href="/admin/newgenre" wire:navigate>Create new genre</a>
+            <a class="btn btn-block bg-base-300" href="/admin/managegenres" wire:navigate>Manage genres</a>
         </div>
     </x-admin.sidebar>
     <div class="m-7 mb-0 mt-4 col-span-6 row-span-7 flex justify-center overflow-auto">

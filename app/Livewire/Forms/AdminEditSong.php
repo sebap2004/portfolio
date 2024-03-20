@@ -22,6 +22,7 @@ class AdminEditSong extends Form
     public $album_ID;
     public $song_directory;
     public $cover_directory;
+    public $genre_ID;
 
     public function rules()
     {
@@ -56,6 +57,7 @@ class AdminEditSong extends Form
         $this->song_name = $this->song->song_name;
         $this->artist_name = $this->song->artist_name;
         $this->album_ID = $this->song->album_ID;
+        $this->genre_ID = $this->song->genre_ID;
     }
 
     public function edit()
