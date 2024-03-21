@@ -63,8 +63,8 @@ edit
 
             </tr>
             </tfoot>
-            {{$genres->links()}}
         </table>
+        {{$genres->links()}}
     </div>
     <dialog wire:ignore x-ref="modal"
             @close="songToDelete = null" class="modal">
