@@ -63,6 +63,7 @@ edit
 
             </tr>
             </tfoot>
+            {{$genres->links()}}
         </table>
     </div>
     <dialog wire:ignore x-ref="modal"
