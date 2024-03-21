@@ -34,44 +34,6 @@
     <dialog wire:ignore.self x-ref="tos" class="modal">
         <div class="modal-box w-searchbar h-screen">
             <div class="modal-action overflow-y-auto">
-                <style>
-                    [data-custom-class='body'], [data-custom-class='body'] * {
-                        background: transparent !important;
-                        color: #e4e6e7 !important;
-                    }
-
-                    [data-custom-class='title'], [data-custom-class='title'] * {
-                        font-size: 26px !important;
-                        color: #d793ec !important;
-                    }
-
-                    [data-custom-class='subtitle'], [data-custom-class='subtitle'] * {
-                        color: #e4e6e7 !important;
-                        font-size: 14px !important;
-                    }
-
-                    [data-custom-class='heading_1'], [data-custom-class='heading_1'] * {
-                        font-size: 19px !important;
-                        color: #d793ec !important;
-                    }
-
-                    [data-custom-class='heading_2'], [data-custom-class='heading_2'] * {
-                        font-size: 17px !important;
-                        color: #d793ec !important;
-                    }
-
-                    [data-custom-class='body_text'], [data-custom-class='body_text'] * {
-                        color: #e4e6e7 !important;
-                        font-size: 14px !important;
-                    }
-
-                    [data-custom-class='link'], [data-custom-class='link'] * {
-                        color: #be87f2 !important;
-                        font-size: 14px !important;
-                        word-break: break-word !important;
-                    }
-                </style>
-
                 <div data-custom-class="body scrollbar">
                     <div align="center" style="text-align: left;">
                         <div class="MsoNormal" data-custom-class="title" style="line-height: 1.5;">

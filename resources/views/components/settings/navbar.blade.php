@@ -2,7 +2,7 @@
     class="navbar row-span-1 col-span-7 justify-between md:items-center p-3 m-0 bg-dark border-2 border-base-100 border-b-base-300">
     <div class="w-20p">
         <a href="/app">
-            <x-logo class="text-base-100"/>
+            <x-logo class="text-base"/>
         </a>
     </div>
     <div class="w-80p">

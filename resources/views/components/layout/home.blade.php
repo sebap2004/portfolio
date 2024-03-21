@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="dark">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,9 +16,9 @@
 @if(session()->has('success'))
     <x-flash />
 @endif
-<footer class="footer p-10 bg-base-100 text-neutral-content">
+<footer class="footer p-10 bg-base-100">
     <aside>
-        <img src="/images/logowithtext.png" alt="Stylus Streaming" width="165" height="16">
+        <x-logotext class="text-base"/>
         <p>Stylus Streaming<br>University project for the University of Worcester.</p>
         <p>UI components graciously provided by <a class="link link-primary" href="https://daisyui.com/">daisyUI</a></p>
     </aside>
