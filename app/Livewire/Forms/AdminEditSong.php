@@ -29,7 +29,7 @@ class AdminEditSong extends Form
         return [
             'song_name' => 'required|string|max:255',
             'artist_name' => 'required|string|max:255',
-            'song_directory' => 'nullable|file|mimes:mp3,wav,ogg,flac|max:15360',
+            'song_directory' => 'nullable|file|mimes:mp3,wav,ogg,flac|max:102400',
             'cover_directory' => 'nullable|image|mimes:jpeg,png,jpg|max:15360',
         ];
     }
