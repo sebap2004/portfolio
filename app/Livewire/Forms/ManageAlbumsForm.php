@@ -28,7 +28,7 @@ class ManageAlbumsForm extends Form
     public function messages()
     {
         return [
-            'album_name.required' => 'The song name is required.',
+            'album_name.required' => 'The album name is required.',
             'cover_directory.image' => 'The cover image must be an image file.',
             'cover_directory.mimes' => 'Must be valid image type.',
             'cover_directory.max' => 'Image file size too large. (Max 15MB)',

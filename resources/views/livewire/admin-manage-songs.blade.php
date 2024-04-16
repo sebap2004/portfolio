@@ -79,7 +79,8 @@
                         {{$song->created_at->toDayDateTimeString()}}
                     </td>
                     <th>
-                        <button wire:click="editSong({{$song->song_ID}})" class="btn btn-primary btn-sm mr-3"><span class="material-symbols-outlined">
+                        <button wire:click="editSong({{$song->song_ID}})" class="btn btn-primary btn-sm mr-3"><span
+                                class="material-symbols-outlined">
 edit
 </span></button>
                         <button @click="showDelete({{ $song->song_ID }})" class="btn btn-error btn-sm mr-3">
@@ -143,36 +144,41 @@ edit
         </div>
     </dialog>
 
-    <dialog wire:ignore x-ref="editModal" class="modal">
+    <dialog wire:ignore.self x-ref="editModal" class="modal">
         <div class="modal-box">
-            <h3 class="font-bold text-lg">Edit song</h3>
+            <h3 class="font-bold text-3xl">Edit song</h3>
             <form class="p-2" wire:submit="finishEdit" enctype="multipart/form-data">
-                @csrf
-                <x-form.input wire:model="form.song_name" class="w-96" name="song name" error="form.song_name"/>
-                <x-form.input wire:model="form.artist_name" class="w-96" name="artist name" error="form.artist_name"/>
-                <x-form.dropdown wire:model="form.album_ID" name="Album" error="form.song_directory">
+                <x-form.input wire:model="form.song_name" error="form.song_name" class="w-full" name="song name"/>
+                <x-form.input wire:model="form.artist_name" error="form.artist_name" class="w-full" name="artist name"/>
+                <x-form.dropdown wire:model="form.album_ID" name="Album">
                     <option selected disabled>Select an album...</option>
-                    <option value="0"> None </option>
+                    <option value="0"> None</option>
                     @foreach(\App\Models\Album::all() as $album)
-                        <option value="{{ $album->album_ID }}">{{ $album->album_name }} - {{$album->artist->name}}</option>
+                        <option value="{{ $album->album_ID }}">{{ $album->album_name }}
+                            - {{$album->artist->name}}</option>
                     @endforeach
                 </x-form.dropdown>
-                <x-form.dropdown wire:model="form.genre_ID" name="Genre" error="form.genre_ID">
+                <x-form.dropdown wire:model="form.genre_ID" name="Genre">
                     <option selected disabled>Select a genre...</option>
-                    <option value="0"> None </option>
+                    <option value="0"> None</option>
                     @foreach(\App\Models\Genre::all() as $genre)
                         <option value="{{ $genre->genre_ID }}">{{$genre->genre_name}}</option>
                     @endforeach
                 </x-form.dropdown>
-                <x-form.fileinput wire:model="form.song_directory" class="file-input-primary w-96" name="music file" error="form.song_directory" type="file"><span class="text-gray-400 text-xs ml-1"><i>100MB File Limit</i></span></x-form.fileinput>
-                <x-form.fileinput wire:model="form.cover_directory" class="file-input-primary w-96" name="cover image file" error="form.cover_directory" type="file"><span class="text-gray-400 text-xs ml-1"><i>15MB File Limit, Square image preferred</i></span></x-form.fileinput>
+                <x-form.fileinput wire:model="form.song_directory" class="file-input-primary w-96" name="music file"
+                                  error="form.song_directory" type="file"><span class="text-gray-400 text-xs ml-1"><i>100MB File Limit</i></span>
+                </x-form.fileinput>
+                <x-form.fileinput wire:model="form.cover_directory" class="file-input-primary w-96"
+                                  name="cover image file" error="form.cover_directory" type="file"><span
+                        class="text-gray-400 text-xs ml-1"><i>15MB File Limit, Square image preferred</i></span>
+                </x-form.fileinput>
                 @if ($form->cover_directory)
-                        <!-- Display existing cover image -->
-                        <span class="text-gray-400 text-xs m-1"><i>Existing Cover Image:</i></span>
-                        <img src="{{ Storage::url($form->cover_directory) }}" class="mt-1 aspect-square rounded-xl shadow-xl shadow-accent" id="cover_image_preview" style="max-width: 125px;" alt="preview">
-
+                    <!-- Display existing cover image -->
+                    <span class="text-gray-400 text-xs m-1"><i>Existing Cover Image:</i></span>
+                    <img src="{{ Storage::url($form->cover_directory) }}"
+                         class="mt-1 aspect-square rounded-xl shadow-xl shadow-accent" id="cover_image_preview"
+                         style="max-width: 125px;" alt="preview">
                 @endif
-
                 <div class="modal-action">
                     <form method="dialog">
                         <button type="button" @click="$refs.editModal.close()" class="btn">Cancel</button>
@@ -182,16 +188,4 @@ edit
             </form>
         </div>
     </dialog>
-
-    <dialog wire:ignore.self x-ref="editedUser" class="modal">
-        <div class="modal-box">
-            <h3 class="font-bold text-lg">User edited successfully.</h3>
-            <div class="modal-action">
-                <form method="dialog">
-                    <button @click="$refs.editedUser.close()" class="btn">Ok</button>
-                </form>
-            </div>
-        </div>
-    </dialog>
-
 </div>

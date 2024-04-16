@@ -8,5 +8,7 @@
            id="{{$name}}"
            {{ $attributes->merge(['class' => 'input input-bordered']) }}
     />
-    <x-form.error name="{{$error}}"/>
+    @if(isset($error))
+        <x-form.error name="{{$error}}"/>
+    @endif
 </x-form.field>

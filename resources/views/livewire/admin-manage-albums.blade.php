@@ -129,12 +129,12 @@ edit
         </div>
     </dialog>
 
-    <dialog wire:ignore x-ref="editModal" class="modal">
+    <dialog wire:ignore.self x-ref="editModal" class="modal">
         <div class="modal-box">
             <h3 class="font-bold text-lg">Edit Album</h3>
             <form class="p-2" wire:submit="finishEdit" enctype="multipart/form-data">
                 @csrf
-                <x-form.input wire:model="form.album_name" class="w-96" name="album name" error="form.song_name"/>
+                <x-form.input wire:model="form.album_name" class="w-96" name="album name" error="form.album_name"/>
                 <x-form.dropdown wire:model="form.artist_ID" name="Artist" error="form.song_directory">
                     <option selected disabled>Select an artist...</option>
                     @foreach(\App\Models\Artist::all() as $artist)

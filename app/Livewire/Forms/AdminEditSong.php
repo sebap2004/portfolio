@@ -56,6 +56,7 @@ class AdminEditSong extends Form
         $this->song = $song;
         $this->song_name = $this->song->song_name;
         $this->artist_name = $this->song->artist_name;
+        $this->song_directory = null;
         $this->album_ID = $this->song->album_ID;
         $this->genre_ID = $this->song->genre_ID;
     }
@@ -63,9 +64,7 @@ class AdminEditSong extends Form
     public function edit()
     {
         $this->validate();
-
         $attributes = $this->except('song');
-
         if($this->cover_directory) {
             \Storage::delete($this->song->cover_directory);
             $attributes['cover_directory'] = $this->cover_directory->store('covers');
