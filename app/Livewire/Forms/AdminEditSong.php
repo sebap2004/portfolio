@@ -42,7 +42,7 @@ class AdminEditSong extends Form
             'song_directory.required' => 'Please upload a song file.',
             'song_directory.file' => 'The song file must be a file.',
             'song_directory.mimes' => 'Must be a valid audio type.',
-            'song_directory.max' => 'Song file size too large. (Max 15MB)',
+            'song_directory.max' => 'Song file size too large. (Max 100MB)',
             'cover_directory.required' => 'Please upload a cover image.',
             'cover_directory.image' => 'The cover image must be an image file.',
             'cover_directory.mimes' => 'Must be valid image type.',
