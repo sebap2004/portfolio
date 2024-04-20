@@ -1,6 +1,6 @@
 # .github/workflows/tests.yml
 
-name: Laravel Tests
+name: Stylus Streaming Feature Tests
 
 on:
   push:
