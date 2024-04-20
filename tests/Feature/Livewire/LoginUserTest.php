@@ -11,11 +11,16 @@ use Tests\TestCase;
 
 class LoginUserTest extends TestCase
 {
-    /** @test */
-    public function login_successfully()
+    /** @test  */
+    public function render_successfully()
     {
         Livewire::test(LoginUser::class)
             ->assertStatus(200);
+    }
+
+    /** @test */
+    public function login_successfully()
+    {
         User::factory()->create([
             'username' => 'testuser',
             'password' => 'testpassword'

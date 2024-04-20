@@ -12,11 +12,15 @@ use Tests\TestCase;
 
 class RegisterUserTest extends TestCase
 {
+    /** @test  */
+    public function render_successfully()
+    {
+        Livewire::test(RegisterUser::class)->assertStatus(200);
+    }
+
     /** @test */
     public function create_account_successfully()
     {
-        Livewire::test(RegisterUser::class)->assertStatus(200);
-
         $response = Livewire::test(RegisterUser::class)
             ->set('form.name', fake()->name)
             ->set('form.username', fake()->userName)

@@ -10,11 +10,8 @@ use Livewire\WithFileUploads;
 class EditProfile extends Component
 {
     use WithFileUploads;
-
     public User $user;
     public bool $myUser;
-
-
     public $name;
     public $username;
     public $pfp_directory;

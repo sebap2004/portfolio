@@ -19,6 +19,6 @@ class AdminAccess
         if (Auth::check() && Auth::user()->admin()) {
             return $next($request);
         }
-        return response()->json(['error' => 'Unauthorized'], 403);
+        abort(403);
     }
 }
