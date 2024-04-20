@@ -16,10 +16,7 @@ class RegisterUser extends Component
     use WithFileUploads;
 
     public UserForm $form;
-
-
     public User $user;
-
     public $name;
     public $username;
     public $email;
