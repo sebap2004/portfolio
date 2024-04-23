@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Livewire\Forms\EditProfileAdmin;
+use App\Models\Playlist;
 use App\Models\Song;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -42,6 +43,11 @@ class AdminManageUsers extends Component
         }
         if ($this->currentSetUser->playlists())
         {
+            foreach ($this->currentSetUser->playlists() as &$playlist)
+            {
+                $playlist->songs()->delete();
+            }
+
             $this->currentSetUser->playlists()->delete();
         }
         if ($this->currentSetUser->artist->songs())
