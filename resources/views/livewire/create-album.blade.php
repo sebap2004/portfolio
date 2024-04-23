@@ -11,11 +11,11 @@
                 try {
                    $url = $form->pfp_directory->temporaryUrl();
                    $photoStatus = true;
-                }catch (FileNotPreviewableException $exception){
+                }catch (\Livewire\Features\SupportFileUploads\FileNotPreviewableException $exception){
                     $this->photoStatus =  false;
                 }
             @endphp
-            @if($photoStatus)
+            @if(isset($photoStatus) && $photoStatus)
                 <img src="{{ $url }}"
                      class="mt-1 aspect-square rounded-xl shadow-xl shadow-accent" id="cover_image_preview"
                      style="max-width: 125px;" alt="preview">
