@@ -25,7 +25,9 @@
                          class="mt-1 aspect-square rounded-xl shadow-xl shadow-accent" id="cover_image_preview"
                          style="max-width: 125px;" alt="preview">
                 @else
-                    Something went wrong while uploading the file.
+                   <div class="mt-2 mr-2 flex items-center justify-center text-red-500"><span class="material-symbols-outlined m-1 text-red-500">
+error
+</span>Cannot preview file. Likely not an image file</div>
                 @endif
             @endif
             <x-form.input wire:model="form.email" error="form.email" name="email" type="email" placeholder="email"
