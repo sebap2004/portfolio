@@ -13,6 +13,7 @@ use Livewire\WithPagination;
 class AdminManageUsers extends Component
 {
     use WithPagination;
+
     public $search = "";
 
     public EditProfileAdmin $form;
@@ -37,21 +38,17 @@ class AdminManageUsers extends Component
 
     public function deleteUser()
     {
-        if ($this->currentSetUser->admin())
-        {
+        if ($this->currentSetUser->admin()) {
             DB::table('admin')->where('user_id', $this->currentSetUser->id)->delete();
         }
-        if ($this->currentSetUser->playlists()) {
-            foreach ($this->currentSetUser->playlists() as $playlist) {
-                $playlist->songs()->delete();
-            }
-            $this->currentSetUser->playlists()->delete();
+        $playlists = Playlist::where('user_ID', $this->currentSetUser->id)->get();
+        foreach ($playlists as $playlist) {
+            $playlist->songs()->delete();
         }
-        if ($this->currentSetUser->artist->songs())
-        {
+        Playlist::where('user_ID', $this->currentSetUser->id)->delete();
+        if ($this->currentSetUser->artist && $this->currentSetUser->artist->songs()) {
             $this->currentSetUser->artist->songs()->delete();
-            if ($this->currentSetUser->artist->albums())
-            {
+            if ($this->currentSetUser->artist->albums()) {
                 $this->currentSetUser->artist->albums()->delete();
             }
             $this->currentSetUser->artist()->delete();
@@ -67,10 +64,11 @@ class AdminManageUsers extends Component
 
     protected function applySearch($query)
     {
-        return $this->search === '' ? $query : $query->where('name', 'like', '%'.$this->search.'%')->
-            orWhere('username', 'like', '%'.$this->search.'%')->
-            orWhere('email', 'like', '%'.$this->search.'%');
+        return $this->search === '' ? $query : $query->where('name', 'like', '%' . $this->search . '%')->
+        orWhere('username', 'like', '%' . $this->search . '%')->
+        orWhere('email', 'like', '%' . $this->search . '%');
     }
+
     public function render()
     {
         $query = User::query();
