@@ -144,7 +144,7 @@ edit
                         try {
                            $url = $form->pfp_directory->temporaryUrl();
                            $photoStatus = true;
-                        } catch (RuntimeException $exception){
+                        } catch (\Livewire\Features\SupportFileUploads\FileNotPreviewableException $exception){
                             $this->photoStatus =  false;
                         }
                     @endphp
