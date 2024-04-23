@@ -9,9 +9,21 @@
         <x-form.textarea class="h-36" wire:model="form.bio" name="bio" error="form.bio" placeholder="bio"/>
         @if ($form->pfp_directory)
             <span class="text-gray-400 text-xs m-1"><i>Image Preview:</i></span>
-            <img src="{{ $form->pfp_directory->temporaryUrl() }}"
-                 class="mt-1 aspect-square rounded-xl shadow-xl shadow-accent" id="cover_image_preview"
-                 style="max-width: 125px;" alt="preview">
+            @php
+                try {
+                   $url = $form->pfp_directory->temporaryUrl();
+                   $photoStatus = true;
+                }catch (RuntimeException $exception){
+                    $this->photoStatus =  false;
+                }
+            @endphp
+            @if($photoStatus)
+                <img src="{{ $url }}"
+                     class="mt-1 aspect-square rounded-xl shadow-xl shadow-accent" id="cover_image_preview"
+                     style="max-width: 125px;" alt="preview">
+            @else
+                Something went wrong while uploading the file.
+            @endif
         @endif
         <div class="form-control mt-6">
             <button class="btn btn-primary" type="submit">Register</button>

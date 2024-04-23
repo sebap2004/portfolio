@@ -30,18 +30,20 @@ class UserForm extends Form
                 Rule::unique('users'),
                 'max:255',
                 'min:3',
-                'regex:/^\S*$/u',
+                'alpha_dash',
             ],
             'name' => [
                 'required',
                 'max:255',
                 'min:3',
+                'regex:/^[a-zA-Z0-9\s]+$/',
             ],
             'email' => [
                 'required',
                 'email',
                 'max:255',
-                Rule::unique('users')
+                Rule::unique('users'),
+                'regex:/^(.+)@(?:worc\.ac\.uk|uni\.worc\.ac\.uk)$/'
             ],
             'password'=> [
                 'required',
@@ -57,6 +59,8 @@ class UserForm extends Form
     {
         return [
             'agreesToTOS.required' => 'You must agree to the Terms of Service.',
+            'email.regex' => 'You must be a University of Worcester student.',
+            'name.regex' => 'Names mustn\'t include non-letters'
         ];
     }
 

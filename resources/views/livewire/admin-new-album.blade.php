@@ -12,9 +12,23 @@
                 <option value="{{ $artist->artist_ID }}">{{$artist->name}}</option>
             @endforeach
         </x-form.dropdown>
-        @if ($form->cover_directory)
+        @if ($form->pfp_directory)
             <span class="text-gray-400 text-xs m-1"><i>Image Preview:</i></span>
-            <img src="{{ $form->cover_directory->temporaryUrl() }}" class="mt-1 aspect-square rounded-xl shadow-xl shadow-accent" id="cover_image_preview" style="max-width: 125px;" alt="preview">
+            @php
+                try {
+                   $url = $form->pfp_directory->temporaryUrl();
+                   $photoStatus = true;
+                }catch (RuntimeException $exception){
+                    $this->photoStatus =  false;
+                }
+            @endphp
+            @if($photoStatus)
+                <img src="{{ $url }}"
+                     class="mt-1 aspect-square rounded-xl shadow-xl shadow-accent" id="cover_image_preview"
+                     style="max-width: 125px;" alt="preview">
+            @else
+                Something went wrong while uploading the file.
+            @endif
         @endif
         <button class="btn btn-primary mt-3">Upload</button>
     </form>
