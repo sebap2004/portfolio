@@ -50,11 +50,11 @@ class AdminManageUsers extends Component
         if ($this->currentSetUser->artist->songs())
         {
             $this->currentSetUser->artist->songs()->delete();
+            if ($this->currentSetUser->artist->albums())
+            {
+                $this->currentSetUser->artist->albums()->delete();
+            }
             $this->currentSetUser->artist()->delete();
-        }
-        if ($this->currentSetUser->albums())
-        {
-            $this->currentSetUser->albums()->delete();
         }
         $this->currentSetUser->delete();
         $this->dispatch('user-deleted');
