@@ -52,6 +52,13 @@ class ProfileEdit extends Form
     }
 
 
+    public function messages()
+    {
+        return [
+            'pfp_directory.mimes' => 'Profile pictures must be an image.',
+        ];
+    }
+
     public function setUser(User $user)
     {
         $this->user = $user;

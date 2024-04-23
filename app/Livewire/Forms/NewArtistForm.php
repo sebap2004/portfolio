@@ -42,6 +42,7 @@ class NewArtistForm extends Form
     {
         return [
             'agreesToTOS.required' => 'You must agree to the Terms of Service.',
+            'pfp_directory.mimes' => 'Profile pictures must be an image.'
         ];
     }
 

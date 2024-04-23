@@ -60,7 +60,8 @@ class UserForm extends Form
         return [
             'agreesToTOS.required' => 'You must agree to the Terms of Service.',
             'email.regex' => 'You must be a University of Worcester student.',
-            'name.regex' => 'Names mustn\'t include non-letters'
+            'name.regex' => 'Names mustn\'t include non-letters.',
+            'pfp_directory.mimes' => 'Profile pictures must be an image.'
         ];
     }
 

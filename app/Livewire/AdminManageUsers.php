@@ -40,10 +40,18 @@ class AdminManageUsers extends Component
         {
             DB::table('admin')->where('user_id', $this->currentSetUser->id)->delete();
         }
+        if ($this->currentSetUser->playlists())
+        {
+            $this->currentSetUser->playlists()->delete();
+        }
         if ($this->currentSetUser->artist->songs())
         {
             $this->currentSetUser->artist->songs()->delete();
             $this->currentSetUser->artist()->delete();
+        }
+        if ($this->currentSetUser->albums())
+        {
+            $this->currentSetUser->albums()->delete();
         }
         $this->currentSetUser->delete();
         $this->dispatch('user-deleted');
