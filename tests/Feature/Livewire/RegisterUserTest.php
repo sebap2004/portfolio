@@ -22,14 +22,15 @@ class RegisterUserTest extends TestCase
     public function create_account_successfully() // Makes sure users can register correctly.
     {
         $response = Livewire::test(RegisterUser::class) // Sets form data to random fake user data
-            ->set('form.name', fake()->name)
-            ->set('form.username', fake()->userName)
-            ->set('form.email', fake()->email)
-            ->set('form.password', fake()->password)
+            ->set('form.name', "Test Name")
+            ->set('form.username', "fake_username_test".fake()->biasedNumberBetween)
+            ->set('form.email', fake()->colorName . "@uni.worc.ac.uk") // Registered user must be a uni student.
+            ->set('form.password', "fakepasswordtesting")
             ->set('form.agreesToTOS', true)
             ->call('register'); // Calls the register function to make a user
 
         dump($response->errors()->toArray()); // Dump errors
+
         $response->assertHasNoErrors(); // Test succeeds if no errors are presented.
     }
 }

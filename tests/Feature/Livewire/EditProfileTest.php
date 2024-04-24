@@ -3,6 +3,7 @@
 namespace Tests\Feature\Livewire;
 
 use App\Livewire\EditProfile;
+use App\Models\Artist;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -27,15 +28,19 @@ class EditProfileTest extends TestCase
     public function edit_user_successfully() // Makes sure editing user data works.
     {
         $user = User::factory()->create([
-            'username' => 'testuser',
-            'password' => 'testpassword'
+            'username' => fake()->userName,
+            'password' => 'test password'
         ]); // creates a new user with preset username and password
 
-        $response = Livewire::actingAs($user)->test(EditProfile::class, ['user' => $user])
-            ->set('form.username', fake()->userName) // Changes username
-            ->set('form.password', 'secondpasswordtesting') // Changes password
-            ->call('edit'); // Calls the method to edit the user data
+        Artist::factory()->create([ // Creates a new artist and links it to the user
+            'user_ID' => $user->id
+        ]);
 
+        $response = Livewire::actingAs($user)->test(EditProfile::class, ['user' => $user])
+            ->set('form.username', 'testuser_the2nd'.fake()->biasedNumberBetween) // Changes username
+            ->set('form.password', 'secondpasswordtesting'.fake()->biasedNumberBetween) // Changes password
+            ->call('edit'); // Calls the method to edit the user data
+        dump($response->get('form.username'));
         dump($response->errors()->toArray());
         $response->assertHasNoErrors(); // Test succeeds if no errors are presented.
     }

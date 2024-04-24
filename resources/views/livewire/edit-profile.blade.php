@@ -8,7 +8,7 @@
             <x-form.input wire:model="form.username" error="form.username" name="username" placeholder="username"/>
             <x-form.textarea class="h-36" wire:model="form.bio" name="bio" error="form.bio" placeholder="bio"/>
             <x-form.fileinput wire:model="form.pfp_directory" class="file-input-primary w-96" name="Profile Picture" error="form.pfp_directory" type="file"><span class="text-gray-400 text-xs ml-1"><i>15MB File Limit, Square image preferred</i></span></x-form.fileinput>
-            @if ($form->pfp_directory)
+            @if (isset($form->pfp_directory) && $form->pfp_directory)
                 <span class="text-gray-400 text-xs m-1"><i>Image Preview:</i></span>
                 @php
                     try {

@@ -12,7 +12,7 @@
                 <option value="{{ $artist->artist_ID }}">{{$artist->name}}</option>
             @endforeach
         </x-form.dropdown>
-        @if ($form->pfp_directory)
+        @if (isset($form->pfp_directory) && $form->pfp_directory)
             <span class="text-gray-400 text-xs m-1"><i>Image Preview:</i></span>
             @php
                 try {

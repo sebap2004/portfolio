@@ -22,7 +22,7 @@ class LoginUserTest extends TestCase
     public function login_successfully() // Makes sure users can login correctly.
     {
         User::factory()->create([
-            'username' => 'testuser',
+            'username' => 'yetanothertestuser',
             'password' => 'testpassword'
         ]); // Create user with predetermined parameters
 

@@ -7,7 +7,7 @@
                           error="form.pfp_directory" type="file"><span class="text-gray-400 text-xs ml-1"><i>15MB File Limit, Square image preferred</i></span>
         </x-form.fileinput>
         <x-form.textarea class="h-36" wire:model="form.bio" name="bio" error="form.bio" placeholder="bio"/>
-        @if ($form->pfp_directory)
+        @if (isset($form->pfp_directory) && $form->pfp_directory)
             <span class="text-gray-400 text-xs m-1"><i>Image Preview:</i></span>
             @php
                 try {
@@ -17,7 +17,7 @@
                     $this->photoStatus =  false;
                 }
             @endphp
-            @if($photoStatus )
+            @if(isset($photoStatus) && $photoStatus)
                 <img src="{{ $url }}"
                      class="mt-1 aspect-square rounded-xl shadow-xl shadow-accent" id="cover_image_preview"
                      style="max-width: 125px;" alt="preview">

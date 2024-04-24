@@ -38,7 +38,13 @@ class AdminHomePageTest extends TestCase
     /** @test */
     public function renders_successfully() // Makes sure the page renders correctly.
     {
-        Livewire::test(AdminHomePage::class)
+        $user = User::factory()->create(); // Creates a test user
+        DB::table('admin')->insert([ // Makes the test user an admin by adding a link to it in the admin table
+            'user_ID' => $user->id,
+            'created_at' => null,
+            'updated_at' => null,
+        ]);
+        Livewire::actingAs($user)->test(AdminHomePage::class)
             ->assertStatus(200);
     }
 }
