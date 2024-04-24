@@ -27,7 +27,7 @@ class LoginUserTest extends TestCase
         ]); // Create user with predetermined parameters
 
         $response = Livewire::test(LoginUser::class) // Goes to the login page
-            ->set('form.username', 'testuser') // Enter the username into the user box
+            ->set('form.username', 'yetanothertestuser') // Enter the username into the user box
             ->set('form.password', 'testpassword') // Enter the password into the password box
             ->call('login'); // Attempts to log in
 

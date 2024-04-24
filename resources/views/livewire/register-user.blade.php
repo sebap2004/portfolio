@@ -34,6 +34,8 @@ error
                           needed/>
             <x-form.input wire:model="form.password" error="form.password" name="password" type="password"
                           placeholder="password" needed/>
+            <x-form.input wire:model="form.confirm_password" error="form.confirm_password" name="Confirm Password" type="password"
+                          placeholder="confirm password" needed/>
             <div class="flex items-center">
                 I agree to the <a @click="$refs.tos.showModal()" class="link link-primary ml-1">terms of service.</a>
                 <input class="checkbox checkbox-accent bg-base-100 m-3" wire:model="form.agreesToTOS" type="checkbox">

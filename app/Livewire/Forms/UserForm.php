@@ -20,6 +20,7 @@ class UserForm extends Form
     public $pfp_directory;
     public $email;
     public $password;
+    public $confirm_password;
     public $agreesToTOS;
 
     public function rules()
@@ -50,6 +51,10 @@ class UserForm extends Form
                 'max:30',
                 'min:7'
             ],
+            'confirm_password' => [
+                'required',
+                'same:password',
+            ],
             'pfp_directory' => 'nullable|image|mimes:jpeg,png,jpg|max:15360',
             'agreesToTOS' => 'required|accepted',
         ];
@@ -61,7 +66,8 @@ class UserForm extends Form
             'agreesToTOS.required' => 'You must agree to the Terms of Service.',
             'email.regex' => 'You must be a University of Worcester student.',
             'name.regex' => 'Names mustn\'t include non-letters.',
-            'pfp_directory.mimes' => 'Profile pictures must be an image.'
+            'pfp_directory.mimes' => 'Profile pictures must be an image.',
+            'confirm_password.same' => 'Passwords must match.'
         ];
     }
 
@@ -69,7 +75,7 @@ class UserForm extends Form
     {
         $this->validate();
 
-        $attributes = $this->all();
+        $attributes = $this->except(['confirm_password']);
 
         if($this->pfp_directory)
         {

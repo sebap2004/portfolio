@@ -40,7 +40,6 @@ class EditProfileTest extends TestCase
             ->set('form.username', 'testuser_the2nd'.fake()->biasedNumberBetween) // Changes username
             ->set('form.password', 'secondpasswordtesting'.fake()->biasedNumberBetween) // Changes password
             ->call('edit'); // Calls the method to edit the user data
-        dump($response->get('form.username'));
         dump($response->errors()->toArray());
         $response->assertHasNoErrors(); // Test succeeds if no errors are presented.
     }
