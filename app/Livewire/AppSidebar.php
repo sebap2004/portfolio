@@ -25,8 +25,13 @@ class AppSidebar extends Component
         $this->playlists = auth()->user()->playlists;
     }
 
+    public function rules()
+    {
+        return[
+            'playlist_name' => 'required|max:30'
+        ];
+    }
 
-    #[Validate(['required'])]
     public $playlist_name;
 
     public function createPlaylist()

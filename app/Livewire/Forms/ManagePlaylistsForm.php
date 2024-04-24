@@ -19,7 +19,7 @@ class ManagePlaylistsForm extends Form
     public function rules()
     {
         return [
-            'playlist_name' => 'required|string|max:255',
+            'playlist_name' => 'required|string|max:30',
         ];
     }
 

@@ -30,7 +30,7 @@ class RegisterUser extends Component
     public function register()
     {
         $this->form->store();
-        return redirect('/')->with('success', 'Successfully created user!');
+        return redirect('/app')->with('success', 'Successfully created user!');
     }
 
     public function render()

@@ -15,7 +15,7 @@ class CreateAlbumForm extends Form
     public function rules()
     {
         return [
-            'album_name' => 'required|string|max:255',
+            'album_name' => 'required|string|max:30',
             'cover_directory' => 'required|image|mimes:jpeg,png,jpg|max:15360', // Adjust max size and allowed types as needed
         ];
     }

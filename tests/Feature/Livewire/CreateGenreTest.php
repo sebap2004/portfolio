@@ -16,35 +16,35 @@ class CreateGenreTest extends TestCase
     /** @test */
     public function allow_access_to_admin()
     {
-        $user = User::factory()->create();
-        DB::table('admin')->insert([
+        $user = User::factory()->create(); // Creates a test user
+        DB::table('admin')->insert([ // Makes the test user an admin by adding a link to it in the admin table
             'user_ID' => $user->id,
             'created_at' => null,
             'updated_at' => null,
         ]);
-        $response = $this->actingAs($user)->get('/admin/newgenre');
-        $response->assertStatus(200);
+        $response = $this->actingAs($user)->get('/admin'); // Tries to access the admin page
+        $response->assertStatus(200); // Test succeeds if response is OK (200)
     }
 
     /** @test */
     public function create_genre()
     {
-        $user = User::factory()->create();
-        DB::table('admin')->insert([
+        $user = User::factory()->create(); // Creates a user
+        DB::table('admin')->insert([ // Makes the user an admin
             'user_ID' => $user->id,
             'created_at' => null,
             'updated_at' => null,
         ]);
         $response = Livewire::actingAs($user)->test(CreateGenre::class)
             ->set('genre_name', 'test genre')
-            ->call('create');
+            ->call('create'); // Calls the function to create a genre acting as the admin user.
 
         dump($response->errors()->toArray());
-        $response->assertHasNoErrors();
+        $response->assertHasNoErrors(); // Test succeeds if no errors happen.
     }
 
     /** @test */
-    public function renders_successfully()
+    public function renders_successfully() // Makes sure the test renders successfully
     {
         Livewire::test(CreateGenre::class)
             ->assertStatus(200);

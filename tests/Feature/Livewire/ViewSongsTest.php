@@ -13,23 +13,23 @@ use function Symfony\Component\String\u;
 class ViewSongsTest extends TestCase
 {
     /** @test */
-    public function renders_successfully()
+    public function renders_successfully() // Makes sure the test renders successfully
     {
         $user = User::factory()->create();
         Livewire::actingAs($user)->test(ViewSongs::class)
             ->assertStatus(200);
     }
 
-    public function test_no_access_to_guests()
+    public function test_no_access_to_guests() // Makes sure non-logged-in users can't access the app
     {
-        $response = $this->get('/app');
-        $response->assertStatus(302);
+        $response = $this->get('/app'); // Tries to access the website
+        $response->assertStatus(302); // Test succeeds if they are redirected.
     }
 
-    public function test_access_to_registered_users()
+    public function test_access_to_registered_users() // Makes sure logged-in users can access the app
     {
-        $user = User::factory()->create();
-        $response = $this->actingAs($user)->get('/app');
-        $response->assertStatus(200);
+        $user = User::factory()->create(); // Creates a user
+        $response = $this->actingAs($user)->get('/app'); // Tries to access the website acting as the user
+        $response->assertStatus(200); // Test succeeds if they are able to access the website.
     }
 }

@@ -28,26 +28,26 @@ class UserForm extends Form
             'username' => [
                 'required',
                 Rule::unique('users'),
-                'max:255',
+                'max:30',
                 'min:3',
                 'alpha_dash',
             ],
             'name' => [
                 'required',
-                'max:255',
+                'max:40',
                 'min:3',
-                'regex:/^[a-zA-Z0-9\s]+$/',
+                'regex:/^[a-zA-Z\s]+$/',
             ],
             'email' => [
                 'required',
                 'email',
-                'max:255',
+                'max:30',
                 Rule::unique('users'),
                 'regex:/^(.+)@(?:worc\.ac\.uk|uni\.worc\.ac\.uk)$/'
             ],
             'password'=> [
                 'required',
-                'max:255',
+                'max:30',
                 'min:7'
             ],
             'pfp_directory' => 'nullable|image|mimes:jpeg,png,jpg|max:15360',

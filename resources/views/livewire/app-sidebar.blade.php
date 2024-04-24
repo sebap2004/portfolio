@@ -32,7 +32,7 @@ add
             <form wire:submit.prevent="createPlaylist">
                 <x-form.input wire:model="playlist_name"
                     name="Playlist Name"
-                    error="playlistName"
+                    error="playlist_name"
                 />
                 <div class="modal-action">
                     <button type="button" @click.prevent="$refs.playlistModal.close()" class="btn">Cancel</button>
