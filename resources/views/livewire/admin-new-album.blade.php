@@ -12,11 +12,11 @@
                 <option value="{{ $artist->artist_ID }}">{{$artist->name}}</option>
             @endforeach
         </x-form.dropdown>
-        @if (isset($form->pfp_directory) && $form->pfp_directory)
+        @if (isset($form->cover_directory) && $form->cover_directory)
             <span class="text-gray-400 text-xs m-1"><i>Image Preview:</i></span>
             @php
                 try {
-                   $url = $form->pfp_directory->temporaryUrl();
+                   $url = $form->cover_directory->temporaryUrl();
                    $photoStatus = true;
                 }catch (\Livewire\Features\SupportFileUploads\FileNotPreviewableException $exception){
                     $this->photoStatus =  false;

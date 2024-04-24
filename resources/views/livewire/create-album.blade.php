@@ -5,11 +5,11 @@
         @csrf
         <x-form.input wire:model="form.album_name" class="w-96" name="album name" error="form.album_name"/>
         <x-form.fileinput wire:model="form.cover_directory" class="file-input-primary w-96" name="cover image file" error="form.cover_directory" type="file"><span class="text-gray-400 text-xs ml-1"><i>15MB File Limit, Square image preferred</i></span></x-form.fileinput>
-        @if (isset($form->pfp_directory) && $form->pfp_directory)
+        @if (isset($form->cover_directory) && $form->cover_directory)
             <span class="text-gray-400 text-xs m-1"><i>Image Preview:</i></span>
             @php
                 try {
-                   $url = $form->pfp_directory->temporaryUrl();
+                   $url = $form->cover_directory->temporaryUrl();
                    $photoStatus = true;
                 }catch (\Livewire\Features\SupportFileUploads\FileNotPreviewableException $exception){
                     $this->photoStatus =  false;
