@@ -42,6 +42,9 @@ class EditProfileAdmin extends Form
                 'max:255',
                 Rule::unique('users')->ignore($this->user),
             ],
+            'bio' => [
+                'max:255'
+            ],
             'password'=> [
                 'nullable',
                 'max:255',

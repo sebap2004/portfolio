@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class CreateGenre extends Component
 {
-    #[Validate('required')]
+    #[Validate('required|max:30')]
     public $genre_name;
 
 

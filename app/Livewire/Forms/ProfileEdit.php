@@ -36,6 +36,9 @@ class ProfileEdit extends Form
                 'max:255',
                 'min:3',
             ],
+            'bio' => [
+                'max:255'
+            ],
             'email' => [
                 'required',
                 'email',
