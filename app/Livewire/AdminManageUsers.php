@@ -47,8 +47,8 @@ class AdminManageUsers extends Component
             $playlist->songs()->delete();
         }
         Playlist::where('user_ID', $this->currentSetUser->id)->delete();
-        if ($this->currentSetUser->artist && $this->currentSetUser->artist->songs()) {
-            foreach ($this->currentSetUser->artist->songs() as $song)
+        if ($this->currentSetUser->artist() && $this->currentSetUser->artist()->songs()) {
+            foreach ($this->currentSetUser->artist()->songs() as $song)
             {
                 if (PlaylistSong::where('song_ID', $song->song_ID))
                 {
@@ -56,8 +56,8 @@ class AdminManageUsers extends Component
                 }
                 $song->delete();
             }
-            if ($this->currentSetUser->artist->albums()) {
-                $this->currentSetUser->artist->albums()->delete();
+            if ($this->currentSetUser->artist()->albums()) {
+                $this->currentSetUser->artist()->albums()->delete();
             }
             $this->currentSetUser->artist()->delete();
         }
