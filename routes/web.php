@@ -30,10 +30,6 @@ Route::get('/', function () {
 
 
 Route::post('sessions' ,[SessionsController::class, 'store'])->middleware('guest');
-
-// App Routes
-
-
 Route::get('login' ,LoginUser::class)->middleware('guest')->name('login');
 Route::get('register', RegisterUser::class);
 

@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Livewire\Forms\EditProfileAdmin;
 use App\Models\Playlist;
+use App\Models\PlaylistSong;
 use App\Models\Song;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -47,7 +48,14 @@ class AdminManageUsers extends Component
         }
         Playlist::where('user_ID', $this->currentSetUser->id)->delete();
         if ($this->currentSetUser->artist && $this->currentSetUser->artist->songs()) {
-            $this->currentSetUser->artist->songs()->delete();
+            foreach ($this->currentSetUser->artist->songs() as $song)
+            {
+                if (PlaylistSong::where('song_ID', $song->song_ID))
+                {
+                    PlaylistSong::where('song_ID', $song->song_ID)->delete();
+                }
+                $song->delete();
+            }
             if ($this->currentSetUser->artist->albums()) {
                 $this->currentSetUser->artist->albums()->delete();
             }

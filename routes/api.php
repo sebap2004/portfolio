@@ -37,7 +37,6 @@ Route::get('/album/{albums:album_ID}', function ($albumID) {
 
 Route::get('/playlist/{playlists:playlist_ID}', function ($playlistID) {
     $playlist = \App\Models\Playlist::findOrFail($playlistID);
-
     $songIds = $playlist->songs->pluck('song_ID')->toArray();
     return response()->json(['song_ids' => $songIds]);
 });

@@ -11,7 +11,6 @@ class CreateGenre extends Component
     #[Validate('required|max:30')]
     public $genre_name;
 
-
     public function create()
     {
         $this->validate();
