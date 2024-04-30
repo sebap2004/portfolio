@@ -57,7 +57,7 @@ class AdminManageUsers extends Component
                 $song->delete();
             }
             if ($this->currentSetUser->artist->albums()) {
-                $this->currentSetUser->artist->albums()->songs->delete();
+                $this->currentSetUser->artist->albums->songs->delete();
                 $this->currentSetUser->artist->albums()->delete();
             }
             $this->currentSetUser->artist->songs()->delete();
