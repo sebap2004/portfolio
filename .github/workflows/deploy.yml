@@ -24,6 +24,5 @@ jobs:
                     host: ${{ secrets.DEPLOY_HOST }}
                     path: ${{ secrets.DEPLOY_PATH }}
                     owner: ${{ secrets.DEPLOY_OWNER }}
-                    port: 80
                 env:
                     DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
