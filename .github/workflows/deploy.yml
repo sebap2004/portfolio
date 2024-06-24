@@ -26,3 +26,17 @@ jobs:
                     owner: ${{ secrets.DEPLOY_OWNER }}
                 env:
                     DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+            - name: SSH Commands
+              uses: appleboy/ssh-action@master
+              with:
+                  host: ${{ secrets.DEPLOY_HOST }}
+                  username: ${{ secrets.DEPLOY_USER }}
+                  key: ${{ secrets.DEPLOY_KEY }}
+                  script: |
+                    cd ${{ secrets.DEPLOY_PATH }}
+                    php artisan migrate
+                    php artisan config:cache
+                    php artisan route:cache
+                    php artisan optimize 
+                    npm run build
+                    # Add any additional commands here
